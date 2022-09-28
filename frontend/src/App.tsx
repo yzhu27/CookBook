@@ -4,6 +4,8 @@ import applicationStore from './store'
 import logo from './logo.svg';
 import './App.css';
 import GetIngredients from './features/GetIngredients/GetIngredients';
+import Header from './features/Header/Header';
+import AppContent from './features/AppContent/AppContent';
 
 const store = applicationStore();
 
@@ -11,22 +13,15 @@ function App() {
   return (
     <Provider store={store}>
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.tsx</code> and save to reload.
-          </p>
+        <div className="App-header">
+          <Header />
+        </div>
+        <div className="App-searchComponent">
           <GetIngredients />
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-        
+        </div>
+        <div className="App-body">
+          <AppContent />
+        </div>
       </div>
     </Provider>
   );

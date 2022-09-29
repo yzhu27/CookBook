@@ -1,6 +1,7 @@
 from fastapi import APIRouter, Body, Request, Response, HTTPException, status
 from fastapi.encoders import jsonable_encoder
-from typing import List
+from typing import List, Dict
+import pprint
 
 from models import Recipe
 
@@ -28,4 +29,15 @@ def list_recipes(request: Request, arr: list[str] = Body(...)):
     arr = jsonable_encoder(arr)
     print(arr)
     recipes = list(request.app.database["recipes"].find({ "ingredients" : { "$all" : arr } }))
+    if(len(recipes) <= 0): 
+        return list(request.app.database["recipes"].find({ "ingredients" : { "$in" : arr } }))
     return recipes
+
+@router.get("/ingredients/{queryString}", response_description="List all ingredients", response_model=List[str])
+def list_ingredients(queryString : str, request: Request):
+    pipeline = [{"$unwind": "$ingredients"}, {'$match': {'ingredients': {'$regex' : queryString}}}, {"$limit" : 20} ,{"$group": {"_id": "null", "ingredients": {"$addToSet": "$ingredients"}}}]
+    data = request.app.database["recipes"].aggregate(pipeline)
+    if(len(list(data)) <= 0):
+        return []
+    ings = list(data)[0]["ingredients"]
+    return ings

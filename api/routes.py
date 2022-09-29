@@ -37,6 +37,7 @@ def list_recipes(request: Request, arr: list[str] = Body(...)):
 def list_ingredients(queryString : str, request: Request):
     pipeline = [{"$unwind": "$ingredients"}, {'$match': {'ingredients': {'$regex' : queryString}}}, {"$limit" : 20} ,{"$group": {"_id": "null", "ingredients": {"$addToSet": "$ingredients"}}}]
     data = request.app.database["recipes"].aggregate(pipeline)
-    pprint.pprint(data)
+    if(len(list(data)) <= 0):
+        return []
     ings = list(data)[0]["ingredients"]
     return ings

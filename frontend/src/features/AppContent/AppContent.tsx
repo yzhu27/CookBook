@@ -1,10 +1,16 @@
 import React from 'react';
+import { Routes, Route } from 'react-router-dom';
+import HomePage from './HomePage/HomePage';
+import RecipeInformation from './RecipeInformation/RecipeInformation';
+import RecipeList from './RecipeList/RecipeList';
 
 const AppContent = () => {
   return (
-    <div>
-      This is the AppContent
-    </div>
+    <Routes>
+      <Route path='/' element={<HomePage />} />
+      <Route path='/recipe-list' element={<RecipeList />} />
+      <Route path='/recipe-details' element={<RecipeInformation />} />
+    </Routes>
   );
 };
 

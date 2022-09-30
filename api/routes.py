@@ -27,17 +27,16 @@ def list_recipes(ingredient: str,request: Request):
 @router.post("/search/", response_description="Get Recipes that match all the ingredients in the request", status_code=status.HTTP_201_CREATED, response_model=List[Recipe])
 def list_recipes(request: Request, arr: list[str] = Body(...)):
     arr = jsonable_encoder(arr)
-    print(arr)
-    recipes = list(request.app.database["recipes"].find({ "ingredients" : { "$all" : arr } }))
-    if(len(recipes) <= 0): 
-        return list(request.app.database["recipes"].find({ "ingredients" : { "$in" : arr } }))
+    recipes = list(request.app.database["recipes"].find({ "ingredients" : { "$all" : arr } }).limit(10))
+    pprint.pprint(recipes)
     return recipes
 
 @router.get("/ingredients/{queryString}", response_description="List all ingredients", response_model=List[str])
 def list_ingredients(queryString : str, request: Request):
     pipeline = [{"$unwind": "$ingredients"}, {'$match': {'ingredients': {'$regex' : queryString}}}, {"$limit" : 20} ,{"$group": {"_id": "null", "ingredients": {"$addToSet": "$ingredients"}}}]
-    data = request.app.database["recipes"].aggregate(pipeline)
-    if(len(list(data)) <= 0):
+    data = list(request.app.database["recipes"].aggregate(pipeline))
+    pprint.pprint(data)
+    if(len(data) <= 0):
         return []
-    ings = list(data)[0]["ingredients"]
+    ings = data[0]["ingredients"]
     return ings

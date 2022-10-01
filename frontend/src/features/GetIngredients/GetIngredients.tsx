@@ -1,51 +1,55 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from "react-router-dom";
-import { Autocomplete, Button, Stack, TextField } from '@mui/material';
+import { Autocomplete, Button, Chip, Stack, TextField } from '@mui/material';
 import { useForm, Controller } from "react-hook-form";
-import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
-import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline';
 import Send from '@mui/icons-material/Send';
 import { getIngredientsInitiator } from './getIngredients.action';
+import { getRecipeListInitiator } from '../AppContent/RecipeList/getRecipeList.action';
 
-// Top 100 films as rated by IMDb users. http://www.imdb.com/chart/top
-const top100Films = [
-  { title: 'The Shawshank Redemption', year: 1994 },
-  { title: 'The Godfather', year: 1972 },
-  { title: 'The Godfather: Part II', year: 1974 },
-  { title: 'The Dark Knight', year: 2008 },
-  { title: '12 Angry Men', year: 1957 },
-  { title: "Schindler's List", year: 1993 },
-  { title: 'Pulp Fiction', year: 1994 },
-];
+interface ChipData {
+  key: string;
+  label: string;
+}
+interface ListData {
+  key: string;
+  label: string;
+}
 
-const InputField = ({ field, label, id }: any) => {
+const InputField = ({ field, label, id, onChangeField, onChangeTextField, listData }: any) => {
+  const [value, setValue] = useState('');
+
+  useEffect(() => {
+    return () => {
+      setValue('');
+    }
+  }, [value])
+  
   return (
     <Autocomplete
         freeSolo
         {...field}
         id="free-solo-2-demo"
         disableClearable
-        
-        options={top100Films.map((option) => option.title)}
-        filterOptions = {(options, { inputValue }) => { 
-          console.log('the state is -- ', inputValue.length)
-          if (inputValue.length > 3)
-            return false;
-          else
-            return true;
+        options={listData.map((option: any) => option.label)}
+        onChange={(event, val: string) => {
+          setValue('');
+          onChangeField(val);
+          
         }}
-        renderInput={(params: any) => (
-          <TextField
+        renderInput={(params: any) => {
+          return <TextField
             {...params}
             id={id}
+            value={value}
             label={label}
+            onChange={(event) => onChangeTextField(event.target.value)}
             InputProps={{
               ...params.InputProps,
               type: 'search',
             }}
           />
-        )}
+        }}
       />
   )
 }
@@ -54,88 +58,82 @@ const GetIngredients = () => {
   const dispatch = useDispatch();
   const { control, handleSubmit } = useForm();
   const navigateTo = useNavigate();
-  const [isAdd, setIsAdd] = useState(false);
-
-  const getIngredientsState = useSelector((state) => state);
-
-  useEffect(() => {  
-    return () => {
-      setIsAdd(false);
-    }
-  }, [])
   
+  const [chipData, setChipData] = useState<readonly ChipData[]>([]);
+  const [listData, setListData] = useState<readonly ListData[]>([]);
 
-  console.log('the state is --->', getIngredientsState);
+  const getIngredientsState = useSelector((state: any) => state.getIngredientsAppState);
 
-  const handleAddIngredients = (
-    event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
-  ) => {
-    console.log('inside handle add ingredients');
-    setIsAdd(true);
-  };
+  useEffect(() => {
+    let ingredients = getIngredientsState.getIngredientsData;
+    if (Array.isArray(ingredients)) {
+      ingredients.forEach((item: string, index: number) => {
+        setListData((list) => list.concat({key: item, label: item}))
+      });
+    }
+    return () => {
+      setListData([])
+    }
+  }, [getIngredientsState.getIngredientsData]);
 
-  const handleRemoveIngredients = () => {
-    setIsAdd(false);
-    navigateTo('/recipe-list');
+  const onChangeTextField = (val: string) => {
+    if (val.length >=3) {
+      dispatch(getIngredientsInitiator('http://localhost:8000/recipe/ingredients/'+val));
+    }
   }
 
-  const onSubmit = (data: any) => {
-    console.log('inside handle submit ingredients --- ', data);
+  const onChangeField = (val: string) => {
+    setChipData((chips) => chips.concat({key: val, label: val}))
+  }
+
+  const handleDelete = (chipToDelete: ChipData) => () => {
+    setChipData((chips) => chips.filter((chip) => chip.key !== chipToDelete.key));
+  };
+
+  const onSubmit = () => {
+    let ingredientsArray: Array<string> = [];
+    chipData.forEach(chip => ingredientsArray.push(chip.label));
+    dispatch(getRecipeListInitiator('http://localhost:8000/recipe/search/', ingredientsArray));
+    navigateTo('/recipe-list');
   };
 
   return (
     <>
-    <form onSubmit={handleSubmit(onSubmit)}>
-          <Stack direction="row" spacing={2}>
-            <Stack direction="column" spacing={2}>
+      <form onSubmit={handleSubmit(onSubmit)}>
+          <Stack direction="column" spacing={2}>
               <Controller
-                render={({ field }) => <InputField field={field} label="Ingredient 1" id="outlined-size-normal" />}
-                name="ingredient1"
+                render={({ field }) => 
+                  <InputField 
+                    field={field} 
+                    label="Ingredient 1" 
+                    id="outlined-size-normal" 
+                    listData={listData}
+                    onChangeField={onChangeField}
+                    onChangeTextField={onChangeTextField}
+                  />}
+                name="ingredients"
                 control={control}
               />
-              <Controller
-                render={({ field }) => <TextField {...field} label="Ingredient 2" id="outlined-size-normal" />}
-                name="ingredient2"
-                control={control}
-              />
-              <Controller
-                render={({ field }) => <TextField {...field} label="Ingredient 3" id="outlined-size-normal" />}
-                name="ingredient3"
-                control={control}
-              />
-            </Stack>
-            {isAdd && 
-              <Stack direction="column" spacing={2}>
-                <Controller
-                  render={({ field }) => <TextField {...field} label="Ingredient 4" id="outlined-size-normal" />}
-                  name="ingredient4"
-                  control={control}
-                />
-                <Controller
-                  render={({ field }) => <TextField {...field} label="Ingredient 5" id="outlined-size-normal" />}
-                  name="ingredient5"
-                  control={control}
-                />
-                <Controller
-                  render={({ field }) => <TextField {...field} label="Ingredient 6" id="outlined-size-normal" />}
-                  name="ingredient6"
-                  control={control}
-                />
-              </Stack>
-            }
+              
+              
           </Stack>
           <Stack direction="row" spacing={3} paddingTop="10px">
-            <Button variant="contained" startIcon={<AddCircleOutlineIcon />} onClick={handleAddIngredients}>
-              Add Ingredients
-            </Button>
-            {isAdd && <Button variant="contained" startIcon={<RemoveCircleOutlineIcon />} onClick={handleRemoveIngredients}>
-              Remove Ingredients
-            </Button>}
-            <Button type="submit" variant="contained" endIcon={<Send />}>
+            {chipData.map((data) => {
+              return (
+                  <Chip
+                    key={data.key}
+                    label={data.label}
+                    onDelete={handleDelete(data)}
+                  />
+                );
+            })}
+          </Stack>
+          <Stack direction="row" spacing={3} paddingTop="10px">
+            <Button onClick={onSubmit} type="submit" variant="contained" endIcon={<Send />}>
               SUBMIT
             </Button>
           </Stack>
-          </form>
+      </form>    
     </>
   );
 };

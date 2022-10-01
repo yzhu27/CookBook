@@ -11,8 +11,10 @@ export const httpGetRequest = async (apiURL: string) => {
         const response = await fetch(apiURL, {
           method: 'GET',
           headers: {
-            Accept: 'application/json',
-          },
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Request-Method': 'GET'
+          }
         });
     
         if (!response.ok) {
@@ -20,9 +22,6 @@ export const httpGetRequest = async (apiURL: string) => {
         }
     
         const result = (await response.json()) as any;
-    
-        console.log('result is: ', JSON.stringify(result, null, 4));
-    
         return result;
       } catch (error) {
         if (error instanceof Error) {
@@ -43,8 +42,9 @@ export const httpPostRequest = async (apiURL: string, requestBody: any) => {
           body: JSON.stringify(requestBody),
           headers: {
             'Content-Type': 'application/json',
-            Accept: 'application/json',
-          },
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Request-Method': 'POST'
+          }
         });
     
         if (!response.ok) {

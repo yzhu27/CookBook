@@ -2,12 +2,16 @@
 # CSC510_43_Project1
 
 ## To set up the front end React app, do:
+```bash
 cd frontend
 npm install
+```
 
 ## To run the front end React app, do:
+```bash
 cd frontend
 npm start
+```
 
 ## To set up the back end, do:
 Make sure you are in the base folder.<br><br>

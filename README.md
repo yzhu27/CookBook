@@ -1,3 +1,4 @@
+[![DOI](https://zenodo.org/badge/541238337.svg)](https://zenodo.org/badge/latestdoi/541238337)
 
 # CSC510_43_Project1
 

@@ -6,8 +6,10 @@ const RecipeInformation = () => {
 
   console.log('this is recipe info');
   return (
-    <div>
-      This is the Recioe Information page for id {id}
+    <div style={{ width: '100vw'}}>
+      <div style={{ float: 'left', width: '25vw'}}>Recipe pic</div>
+      <div style={{ float: 'left', width: '50vw'}}>Recipe</div>
+      <div style={{ float: 'left', width: '25vw'}}>Facts</div>
     </div>
   );
 };

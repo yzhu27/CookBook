@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from "react-router-dom";
-import { Autocomplete, Button, Chip, Stack, TextField } from '@mui/material';
+import { Autocomplete, Box, Button, Chip, Grid, Stack, TextField } from '@mui/material';
 import { useForm, Controller } from "react-hook-form";
 import Send from '@mui/icons-material/Send';
 import { getIngredientsInitiator } from './getIngredients.action';
@@ -56,7 +56,7 @@ const InputField = ({ field, label, id, onChangeField, onChangeTextField, listDa
 
 const GetIngredients = () => {
   const dispatch = useDispatch();
-  const { control, handleSubmit } = useForm();
+  const { control } = useForm();
   const navigateTo = useNavigate();
   
   const [chipData, setChipData] = useState<readonly ChipData[]>([]);
@@ -98,14 +98,16 @@ const GetIngredients = () => {
   };
 
   return (
-    <>
-      <form onSubmit={handleSubmit(onSubmit)}>
-          <Stack direction="column" spacing={2}>
-              <Controller
+    
+      <>
+      <Grid container spacing={3}>
+      <Grid item xs={2}></Grid>
+        <Grid item xs={8}>
+        <Controller
                 render={({ field }) => 
                   <InputField 
                     field={field} 
-                    label="Ingredient 1" 
+                    label="Type to select Ingredients" 
                     id="outlined-size-normal" 
                     listData={listData}
                     onChangeField={onChangeField}
@@ -114,11 +116,13 @@ const GetIngredients = () => {
                 name="ingredients"
                 control={control}
               />
-              
-              
-          </Stack>
-          <Stack direction="row" spacing={3} paddingTop="10px">
-            {chipData.map((data) => {
+        </Grid>
+        <Grid item xs={2}></Grid>
+        </Grid>
+        <Grid container spacing={2}>
+        <Grid item xs={12}>
+        <Box paddingTop={"20px"}>
+        {chipData.map((data) => {
               return (
                   <Chip
                     key={data.key}
@@ -127,14 +131,15 @@ const GetIngredients = () => {
                   />
                 );
             })}
-          </Stack>
-          <Stack direction="row" spacing={3} paddingTop="10px">
-            <Button onClick={onSubmit} type="submit" variant="contained" endIcon={<Send />}>
+            </Box>
+        </Grid>
+        <Grid item xs={12}>
+        <Button onClick={onSubmit} type="submit" variant="contained" endIcon={<Send />}>
               SUBMIT
             </Button>
-          </Stack>
-      </form>    
-    </>
+        </Grid>
+      </Grid>
+      </>
   );
 };
 

@@ -4,6 +4,7 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  overflow-y: hidden;
   /* color: white; */
 }
 
@@ -23,6 +24,7 @@
   min-height: 10vh;
   display: flex;
   flex-direction: column;
+  overflow-y: hidden;
   /* align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin); */
@@ -39,6 +41,7 @@
   font-size: calc(10px + 2vmin);
   /* color: white; */
   padding: 10px;
+  overflow-y: hidden;
 }
 
 .App-body {
@@ -49,6 +52,7 @@
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
+  overflow: hidden;
   /* color: white; */
 }
 

@@ -9,7 +9,7 @@ const AppContent = () => {
     <Routes>
       <Route path='/' element={<HomePage />} />
       <Route path='/recipe-list' element={<RecipeList />} />
-      <Route path='/recipe-details' element={<RecipeInformation />} />
+      <Route path='/recipe-details/:id' element={<RecipeInformation />} />
     </Routes>
   );
 };

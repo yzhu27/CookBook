@@ -6,6 +6,9 @@
 ```bash
 cd frontend
 npm install
+
+// if npm install fails, try this
+npm install --legacy-peer-deps
 ```
 
 ## To run the front end React app, do:

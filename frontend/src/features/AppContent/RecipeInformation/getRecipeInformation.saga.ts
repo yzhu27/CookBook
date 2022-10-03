@@ -1,12 +1,12 @@
 import { takeEvery, put, call } from 'redux-saga/effects';
 import * as ACTIONS from './getRecipeInformation.action';
 import * as ACTION_TYPES from './getRecipeInformation.actionTypes';
-import { ActionTypes, httpPostRequest } from "../../apiMethods";
+import { ActionTypes, httpGetRequest } from "../../apiMethods";
 
 export function* initiateGetRecipeInfoRequest(action: ActionTypes) {
   try {
     // @ts-ignore
-    const resp: any = yield call(httpPostRequest, action.payload.apiURL, action.payload.body);
+    const resp: any = yield call(httpGetRequest, action.payload);
     yield put(ACTIONS.getRecipeInfoSuccess(resp));
   } catch (err) {
     yield put(ACTIONS.getRecipeInfoFailure(err));

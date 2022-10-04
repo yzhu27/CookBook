@@ -6,6 +6,7 @@ import { useForm, Controller } from "react-hook-form";
 import Send from '@mui/icons-material/Send';
 import { getIngredientsInitiator } from './getIngredients.action';
 import { getRecipeListInitiator } from '../AppContent/RecipeList/getRecipeList.action';
+import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 
 interface ChipData {
   key: string;
@@ -77,7 +78,7 @@ const GetIngredients = () => {
 
   const handleDelete = (chipToDelete: ChipData) => () => {
     setChipData((chips) => chips.filter((chip) => chip.key !== chipToDelete.key));
-  };
+};
 
   const onSubmit = () => {
     let ingredientsArray: Array<string> = [];
@@ -125,6 +126,7 @@ const GetIngredients = () => {
                     key={data.key}
                     label={data.label}
                     onDelete={handleDelete(data)}
+                    deleteIcon={<HighlightOffIcon fontSize="large" style={{ color: 'white'}}/>}
                     style={{ margin: '5px', backgroundColor: '#34495e', color: '#f2f4f4'}}
                   />
                 );

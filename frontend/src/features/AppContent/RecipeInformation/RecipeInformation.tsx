@@ -24,7 +24,7 @@ const RecipeInformation = () => {
     const recipe = recipeInfo.getRecipeInfoData;
     console.log('recipe is --- ', recipe);
     return (
-      <div style={{ width: '100vw'}}>
+      <div style={{ width: '100vw', color: '#f2f4f4', paddingTop: '20px'}}>
         <div style={{ float: 'left', width: '30vw'}}>
           {recipe?.images?.length > 0 ? 
             <Typography variant="subtitle1" gutterBottom>
@@ -63,7 +63,7 @@ const RecipeInformation = () => {
         </div>
         <div style={{ float: 'left', width: '25vw', paddingLeft: "5vw"}}>
           <Grid container spacing={3}>
-            <Grid item xs={12}>
+            <Grid item xs={12} style={{textAlign: 'center', paddingRight: '170px'}}>
               <Typography variant="h4" gutterBottom>TRIVIA</Typography>
             </Grid>
             <Grid item xs={6}>

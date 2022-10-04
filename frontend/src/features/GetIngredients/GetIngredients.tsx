@@ -1,9 +1,18 @@
+/**
+ * File name: GetIngredients.tsx
+ * Task - This component has the logic to accept input i.e. ingredients for the user
+ * It displays the inputted ingredients in the form of chips. On submit press, it triggers an API call
+ * to retrieve a list of recipes that could be made from the inputted ingredients.
+ * Search component remain static throughout the application
+ * @author Priyanka Ambawane - dearpriyankasa@gmail.com
+ */
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from "react-router-dom";
 import { Autocomplete, Box, Button, Chip, Grid, TextField } from '@mui/material';
 import { useForm, Controller } from "react-hook-form";
 import Send from '@mui/icons-material/Send';
+import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 import { getIngredientsInitiator } from './getIngredients.action';
 import { getRecipeListInitiator } from '../AppContent/RecipeList/getRecipeList.action';
 
@@ -16,6 +25,7 @@ interface ListData {
   label: string;
 }
 
+// Extracted out Autocomplete input field to allow ingredients suggestions to the user
 const InputField = ({ field, label, id, onChangeField, onChangeTextField, listData }: any) => {    
   return (
     <Autocomplete
@@ -51,6 +61,7 @@ const GetIngredients = () => {
   const [chipData, setChipData] = useState<readonly ChipData[]>([]);
   const [listData, setListData] = useState<readonly ListData[]>([]);
 
+  // accesses the state of the component from the app's store
   const getIngredientsState = useSelector((state: any) => state.getIngredientsAppState);
 
   useEffect(() => {
@@ -65,20 +76,24 @@ const GetIngredients = () => {
     }
   }, [getIngredientsState.getIngredientsData]);
 
+  // function to get ingredients suggestions after input of 3 chars in the search field
   const onChangeTextField = (val: string) => {
     if (val.length >=3) {
       dispatch(getIngredientsInitiator('http://localhost:8000/recipe/ingredients/'+val));
     }
   }
 
+  // on enter or ingredient selection from suggestion list, this function stores the input in the chipData state
   const onChangeField = (val: string) => {
     setChipData((chips) => chips.concat({key: val, label: val}))
   }
 
+  // handler to delete the ingredient
   const handleDelete = (chipToDelete: ChipData) => () => {
     setChipData((chips) => chips.filter((chip) => chip.key !== chipToDelete.key));
   };
 
+  // handler to trigger the API call to get the list of recipes according to the user's ingredient's input
   const onSubmit = () => {
     let ingredientsArray: Array<string> = [];
     chipData.forEach(chip => ingredientsArray.push(chip.label));
@@ -125,6 +140,7 @@ const GetIngredients = () => {
                     key={data.key}
                     label={data.label}
                     onDelete={handleDelete(data)}
+                    deleteIcon={<HighlightOffIcon fontSize="large" style={{ color: 'white'}}/>}
                     style={{ margin: '5px', backgroundColor: '#34495e', color: '#f2f4f4'}}
                   />
                 );

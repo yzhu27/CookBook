@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from "react-router-dom";
-import { Autocomplete, Box, Button, Chip, Grid, Stack, TextField } from '@mui/material';
+import { Autocomplete, Box, Button, Chip, Grid, TextField } from '@mui/material';
 import { useForm, Controller } from "react-hook-form";
 import Send from '@mui/icons-material/Send';
 import { getIngredientsInitiator } from './getIngredients.action';
@@ -16,15 +16,7 @@ interface ListData {
   label: string;
 }
 
-const InputField = ({ field, label, id, onChangeField, onChangeTextField, listData }: any) => {
-  const [value, setValue] = useState('');
-
-  useEffect(() => {
-    return () => {
-      setValue('');
-    }
-  }, [value])
-  
+const InputField = ({ field, label, id, onChangeField, onChangeTextField, listData }: any) => {    
   return (
     <Autocomplete
         freeSolo
@@ -33,15 +25,12 @@ const InputField = ({ field, label, id, onChangeField, onChangeTextField, listDa
         disableClearable
         options={listData.map((option: any) => option.label)}
         onChange={(event, val: string) => {
-          setValue('');
           onChangeField(val);
-          
         }}
         renderInput={(params: any) => {
           return <TextField
             {...params}
             id={id}
-            value={value}
             label={label}
             onChange={(event) => onChangeTextField(event.target.value)}
             InputProps={{
@@ -101,8 +90,8 @@ const GetIngredients = () => {
     
       <>
       <Grid container spacing={3}>
-      <Grid item xs={2}></Grid>
-        <Grid item xs={8}>
+      <Grid item xs={1}></Grid>
+        <Grid item xs={10}>
         <Controller
                 render={({ field }) => 
                   <InputField 
@@ -117,7 +106,15 @@ const GetIngredients = () => {
                 control={control}
               />
         </Grid>
-        <Grid item xs={2}></Grid>
+        <Grid item xs={1} container justifyContent="flex-start">
+          <Button 
+              onClick={onSubmit} 
+              type="submit"
+              style={{ borderRadius: '75%', height: '100%', backgroundColor: '#172e44'}} 
+              variant="contained" 
+              endIcon={<Send fontSize="large" style={{ marginRight: '10px'}} />} 
+          />
+        </Grid>
         </Grid>
         <Grid container spacing={2}>
         <Grid item xs={12}>
@@ -128,16 +125,14 @@ const GetIngredients = () => {
                     key={data.key}
                     label={data.label}
                     onDelete={handleDelete(data)}
+                    style={{ margin: '5px', backgroundColor: '#34495e', color: '#f2f4f4'}}
                   />
                 );
             })}
             </Box>
         </Grid>
-        <Grid item xs={12}>
-        <Button onClick={onSubmit} type="submit" variant="contained" endIcon={<Send />}>
-              SUBMIT
-            </Button>
-        </Grid>
+        {/* <Grid item xs={12}>
+        </Grid> */}
       </Grid>
       </>
   );

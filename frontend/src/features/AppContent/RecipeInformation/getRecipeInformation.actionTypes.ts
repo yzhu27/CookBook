@@ -1,3 +1,6 @@
+/*
+Contains predefined action types since we are using Typescript
+*/
 export const LOADING_GET_RECIPE_INFORMATION =
   'LOADING_GET_RECIPE_INFORMATION';
 export const SUCCESS_GET_RECIPE_INFORMATION =

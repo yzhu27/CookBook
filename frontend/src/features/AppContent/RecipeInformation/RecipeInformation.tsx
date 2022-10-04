@@ -1,6 +1,13 @@
+/**
+ * File name: RecipeInformation.tsx
+ * Task - This component displays images for recipe making, the procedure to make the dish and the 
+ * trivia and factual info related to it.
+ * This component is a dynamic component and is seen only when you click on a recipe from the recipe list
+ * @author Priyanka Ambawane - dearpriyankasa@gmail.com
+ */
 import { Grid, Stack, Typography } from '@mui/material';
 import StarIcon from '@mui/icons-material/Star';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {useParams} from "react-router-dom";
 import { getRecipeInfoInitiator } from './getRecipeInformation.action';
@@ -9,8 +16,11 @@ const RecipeInformation = () => {
   let { id } = useParams();
   const dispatch = useDispatch();
 
+  // accesses the state of the component from the app's store
   const recipeInfo = useSelector((state: any) => state.getRecipeInfoAppState);
 
+  /* the effect hook below does an api call to get the recipe details
+     using the recipe id as soon as the compnent gets loaded up */
   useEffect(() => {
     dispatch(getRecipeInfoInitiator('http://localhost:8000/recipe/'+id));
     return () => {

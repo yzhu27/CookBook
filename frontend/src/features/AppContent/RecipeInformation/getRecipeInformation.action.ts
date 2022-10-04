@@ -1,3 +1,8 @@
+/**
+ * File name: getRecipeInformation.action.ts
+ * Task - Contains action handlers (LOAD, SUCCESS, FAIL) for getting the recipe information from the DB
+ * @author Priyanka Ambawane - dearpriyankasa@gmail.com
+ */
 import * as ACTION_TYPES from './getRecipeInformation.actionTypes';
 
 export const getRecipeInfoInitiator = (apiURL: string) => {

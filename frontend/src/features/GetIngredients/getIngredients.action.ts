@@ -1,3 +1,8 @@
+/**
+ * File name: getIngredients.action.ts
+ * Task - Contains action handlers (LOAD, SUCCESS, FAIL) for getting the list of ingredients from the DB
+ * @author Priyanka Ambawane - dearpriyankasa@gmail.com
+ */
 import * as ACTION_TYPES from './getIngredients.actionTypes';
 
 export const getIngredientsInitiator = (apiURL: string) => {

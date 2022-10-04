@@ -1,3 +1,8 @@
+/**
+ * File name: getRecipeInformation.reducer.ts
+ * Task - Contains a normal function that performs state update based on API call output - SUCCESS/FAIL
+ * @author Priyanka Ambawane - dearpriyankasa@gmail.com
+ */
 import * as ACTION_TYPES from './getRecipeInformation.actionTypes';
 import { ActionTypes } from '../../apiMethods';
 

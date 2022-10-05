@@ -1,3 +1,9 @@
+/**
+ * File name: AppContent.tsx
+ * Task - The component defines the routes for the application and decides which component on render on that
+ * particular route
+ * @author Priyanka Ambawane - dearpriyankasa@gmail.com
+ */
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import HomePage from './HomePage/HomePage';

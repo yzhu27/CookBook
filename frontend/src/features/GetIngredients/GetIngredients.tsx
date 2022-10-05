@@ -15,7 +15,6 @@ import Send from '@mui/icons-material/Send';
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 import { getIngredientsInitiator } from './getIngredients.action';
 import { getRecipeListInitiator } from '../AppContent/RecipeList/getRecipeList.action';
-import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 
 interface ChipData {
   key: string;

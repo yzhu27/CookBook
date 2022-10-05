@@ -1,4 +1,9 @@
-
+/**
+ * File name: apiMethods.ts
+ * Task - It contains the wrapper methods for http get and post request. Have added the wrapper methods so that
+ * the code to hit the API would be at one place and could be imported to be used at multiple places.
+ * @author Priyanka Ambawane - dearpriyankasa@gmail.com
+ */
 
 export interface ActionTypes {
     type: string;

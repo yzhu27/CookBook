@@ -79,7 +79,7 @@ const GetIngredients = () => {
   // function to get ingredients suggestions after input of 3 chars in the search field
   const onChangeTextField = (val: string) => {
     if (val.length >=3) {
-      dispatch(getIngredientsInitiator('http://localhost:8000/recipe/ingredients/'+val));
+      dispatch(getIngredientsInitiator('http://localhost:8000/recipe/ingredients/{queryString}?query_string='+val));
     }
   }
 
@@ -125,7 +125,7 @@ const GetIngredients = () => {
           <Button 
               onClick={onSubmit} 
               type="submit"
-              style={{ borderRadius: '75%', height: '100%', backgroundColor: '#172e44'}} 
+              style={{ borderRadius: '50%', height: '100%', width: '0%', padding: '5px', backgroundColor: '#172e44'}} 
               variant="contained" 
               endIcon={<Send fontSize="large" style={{ marginRight: '10px'}} />} 
           />

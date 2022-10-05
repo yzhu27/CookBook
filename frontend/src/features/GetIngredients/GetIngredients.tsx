@@ -79,7 +79,7 @@ const GetIngredients = () => {
   // function to get ingredients suggestions after input of 3 chars in the search field
   const onChangeTextField = (val: string) => {
     if (val.length >=3) {
-      dispatch(getIngredientsInitiator('http://localhost:8000/recipe/ingredients/{queryString}?query_string='+val));
+      dispatch(getIngredientsInitiator('http://localhost:8000/recipe/ingredients/'+val));
     }
   }
 

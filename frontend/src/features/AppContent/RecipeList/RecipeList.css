@@ -1,0 +1,12 @@
+.d-flex{
+    display: flex;
+}
+
+.flex-row{
+    flex-direction: row;
+}
+
+.supplemental-info{
+    margin-left: auto !important;
+    color: #34495e;
+}

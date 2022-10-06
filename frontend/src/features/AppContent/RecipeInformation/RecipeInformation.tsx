@@ -12,6 +12,7 @@
  import {useParams} from "react-router-dom";
  import { getRecipeInfoInitiator } from './getRecipeInformation.action';
  import './RecipeInformation.css'
+ import noImage from './no-image.png';
  
  let triviaPaperStyles = {
    backgroundColor: '#f2f4f4',
@@ -148,7 +149,7 @@
               </Stack> 
             </Typography>
           : (
-            <Typography variant="body1">No Images Found</Typography>
+            <img src={noImage} alt={`Cannot display pic`} />
           )}
         </div>
        </div>

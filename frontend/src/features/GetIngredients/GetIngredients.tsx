@@ -97,7 +97,12 @@ const GetIngredients = () => {
   const onSubmit = () => {
     let ingredientsArray: Array<string> = [];
     chipData.forEach(chip => ingredientsArray.push(chip.label));
-    dispatch(getRecipeListInitiator('http://localhost:8000/recipe/search/', ingredientsArray));
+    sessionStorage.setItem("ingredients", JSON.stringify(ingredientsArray));
+    dispatch(getRecipeListInitiator('http://localhost:8000/recipe/search/', {
+      "ingredients" : ingredientsArray,
+      "page": 1
+    }
+  ));
     navigateTo('/recipe-list');
   };
 

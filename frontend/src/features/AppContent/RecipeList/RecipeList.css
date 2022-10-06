@@ -10,3 +10,12 @@
     margin-left: auto !important;
     color: #34495e;
 }
+
+.MuiPaginationItem-root {
+    color: white !important;
+}
+
+.Mui-selected {
+    background-color: aliceblue !important;
+    color: #34495e !important;
+}

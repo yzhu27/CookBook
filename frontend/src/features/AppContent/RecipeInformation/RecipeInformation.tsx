@@ -11,6 +11,7 @@
  import { useDispatch, useSelector } from 'react-redux';
  import {useParams} from "react-router-dom";
  import { getRecipeInfoInitiator } from './getRecipeInformation.action';
+ import './RecipeInformation.css'
  
  let triviaPaperStyles = {
    backgroundColor: '#f2f4f4',
@@ -40,29 +41,57 @@
      return <> Loading ... </>
    } else if (recipeInfo.isGetRecipeInfoSuccess) {
      const recipe = recipeInfo.getRecipeInfoData;
-     console.log('recipe is --- ', recipe);
      return (
        <div style={{ width: '100vw', color: '#f2f4f4', paddingTop: '20px'}}>
+         <Typography variant="h4" gutterBottom className='recipe-header'>{recipe.name}</Typography>
          <div style={{ float: 'left', width: '25vw'}}>
          <Paper elevation={24} style={triviaPaperStyles}>
            <Grid container spacing={3}>
              <Grid item xs={12} style={{textAlign: 'center'}}>
-               <Typography variant="h5" gutterBottom>About the Recipe:</Typography>
+               <Typography variant="h5" gutterBottom>Summary</Typography>
              </Grid>
              <Grid item xs={6}>
              <Stack direction="column" spacing={2} paddingBottom='20px' textAlign={'left'}>
                  <Typography variant="h6">
                    Rating:
-                   <Typography variant="subtitle1" gutterBottom>
-                     {Array.from({ length: Math.floor(Number(recipe?.rating))}).map((ele: any) => {
-                       return <StarIcon fontSize='large'/>
+                    <Typography variant="subtitle1" gutterBottom>
+                     {Array.from({length: Math.floor(Number(recipe?.rating))}).map((ele: any) => {
+                       return <StarIcon fontSize='small'/>
                      })}
-                 </Typography>
+                    </Typography>
                  </Typography>
                  <Typography variant="h6">
                    Prep Time:
                    <Typography variant="subtitle1" gutterBottom>
                      {recipe?.prepTime}
+                   </Typography>
+                 </Typography>
+                 <Typography variant="h6">
+                   Sugar:
+                   <Typography variant="subtitle1" gutterBottom>
+                     {recipe?.sugar}g
+                   </Typography>
+                 </Typography>
+                 <Typography variant="h6">
+                   Carbs:
+                   <Typography variant="subtitle1" gutterBottom>
+                     {recipe?.carbs}g
+                   </Typography>
+                 </Typography>
+                 <Typography variant="h6">
+                   Proteins:
+                   <Typography variant="subtitle1" gutterBottom>
+                     {recipe?.protein}g
+                   </Typography>
+                 </Typography>
+               </Stack>
+             </Grid>
+             <Grid item xs={6}>
+             <Stack direction="column" spacing={2} paddingBottom='20px' textAlign={'left'}>
+                 <Typography variant="h6">
+                   Servings:
+                   <Typography variant="subtitle1" gutterBottom>
+                     {recipe?.servings}
                    </Typography>
                  </Typography>
                  <Typography variant="h6">
@@ -72,37 +101,15 @@
                    </Typography>
                  </Typography>
                  <Typography variant="h6">
-                   Proteins:
-                   <Typography variant="subtitle1" gutterBottom>
-                     {recipe?.protein}
-                   </Typography>
-                 </Typography>
-               </Stack>
-             </Grid>
-             <Grid item xs={6}>
-             <Stack direction="column" spacing={2} paddingBottom='20px' textAlign={'left'}>
-                 <Typography variant="h6">
-                   Sugar:
-                   <Typography variant="subtitle1" gutterBottom>
-                     {recipe?.sugar}
-                   </Typography>
-                 </Typography>
-                 <Typography variant="h6">
-                   Carbs:
-                   <Typography variant="subtitle1" gutterBottom>
-                     {recipe?.carbs}
-                   </Typography>
-                 </Typography>
-                 <Typography variant="h6">
                    Cholestrol:
                    <Typography variant="subtitle1" gutterBottom>
-                     {recipe?.cholesterol}
+                     {recipe?.cholesterol}mg/dl
                    </Typography>
                  </Typography>
                  <Typography variant="h6">
                    Fats:
                    <Typography variant="subtitle1" gutterBottom>
-                     {recipe?.fat}
+                     {recipe?.fat}g
                    </Typography>
                  </Typography>
                </Stack>
@@ -110,13 +117,10 @@
            </Grid>
            </Paper>
          </div>
-         <div style={{ float: 'left', width: '40vw'}}>
+         <div style={{ float: 'left', width: '40vw', marginTop: '15px'}}>
            <Grid container spacing={3}>
              <Grid item xs={12}>
-               <Typography variant="h4" gutterBottom>PREPARATION</Typography>
-             </Grid>
-             <Grid item xs={12}>
-             <Stack direction="column" spacing={2} paddingBottom='20px' textAlign={'left'}>
+                <Stack direction="column" spacing={2} paddingBottom='20px' textAlign={'left'}>
                  {recipe?.instructions.map((inst: string, idx: number) => {
                    return (
                      <>
@@ -133,20 +137,20 @@
              </Grid>
            </Grid>
          </div>
-         <div style={{ float: 'left', width: '30vw', paddingLeft: "5vw"}}>
-         {recipe?.images?.length > 0 ? 
-             <Typography variant="subtitle1" gutterBottom>
-               <Stack direction="column" spacing={2} padding='25px'>
-                {recipe.images.reverse().map((imageLink: string, idx: number) => {
-                    imageLink = imageLink.replaceAll('"', '');
-                    return <img src={imageLink} alt={"Cannot display pic ${idx+1}"} />
-                  })}
-               </Stack> 
-             </Typography>
-           : (
-             <>No images found!</>
-           )}
-         </div>
+         <div style={{ float: 'left', width: '30vw'}}>
+          {recipe?.images?.length > 0 && recipe?.images[0] !== '' ? 
+            <Typography variant="subtitle1" gutterBottom>
+              <Stack direction="column" spacing={2} padding='25px'>
+                {recipe.images.reverse().slice(0, 3).map((imageLink: string, idx: number) => {
+                  imageLink = imageLink.replaceAll('"', '');
+                  return <img src={imageLink} alt={`Cannot display pic ${idx+1}`} />
+                })}
+              </Stack> 
+            </Typography>
+          : (
+            <Typography variant="body1">No Images Found</Typography>
+          )}
+        </div>
        </div>
      );
    } else {

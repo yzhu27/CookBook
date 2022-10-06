@@ -35,20 +35,21 @@
 
 .App-searchComponent {
   background-color: #f2f4f4;
-  min-height: 25vh;
+  min-height: 15vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   font-size: calc(10px + 2vmin);
   /* color: white; */
   padding: 10px;
+  padding-top: 30px;
   overflow-y: hidden;
 }
 
 .App-body {
   background-color: #34495e;
-  min-height: 65vh;
+  min-height: 75vh;
   display: flex;
   flex-direction: column;
   align-items: center;

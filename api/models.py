@@ -13,9 +13,9 @@ class Recipe(BaseModel):
     description: Optional[str] = None
     images: Optional[list] = None
     category: str
-    tags: list[str]
+    tags: List[str]
     ingredientQuantities: list
-    ingredients: list[str]
+    ingredients: List[str]
     rating: Optional[str] = None
     calories: Optional[str] = None
     fat: Optional[str] = None
@@ -27,7 +27,7 @@ class Recipe(BaseModel):
     sugar: Optional[str] = None
     protein: Optional[str] = None
     servings: Optional[str] = None
-    instructions: list[str]
+    instructions: List[str]
 
     class Config:
         schema_extra = {

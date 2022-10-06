@@ -39,8 +39,9 @@ const RecipeInformation = () => {
           {recipe?.images?.length > 0 ? 
             <Typography variant="subtitle1" gutterBottom>
               <Stack direction="column" spacing={2} padding='25px'>
-                {recipe.images.map((imageLink: string, idx: number) => {
-                  return <img src={imageLink} alt={`Cannot display pic ${idx+1}`} />
+                {recipe.images.reverse().map((imageLink: string, idx: number) => {
+                  imageLink = imageLink.replaceAll('"', '');
+                  return <img src={imageLink} alt={"Cannot display pic ${idx+1}"} />
                 })}
               </Stack> 
             </Typography>

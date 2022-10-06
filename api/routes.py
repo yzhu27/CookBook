@@ -23,12 +23,11 @@ def find_recipe(id: str, request: Request):
 
 @router.get("/search/{ingredient}", response_description="List all recipes with the given ingredient", response_model=List[Recipe])
 def list_recipes(ingredient: str,request: Request):
-    recipes = list(request.app.database["recipes"].find({ "ingredients" : { "$in" : [ingredient] } }))
+    recipes = list(request.app.database["recipes"].find({ "ingredients" : { "$in" : [ingredient] } }).limit(10))
     return recipes
 
 @router.post("/search/", response_description="Get Recipes that match all the ingredients in the request", status_code=200, response_model=RecipeListResponse)
 def list_recipes(request: Request, inp: RecipeListRequest = Body(...)):
-    pprint.pprint(inp)
     recipes = list(request.app.database["recipes"].find({ "ingredients" : { "$all" : inp.ingredients } }).sort([("rating", pymongo.DESCENDING), ("_id", pymongo.ASCENDING)]).skip((inp.page-1)*10).limit(10))
     count = request.app.database["recipes"].count_documents({ "ingredients" : { "$all" : inp.ingredients } })
     response = RecipeListResponse(recipes=recipes, page=inp.page, count=count)
@@ -38,7 +37,6 @@ def list_recipes(request: Request, inp: RecipeListRequest = Body(...)):
 def list_ingredients(queryString : str, request: Request):
     pipeline = [{"$unwind": "$ingredients"}, {'$match': {'ingredients': {'$regex' : queryString}}}, {"$limit" : 20} ,{"$group": {"_id": "null", "ingredients": {"$addToSet": "$ingredients"}}}]
     data = list(request.app.database["recipes"].aggregate(pipeline))
-    pprint.pprint(data)
     if(len(data) <= 0):
         return []
     ings = data[0]["ingredients"]

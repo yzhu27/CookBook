@@ -23,7 +23,7 @@ def find_recipe(id: str, request: Request):
 
 @router.get("/search/{ingredient}", response_description="List all recipes with the given ingredient", response_model=List[Recipe])
 def list_recipes(ingredient: str,request: Request):
-    recipes = list(request.app.database["recipes"].find({ "ingredients" : { "$in" : [ingredient] } }))
+    recipes = list(request.app.database["recipes"].find({ "ingredients" : { "$in" : [ingredient] } }).limit(10))
     return recipes
 
 @router.post("/search/", response_description="Get Recipes that match all the ingredients in the request", status_code=200, response_model=RecipeListResponse)

@@ -23,13 +23,13 @@ function App() {
       {/* Browser router enables routing and navigation across multiple pages in the application */}
       <BrowserRouter>
         <div className="App">
-          <div className="App-header">
+          <div className="App-header" data-testid="header-comp-43">
             <Header />
           </div>
-          <div className="App-searchComponent">
+          <div className="App-searchComponent" data-testid="search-comp-43">
             <GetIngredients />
           </div>
-          <div className="App-body">
+          <div className="App-body" data-testid="body-comp-43">
             <AppContent />
           </div>
         </div>

@@ -15,20 +15,22 @@ const HomePage = () => {
   return (
     <div > 
       <table>
-        <tr>
-          <td><img src={first} alt="first image"/></td>
-          <td><img src={second} alt="second image"/></td>
-          <td><img src={third} alt="third image"/></td>
-          <td><img src={fourth} alt="fourth image"/></td>
-          <td><img src={fifth} alt="fifth image"/></td>
-        </tr>  
-        <tr>
-          <td><img src={sixth} alt="sixth image"/></td>
-          <td><img src={seventh} alt="seventh image"/></td>
-          <td><img src={eighth} alt="eighth image"/></td>
-          <td><img src={nineth} alt="nineth image"/></td>
-          <td><img src={tenth} alt="tenth image"/></td>
-        </tr>
+        <tbody>
+          <tr>
+            <td><img src={first} alt="first image"/></td>
+            <td><img src={second} alt="second image"/></td>
+            <td><img src={third} alt="third image"/></td>
+            <td><img src={fourth} alt="fourth image"/></td>
+            <td><img src={fifth} alt="fifth image"/></td>
+          </tr>  
+          <tr>
+            <td><img src={sixth} alt="sixth image"/></td>
+            <td><img src={seventh} alt="seventh image"/></td>
+            <td><img src={eighth} alt="eighth image"/></td>
+            <td><img src={nineth} alt="nineth image"/></td>
+            <td><img src={tenth} alt="tenth image"/></td>
+          </tr>
+        </tbody>
       </table>
         
     </div>

@@ -1,6 +1,7 @@
 from datetime import datetime
+from itertools import count
 import uuid
-from typing import Optional
+from typing import Optional, List
 from pydantic import BaseModel, Field
 
 class Recipe(BaseModel):
@@ -94,3 +95,13 @@ class Recipe(BaseModel):
                 ]
             }
         }
+
+
+class RecipeListRequest(BaseModel):
+    ingredients: List[str]
+    page: int
+
+class RecipeListResponse(BaseModel):
+    recipes: List[Recipe] = Field(..., description="List of recipe ids")
+    page: int = Field(..., description="Page number")
+    count: int = Field(..., description="Number of total recipes based on filters")

@@ -1,6 +1,6 @@
 import * as ACTION_TYPES from './getRecipeList.actionTypes';
 
-export const getRecipeListInitiator = (apiURL: string, body: Array<string>) => {
+export const getRecipeListInitiator = (apiURL: string, body: any) => {
   return {
     type: ACTION_TYPES.LOADING_GET_RECIPE_LIST,
     payload: {apiURL: apiURL, body: body},

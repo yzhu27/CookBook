@@ -6,7 +6,7 @@ import ast
 
 def main():
     result = 0
-    tests = [test_list_recipes, test_find_recipe]
+    tests = [test_list_recipes, test_find_recipe, test_search_ingredient]
     with TestClient(app) as client:
         for test in tests:
             result += test(client)
@@ -24,6 +24,12 @@ def test_find_recipe(client: TestClient):
     recipe = ast.literal_eval(response.content.decode("utf-8"))
     test_name = 'Warm Chicken A La King'
     return 0 if response.status_code == 200 and recipe['name'] == test_name else 1
+
+def test_search_ingredient(client: TestClient):
+    response = client.get("/recipe/search/apple")
+    recipes = ast.literal_eval(response.content.decode("utf-8"))
+    return 0 if response.status_code == 200 and len(recipes) > 0 else 1 
+
 
 if __name__ == '__main__':
     main()

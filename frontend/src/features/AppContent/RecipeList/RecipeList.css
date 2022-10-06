@@ -1,21 +1,21 @@
-.d-flex{
-    display: flex;
+.d-flex {
+  display: flex;
 }
 
-.flex-row{
-    flex-direction: row;
+.flex-row {
+  flex-direction: row;
 }
 
-.supplemental-info{
-    margin-left: auto !important;
-    color: #34495e;
+.supplemental-info {
+  margin-left: auto !important;
+  color: #34495e;
 }
 
 .MuiPaginationItem-root {
-    color: white !important;
+  color: white !important;
 }
 
 .Mui-selected {
-    background-color: aliceblue !important;
-    color: #34495e !important;
+  background-color: aliceblue !important;
+  color: #34495e !important;
 }

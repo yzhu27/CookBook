@@ -11,7 +11,6 @@ router = APIRouter()
 
 @router.get("/", response_description="List all recipes", response_model=List[Recipe])
 def list_recipes(request: Request):
-    print(request.app.database.list_collection_names())
     recipes = list(request.app.database["recipes"].find(limit=10))
     return recipes
 

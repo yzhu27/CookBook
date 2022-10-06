@@ -139,7 +139,6 @@
                <Stack direction="column" spacing={2} padding='25px'>
                 {recipe.images.reverse().map((imageLink: string, idx: number) => {
                     imageLink = imageLink.replaceAll('"', '');
-                    {console.log('image link is --- ', imageLink)}
                     return <img src={imageLink} alt={"Cannot display pic ${idx+1}"} />
                   })}
                </Stack> 

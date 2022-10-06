@@ -1,20 +1,20 @@
 /**
  * File name: App.tsx
- * Task - This is the parent component of the application. It creates the basic UI skeleton 
+ * Task - This is the parent component of the application. It creates the basic UI skeleton
  * viz the header, the search component and the app contents
  * Header and Search component remain static and app contents change according to the state of the application
  * @author Priyanka Ambawane - dearpriyankasa@gmail.com
  */
-import React from 'react';
+import React from 'react'
 import { Provider } from 'react-redux'
+import { BrowserRouter } from 'react-router-dom'
 import applicationStore from './store'
-import { BrowserRouter } from 'react-router-dom';
-import './App.css';
-import GetIngredients from './features/GetIngredients/GetIngredients';
-import Header from './features/Header/Header';
-import AppContent from './features/AppContent/AppContent';
+import './App.css'
+import GetIngredients from './features/GetIngredients/GetIngredients'
+import Header from './features/Header/Header'
+import AppContent from './features/AppContent/AppContent'
 
-const store = applicationStore();
+const store = applicationStore()
 
 function App() {
   return (
@@ -35,7 +35,7 @@ function App() {
         </div>
       </BrowserRouter>
     </Provider>
-  );
+  )
 }
 
-export default App;
+export default App

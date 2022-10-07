@@ -16,7 +16,7 @@ import AppContent from './features/AppContent/AppContent'
 
 const store = applicationStore()
 
-function App() {
+const App: React.FunctionComponent<any> = () => {
   return (
     // Provider ensures that the state of the app, i.e. stored in the app-store is accessible across the application
     <Provider store={store}>

@@ -5,6 +5,7 @@ from typing import Optional, List
 from pydantic import BaseModel, Field
 
 class Recipe(BaseModel):
+    """Base class for Recipe"""
     id: str = Field(default_factory=uuid.uuid4, alias="_id")
     name: str
     cookTime: Optional[str] = None

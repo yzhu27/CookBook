@@ -113,15 +113,17 @@ const GetIngredients = () => {
   // handler to trigger the API call to get the list of recipes according to the user's ingredient's input
   const onSubmit = () => {
     let ingredientsArray: Array<string> = []
-    chipData.forEach((chip) => ingredientsArray.push(chip.label))
-    sessionStorage.setItem('ingredients', JSON.stringify(ingredientsArray))
-    dispatch(
-      getRecipeListInitiator('http://localhost:8000/recipe/search/', {
-        ingredients: ingredientsArray,
-        page: 1,
-      })
-    )
-    navigateTo('/recipe-list')
+    chipData.forEach((chip) => ingredientsArray.push(chip.label.toLocaleLowerCase()))
+    if (ingredientsArray.length > 0) {
+      sessionStorage.setItem('ingredients', JSON.stringify(ingredientsArray))
+      dispatch(
+        getRecipeListInitiator('http://localhost:8000/recipe/search/', {
+          ingredients: ingredientsArray,
+          page: 1,
+        })
+      )
+      navigateTo('/recipe-list')
+    }
   }
 
   return (

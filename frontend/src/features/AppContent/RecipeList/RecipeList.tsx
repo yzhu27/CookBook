@@ -58,14 +58,11 @@ const RecipeList = () => {
   }, [getRecipeListState]);
 
   const gotoRecipe = (id : string) => {
-    console.log('hello' + id);
     dispatch(getRecipeInfoInitiator('http://localhost:8000/recipe/'+id));
     navigateTo('/recipe-details/'+id);
   }
 
   const handlePageChange = (event: React.ChangeEvent<unknown>, value: number) => {
-    console.log(value);
-    console.log(sessionStorage.getItem("ingredients"));
     const ingredientsArray = JSON.parse(sessionStorage.getItem("ingredients") || '[]');
     dispatch(getRecipeListInitiator('http://localhost:8000/recipe/search/', {
       "ingredients" : ingredientsArray,
@@ -73,7 +70,6 @@ const RecipeList = () => {
     }));
   }
   
-  console.log('this is recipe list ---- ', getRecipeListState);
   return (
     <>
       <Pagination page={page} count={Math.ceil(totalCount/10)} sx={{m:2}} onChange={handlePageChange}  color="secondary" variant="outlined" shape="rounded" />

@@ -7,7 +7,7 @@ export function* initiateGetRecipeListRequest(action: ActionTypes) {
   try {
     // @ts-ignore
     const resp: any = yield call(httpPostRequest, action.payload.apiURL, action.payload.body);
-    yield put(ACTIONS.getRecipeListSuccess(resp));
+    yield put(ACTIONS.getRecipeListSuccess({resp: resp, ingredientsList: action.payload.body}));
   } catch (err) {
     yield put(ACTIONS.getRecipeListFailure(err));
   } 

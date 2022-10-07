@@ -58,8 +58,6 @@ export const httpPostRequest = async (apiURL: string, requestBody: any) => {
     
         const result = (await response.json()) as any;
     
-        console.log('result is: ', result);
-    
         return result;
       } catch (error) {
         if (error instanceof Error) {

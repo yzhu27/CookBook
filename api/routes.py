@@ -24,13 +24,13 @@ def find_recipe(id: str, request: Request):
     raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=f"Recipe with ID {id} not found")
 
 @router.get("/search/{ingredient}", response_description="List all recipes with the given ingredient", response_model=List[Recipe])
-def list_recipes(ingredient: str,request: Request):
+def list_recipes_by_ingregredient(ingredient: str,request: Request):
     """Lists recipes containing the given ingredient"""
     recipes = list(request.app.database["recipes"].find({ "ingredients" : { "$in" : [ingredient] } }).limit(10))
     return recipes
 
 @router.post("/search/", response_description="Get Recipes that match all the ingredients in the request", status_code=200, response_model=RecipeListResponse)
-def list_recipes(request: Request, inp: RecipeListRequest = Body(...)):
+def list_recipes_by_ingredients(request: Request, inp: RecipeListRequest = Body(...)):
     """Lists recipes matching all provided ingredients"""
     recipes = list(request.app.database["recipes"].find({ "ingredients" : { "$all" : inp.ingredients } }).sort([("rating", pymongo.DESCENDING), ("_id", pymongo.ASCENDING)]).skip((inp.page-1)*10).limit(10))
     count = request.app.database["recipes"].count_documents({ "ingredients" : { "$all" : inp.ingredients } })

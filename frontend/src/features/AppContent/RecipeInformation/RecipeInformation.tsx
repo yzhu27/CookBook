@@ -55,6 +55,16 @@
              <Grid item xs={12} style={{textAlign: 'center'}}>
                <Typography variant="h5" gutterBottom>Summary</Typography>
              </Grid>
+             <Grid item xs={12} textAlign={'left'}>
+                <Typography variant="h6">
+                   Ingredients:
+                   <Typography variant="subtitle1" gutterBottom>
+                    {recipe?.ingredients?.map((ele: any, idx: number) => {
+                      return <>{ele}{recipe?.ingredients?.length-1 === idx ? `` : `,`}</>
+                    })}
+                 </Typography>
+                </Typography>
+             </Grid>
              <Grid item xs={6}>
              <Stack direction="column" spacing={2} paddingBottom='20px' textAlign={'left'}>
                  <Typography variant="h6">
@@ -93,6 +103,12 @@
              </Grid>
              <Grid item xs={6}>
              <Stack direction="column" spacing={2} paddingBottom='20px' textAlign={'left'}>
+                  <Typography variant="h6">
+                   Cuisine:
+                   <Typography variant="subtitle1" gutterBottom>
+                     {recipe?.category}
+                  </Typography>
+                 </Typography>
                  <Typography variant="h6">
                    Servings:
                    <Typography variant="subtitle1" gutterBottom>
@@ -119,6 +135,7 @@
                  </Typography>
                </Stack>
              </Grid>
+             
            </Grid>
            </Paper>
          </div>

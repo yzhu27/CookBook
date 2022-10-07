@@ -25,8 +25,6 @@ def startup_db_client():
     """Connects to database client on startup"""
     app.mongodb_client = MongoClient(config["ATLAS_URI"])
     app.database = app.mongodb_client[config["DB_NAME"]]
-    print(app.database.list_collection_names())
-    print("Connected to the MongoDB database!")
 
 @app.on_event("shutdown")
 def shutdown_db_client():

@@ -1,3 +1,5 @@
+<p align="center"><img width="500" src="./images/logo.png"></p>
+
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 ![Build](https://github.com/sam16222/CSC510_43_Project1/actions/workflows/python-app.yml/badge.svg)
 [![DOI](https://zenodo.org/badge/541238337.svg)](https://zenodo.org/badge/latestdoi/541238337)

@@ -3,13 +3,14 @@
 [![DOI](https://zenodo.org/badge/541238337.svg)](https://zenodo.org/badge/latestdoi/541238337)
 ![GitHub Issues](https://img.shields.io/badge/Issues-10-lightgrey)
 ![Github Closed Issues](https://img.shields.io/badge/Closed%20Issues-10-green)
-![Github Pull Requests](https://img.shields.io/badge/Pull%20Requests-22-orange) <br/>
+![Github Pull Requests](https://img.shields.io/badge/Pull%20Requests-22-orange)
+[![codecov](https://codecov.io/gh/sam16222/CSC510_43_Project1/branch/main/graph/badge.svg?token=LT9NFPUR7R)](https://codecov.io/gh/sam16222/CSC510_43_Project1) <br/>
 
 ![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white)
 ![FastAPI](https://img.shields.io/badge/FastAPI-005571?style=for-the-badge&logo=fastapi)
 ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
 ![Visual Studio](https://img.shields.io/badge/Visual%20Studio-5C2D91.svg?style=for-the-badge&logo=visual-studio&logoColor=white)
-![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
+![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
 ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
 
 # Cooking 101

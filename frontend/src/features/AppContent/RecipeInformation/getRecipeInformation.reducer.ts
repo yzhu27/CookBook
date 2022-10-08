@@ -3,8 +3,8 @@
  * Task - Contains a normal function that performs state update based on API call output - SUCCESS/FAIL
  * @author Priyanka Ambawane - dearpriyankasa@gmail.com
  */
-import * as ACTION_TYPES from './getRecipeInformation.actionTypes';
-import { ActionTypes } from '../../apiMethods';
+import * as ACTION_TYPES from './getRecipeInformation.actionTypes'
+import { ActionTypes } from '../../apiMethods'
 
 const initialState = {
   isGetRecipeInfoLoading: false,
@@ -12,15 +12,18 @@ const initialState = {
   isGetRecipeInfoFailure: false,
   getRecipeInfoData: [],
   getRecipeInfoError: [],
-};
+}
 
-export default function getRecipeInfoAppState(state = initialState, action: ActionTypes) {
+export default function getRecipeInfoAppState(
+  state = initialState,
+  action: ActionTypes
+) {
   switch (action.type) {
     case ACTION_TYPES.LOADING_GET_RECIPE_INFORMATION:
       return {
         ...state,
-        isGetRecipeInfoLoading: true
-      };
+        isGetRecipeInfoLoading: true,
+      }
     case ACTION_TYPES.SUCCESS_GET_RECIPE_INFORMATION:
       return {
         ...state,
@@ -28,7 +31,7 @@ export default function getRecipeInfoAppState(state = initialState, action: Acti
         isGetRecipeInfoSuccess: true,
         isGetRecipeInfoFailure: false,
         getRecipeInfoData: action.payload,
-      };
+      }
     case ACTION_TYPES.FAILURE_GET_RECIPE_INFORMATION:
       return {
         ...state,
@@ -36,8 +39,8 @@ export default function getRecipeInfoAppState(state = initialState, action: Acti
         isGetRecipeInfoSuccess: false,
         isGetRecipeInfoFailure: true,
         getRecipeInfoError: action.payload,
-      };
+      }
     default:
-      return state;
+      return state
   }
 }

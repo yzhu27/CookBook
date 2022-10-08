@@ -1,15 +1,23 @@
-import React from 'react';
-import './Header.css';
-import Navbar from '../Navbar/Navbar';
+import React from 'react'
+import './Header.css'
+import Navbar from '../Navbar/Navbar'
+/**
+ * File name: Header.tsx
+ * Task - This component displays static header seen throughout the application with the option to navigate back to home
+ * and provides 'Contact' and 'About' information.
+ * @author Asrita Kuchibhotla
+ */
 
 const Header = () => {
   return (
     <section className="header">
       <section className="header-top">
         <section className="header-top__logo">
-          <a href="/" className="header-logo">C o o k B o o k</a>
+          <a href="/" className="header-logo">
+            C o o k B o o k
+          </a>
         </section>
-        <section className="header-top__navbar" data-testid = "nav-comp-43">
+        <section className="header-top__navbar" data-testid="nav-comp-43">
           <section className="header-top__navigation">
             <Navbar />
           </section>
@@ -25,7 +33,7 @@ const Header = () => {
         </section>
       </section> */}
     </section>
-  );
-};
+  )
+}
 
-export default Header;
+export default Header

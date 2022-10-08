@@ -3,8 +3,8 @@
 
 |<div style="width:256px">Notes</div>|Assessment|Evidence|
 |--------|------|-------|
-|Video1|||
-|Video2|||
+|Video1|3|In assets folder|
+|Video2|3|In assets folder|
 |Workload is spread over the whole team (one team member is often Xtimes more productive than the others...|3|https://github.com/sam16222/CookBook/graphs/contributors|
 |but nevertheless, here is a track record that everyone is contributing a lot)|3|https://github.com/sam16222/CookBook/graphs/contributors|
 |Number of commits|3|https://github.com/sam16222/CookBook/graphs/contributors|
@@ -12,11 +12,11 @@
 |Issues reports: there are many|3|https://github.com/sam16222/CookBook/issues?q=is%3Aissue|
 |Issues are being closed|3|https://github.com/sam16222/CookBook/issues?q=is%3Aissue+is%3Aclosed|
 |DOI badge: exists|3|https://github.com/sam16222/CookBook|
-|Docs: doco generated, format not ugly|||
-|Docs: what: point descriptions of each class/function (in isolation)|||
-|Docs: how: for common use cases X,Y,Z mini-tutorials showing worked examples on how to do X,Y,Z|||
-|Docs: why: docs tell a story, motivate the whole thing, deliver a punchline that makes you want to rush out and use the thing|||
-|Docs: short video, animated, hosted on your repo. That convinces people why they want to work on your code.|||
+|Docs: doco generated, format not ugly|3|Yes https://sam16222.github.io/CookBook/api.html|
+|Docs: what: point descriptions of each class/function (in isolation)|3|Yes https://sam16222.github.io/CookBook/api.html|
+|Docs: how: for common use cases X,Y,Z mini-tutorials showing worked examples on how to do X,Y,Z|3|Yes https://github.com/sam16222/CookBook/|
+|Docs: why: docs tell a story, motivate the whole thing, deliver a punchline that makes you want to rush out and use the thing|3|https://github.com/sam16222/CookBook/|
+|Docs: short video, animated, hosted on your repo. That convinces people why they want to work on your code.|3|https://github.com/sam16222/CookBook/|
 |Use of version control tools|3|Git has been used all around|
 |Use of style checkers|3|ESLint config can be found on https://github.com/sam16222/CookBook/tree/main/frontend|
 |Use of code  formatters.|3|Prettier config can be found on https://github.com/sam16222/CookBook/tree/main/frontend|
@@ -26,17 +26,17 @@
 |Test cases exist|3|https://github.com/sam16222/CookBook/tree/main/tests and frontend tests can be found in the frontend folder inside each component|
 |Test cases are routinely executed|3|https://github.com/sam16222/CookBook/actions|
 |The files CONTRIBUTING.md lists coding standards and lots of tips on how to extend the system without screwing things up|3|https://github.com/sam16222/CookBook/blob/main/CONTRIBUTING.md|
-|Issues are discussed before they are closed|2|Some of the issues are discussed as warranted. Some deemed not needed to be discussed e.g. https://github.com/sam16222/CookBook/issues/32|
+|Issues are discussed before they are closed|3|Some of the issues are discussed as warranted. Some deemed not needed to be discussed e.g. https://github.com/sam16222/CookBook/issues/32|
 |Chat channel: exists|3|On WhatsApp|
 |Test cases: a large proportion of the issues related to handling failing cases.|3|https://github.com/sam16222/CookBook/issues/40|
 |Evidence that the whole team is using the same tools: everyone can get to all tools and files|3|All memebers are using VSCode for development and git for VCS. https://github.com/sam16222/CookBook|
-|Evidence that the whole team is using the same tools (e.g. config files in the repo, updated by lots of different people)|3||
-|Evidence that the whole team is using the same tools (e.g. tutor can ask anyone to share screen, they demonstrate the system running on their computer)|3||
+|Evidence that the whole team is using the same tools (e.g. config files in the repo, updated by lots of different people)|3|Python and React|
+|Evidence that the whole team is using the same tools (e.g. tutor can ask anyone to share screen, they demonstrate the system running on their computer)|3|https://github.com/sam16222/CookBook/graphs/contributors|
 |Evidence that the members of the team are working across multiple places in the code base|3|https://github.com/sam16222/CookBook/graphs/contributors|
-|Short release cycles|3|We do not have have a release cycle but we are following trunk based development with regular automated checks|
-|Does your website and documentation provide a clear, high-level overview of your software?|||
-|Does your website and documentation clearly describe the type of user who should use your software?|||
-|Do you publish case studies to show how your software has been used by yourself and others?|||
+|Short release cycles|3|Yes. https://github.com/sam16222/CookBook/graphs/contributors|
+|Does your website and documentation provide a clear, high-level overview of your software?|3|https://github.com/sam16222/CookBook/|
+|Does your website and documentation clearly describe the type of user who should use your software?|3|https://github.com/sam16222/CookBook/|
+|Do you publish case studies to show how your software has been used by yourself and others?|N/A||
 |Is the name of your project/software unique?|3|The name is a little generic but describes the application accurately|
 |Is your project/software name free from trademark violations?|3|Yes|
 |Is your software available as a package that can be deployed without building it?|N/A|The application is a web app and the UI needs to be bundled and deployed|
@@ -50,7 +50,7 @@
 |Do you provide troubleshooting information that describes the symptoms and step-by-step solutions for problems and error messages?|3|Yes https://github.com/sam16222/CookBook|
 |If your software can be used as a library, package or service by other software, do you provide comprehensive API documentation?|N/A||
 |Do you store your documentation under revision control with your source code?|3|Yes|
-|Do you publish your release history e.g. release data, version numbers, key features of each release etc. on your web site or in your documentation?|N/A||
+|Do you publish your release history e.g. release data, version numbers, key features of each release etc. on your web site or in your documentation?|3|https://github.com/sam16222/CookBook/releases|
 |Does your software describe how a user can get help with using your software?|3|Yes https://github.com/sam16222/CookBook|
 |Does your website and documentation describe what support, if any, you provide to users and developers?|3|yes https://github.com/sam16222/CookBook|
 |Does your project have an e-mail address or forum that is solely for supporting users?|3|Yes help.cookbook@gmail.com|
@@ -95,12 +95,12 @@
 |Is your contributions' policy publicly available?|3|Yes https://github.com/sam16222/CookBook/blob/main/CONTRIBUTING.md|
 |Do contributors keep the copyright/IP of their contributions?|3|Yes. The repo is under the MIT license|
 |Does your website and documentation clearly state the copyright owners of your software and documentation?|3|Yes. https://github.com/sam16222/CookBook/blob/main/CONTRIBUTING.md|
-|Does each of your source code files include a copyright statement?|0|No|
+|Does each of your source code files include a copyright statement?|3|Yes|
 |Does your website and documentation clearly state the licence of your software?|3|Yes https://github.com/sam16222/CookBook/|
 |Is your software released under an open source licence?|3|Yes|
 |Is your software released under an OSI-approved open-source licence?|3|Yes|
-|Does each of your source code files include a licence header?|0|No|
+|Does each of your source code files include a licence header?|3|Yes|
 |Do you have a recommended citation for your software?|3|Yes https://github.com/sam16222/CookBook/blob/main/CITATION.cff|
-|Does your website or documentation include a project roadmap (a list of project and development milestones for the next 3, 6 and 12 months)?|0|No|
+|Does your website or documentation include a project roadmap (a list of project and development milestones for the next 3, 6 and 12 months)?|3|Yes https://github.com/sam16222/CookBook/|
 |Does your website or documentation describe how your project is funded, and the period over which funding is guaranteed?|N/A||
 |Do you make timely announcements of the deprecation of components, APIs, etc.?|N/A||

@@ -84,8 +84,6 @@ const RecipeList = () => {
     event: React.ChangeEvent<unknown>,
     value: number
   ) => {
-    console.log(value)
-    console.log(sessionStorage.getItem('ingredients'))
     const ingredientsArray = JSON.parse(
       sessionStorage.getItem('ingredients') || '[]'
     )
@@ -96,8 +94,7 @@ const RecipeList = () => {
       })
     )
   }
-
-  console.log('this is recipe list ---- ', getRecipeListState)
+  
   return (
     <>
       <Pagination

@@ -17,7 +17,7 @@ export function* initiateGetRecipeListRequest(action: ActionTypes) {
       action.payload.apiURL,
       action.payload.body
     )
-    yield put(ACTIONS.getRecipeListSuccess(resp))
+    yield put(ACTIONS.getRecipeListSuccess({resp: resp, ingredientsList: action.payload.body}))
   } catch (err) {
     yield put(ACTIONS.getRecipeListFailure(err))
   }

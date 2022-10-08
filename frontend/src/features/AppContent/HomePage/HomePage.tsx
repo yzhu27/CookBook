@@ -11,7 +11,6 @@ import nineth from './photos/nineth.jpg'
 import tenth from './photos/tenth.jpg'
 
 const HomePage = () => {
-  console.log('this is recipe home page');
   return (
     <div > 
       <table>

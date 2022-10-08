@@ -8,6 +8,8 @@
  import { Grid, Paper, Stack, Typography } from '@mui/material';
  import StarIcon from '@mui/icons-material/Star';
  import React, { useEffect } from 'react';
+ import { Provider } from 'react-redux'
+ import applicationStore from '../../../store'
  import { useDispatch, useSelector } from 'react-redux';
  import {useParams} from "react-router-dom";
  import { getRecipeInfoInitiator } from './getRecipeInformation.action';
@@ -22,7 +24,9 @@
    marginRight: '30px'
  }
  
- const RecipeInformation = () => {
+ const store = applicationStore()
+
+ const RecipeInformationWrapped = () => {
    let { id } = useParams();
    const dispatch = useDispatch();
  
@@ -39,17 +43,27 @@
    }, []);
    
    if (recipeInfo.isGetRecipeInfoLoading) {
-     return <> Loading ... </>
+     return <div data-testid="RecipeInfo-comp-43"> Loading ... </div>
    } else if (recipeInfo.isGetRecipeInfoSuccess) {
      const recipe = recipeInfo.getRecipeInfoData;
      return (
-       <div style={{ width: '100vw', color: '#f2f4f4', paddingTop: '20px'}}>
+        <div style={{ width: '100vw', color: '#f2f4f4', paddingTop: '20px'}} data-testid = "RecipeInfo-comp-43">
          <Typography variant="h4" gutterBottom className='recipe-header'>{recipe.name}</Typography>
          <div style={{ float: 'left', width: '25vw'}}>
          <Paper elevation={24} style={triviaPaperStyles}>
            <Grid container spacing={3}>
              <Grid item xs={12} style={{textAlign: 'center'}}>
                <Typography variant="h5" gutterBottom>Summary</Typography>
+             </Grid>
+             <Grid item xs={12} textAlign={'left'}>
+                <Typography variant="h6">
+                   Ingredients:
+                   <Typography variant="subtitle1" gutterBottom>
+                    {recipe?.ingredients?.map((ele: any, idx: number) => {
+                      return <>{ele}{recipe?.ingredients?.length-1 === idx ? `` : `,`}</>
+                    })}
+                 </Typography>
+                </Typography>
              </Grid>
              <Grid item xs={6}>
              <Stack direction="column" spacing={2} paddingBottom='20px' textAlign={'left'}>
@@ -89,6 +103,12 @@
              </Grid>
              <Grid item xs={6}>
              <Stack direction="column" spacing={2} paddingBottom='20px' textAlign={'left'}>
+                  <Typography variant="h6">
+                   Cuisine:
+                   <Typography variant="subtitle1" gutterBottom>
+                     {recipe?.category}
+                  </Typography>
+                 </Typography>
                  <Typography variant="h6">
                    Servings:
                    <Typography variant="subtitle1" gutterBottom>
@@ -115,6 +135,7 @@
                  </Typography>
                </Stack>
              </Grid>
+             
            </Grid>
            </Paper>
          </div>
@@ -153,10 +174,17 @@
           )}
         </div>
        </div>
+      
      );
    } else {
      return <> Error! Recipe not found! </>
    }
  };
- 
+ const RecipeInformation = () => {
+  return (
+    <Provider store={store}>
+      <RecipeInformationWrapped />
+    </Provider>
+  )
+ }
  export default RecipeInformation;

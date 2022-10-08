@@ -10,6 +10,7 @@ const initialState = {
   isGetRecipeListFailure: false,
   getRecipeListData: [],
   getRecipeListError: [],
+  ingredientsList: [],
 }
 
 export default function getRecipeListAppState(
@@ -28,7 +29,8 @@ export default function getRecipeListAppState(
         isGetRecipeListLoading: false,
         isGetRecipeListSuccess: true,
         isGetRecipeListFailure: false,
-        getRecipeListData: action.payload,
+        getRecipeListData: action.payload.resp,
+        ingredientsList: action.payload.ingredientsList
       }
     case ACTION_TYPES.FAILURE_GET_RECIPE_LIST:
       return {

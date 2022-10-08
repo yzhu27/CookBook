@@ -46,6 +46,8 @@ With over recipes, there is something in the store for everyone !<br><br>
   |
   <a href="#page_facing_up-why">Why</a>
   |
+  <a href="#roadmap">Roadmap</a>
+  |
   <a href="#sparkles-contributors">Meet the Team</a>
     |
   <a href="#email-support">Support</a>

@@ -4,7 +4,7 @@ import './Navbar.css'
 
 /**
  * File name: Navbar.tsx
- * Task - Home, About, Contact options available for the user from the title bar.
+ * Task - Home, About, Contact options available for the user on the Navigation Bar.
  * @author Asrita Kuchibhotla
  */
 

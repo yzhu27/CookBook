@@ -46,6 +46,8 @@ With over recipes, there is something in the store for everyone !<br><br>
   |
   <a href="#page_facing_up-why">Why</a>
   |
+  <a href="#roadmap">Roadmap</a>
+  |
   <a href="#sparkles-contributors">Meet the Team</a>
     |
   <a href="#email-support">Support</a>
@@ -70,7 +72,12 @@ cd api
 pip install -r requirements.txt
 python -m uvicorn main:app --reload
 ```
+
+Refer to the [Swagger](#swagger) section for sample API calls.
 <br>
+
+### Trouble Shooting
+In case you run into any issues running the above commands, some operating systems may require you to use `python3` instead of `python` and `pip3` instead of `pip`.<br><br>
 
 ## Frontend Installation
 
@@ -161,6 +168,26 @@ Open the swagger page here: [Swagger](http://localhost:8000/docs)<br><br>
 - Apart from giving the user a smooth and a stress-free experience, it also serves as a platform to find recipes across multiple cuisines and cultures.
 - The interface of CookBook is somewhat similar to most of the search-engines, giving a sense of familiarity to the user. The user would have to just enter the available ingredients in a search bar and click on the proceed icon to get a list of suggestions for recipes.
 
+# Roadmap
+  <h3> Completed tasks</h3>
+  <ol>
+  <li> Hosted the dataset on Mongo Database System. </li>
+  <li> Created a lightweight REST API for communicating with the MongoDB Cloud instance.</li>
+  <li> Created a dynamic UI with routes dedicated to individual components.</li>
+  <li> Create autocomplete to suggest ingredients based on partial input.</li>
+  <li> Added support for recommendations based on multiple Ingredients.</li>
+  <li> Created card based paginated layout for showing recipes.</li>
+  <li> Added macros to recipe information.</li>
+  </ol>
+  
+  <h3> Future tasks</h3>
+  <ol>
+  <li> Add filtering system based on cusine, and other macros.</li>
+  <li> Create a scraper for updating and maintaining the database.</li>
+  <li> Add support for user profiles and user specific recommendations.</li>
+  <li> Create a form for reporting corrections, improving the data set.</li>
+  <li> Create a form for reporting corrections, improving the data set.</li>
+  </ol>
 
 # Meet the Team
 ![Team](assets/team_edit.png)

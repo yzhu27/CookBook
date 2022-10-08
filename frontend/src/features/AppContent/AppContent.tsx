@@ -7,6 +7,8 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import HomePage from './HomePage/HomePage';
+import About from './HomePage/AboutPage';
+import Contact from './HomePage/ContactPage';
 import RecipeInformation from './RecipeInformation/RecipeInformation';
 import RecipeList from './RecipeList/RecipeList';
 
@@ -16,6 +18,8 @@ const AppContent = () => {
       <Route path='/' element={<HomePage />} />
       <Route path='/recipe-list' element={<RecipeList />} />
       <Route path='/recipe-details/:id' element={<RecipeInformation />} />
+      <Route path='/about' element={<About />} />
+      <Route path='/contact' element={<Contact />} />
     </Routes>
   );
 };

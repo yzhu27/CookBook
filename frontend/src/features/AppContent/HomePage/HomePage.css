@@ -1,0 +1,18 @@
+.about {
+    font-family: RobotoThin;
+    color: white;
+    align-items: center;
+    margin-right: 20px;
+    margin-left: 20px;
+    text-align: justify;
+}
+
+.contact {
+    font-family: RobotoThin;
+    color: white;
+    align-content: center;
+    margin-right: 20px;
+    margin-left: 20px;
+    text-align: center;
+}  
+

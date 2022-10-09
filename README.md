@@ -5,9 +5,9 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 ![Build](https://github.com/sam16222/CSC510_43_Project1/actions/workflows/python-app.yml/badge.svg)
 [![DOI](https://zenodo.org/badge/541238337.svg)](https://zenodo.org/badge/latestdoi/541238337)
-![GitHub Issues](https://img.shields.io/badge/Issues-10-lightgrey)
-![Github Closed Issues](https://img.shields.io/badge/Closed%20Issues-10-green)
-![Github Pull Requests](https://img.shields.io/badge/Pull%20Requests-22-orange)
+![Github Issues](https://img.shields.io/github/issues-closed/sam16222/CookBook)
+![Github Pull Requests](https://img.shields.io/github/issues-pr-closed/sam16222/CookBook)
+![Commit Status](https://img.shields.io/github/commit-status/sam16222/CookBook/main/65d1725521ee8cb701d47e4ad19fc8d586a4691f)
 [![codecov](https://codecov.io/gh/sam16222/CSC510_43_Project1/branch/main/graph/badge.svg?token=LT9NFPUR7R)](https://codecov.io/gh/sam16222/CSC510_43_Project1) <br/>
 
 ![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white)
@@ -22,7 +22,7 @@
 
 # What is C o o k B o o k ?
 
-CookBook is a platform to search for recipes that can be made using the available ingredients. 
+CookBook is a platform to search for recipes that can be made using the available ingredients.
 
 - **Easy**: CookBook is a very user friendly website, where you can just enter the ingredients available and the platform will suggest various recipes that can be made using these ingredients.
 
@@ -32,7 +32,7 @@ CookBook is a platform to search for recipes that can be made using the availabl
 
 With over recipes, there is something in the store for everyone !<br><br>
 
-# Content 
+# Content
 
 <p align="center">
     |
@@ -77,6 +77,7 @@ Refer to the [Swagger](#swagger) section for sample API calls.
 <br>
 
 ### Trouble Shooting
+
 In case you run into any issues running the above commands, some operating systems may require you to use `python3` instead of `python` and `pip3` instead of `pip`.<br><br>
 
 ## Frontend Installation
@@ -90,6 +91,7 @@ npm install
 // if npm install fails, try this
 npm install --legacy-peer-deps
 ```
+
 <br>
 
 ## For style and syntax checks and for auto code formatting
@@ -97,8 +99,8 @@ npm install --legacy-peer-deps
 Following extensions have to be added to you VS Code editor:
 
 - For Eslint: Install - dbaeumer.vscode-eslint
--  For Prettier: Install - esbenp.prettier-vscode
--  Update the settings.json of your VS Code editor to include these statements (you can add them to your existing ones):
+- For Prettier: Install - esbenp.prettier-vscode
+- Update the settings.json of your VS Code editor to include these statements (you can add them to your existing ones):
 
 ```bash
 
@@ -125,35 +127,38 @@ Following extensions have to be added to you VS Code editor:
 cd frontend
 npm start
 ```
+
 <br>
 
 # Swagger
+
 Open the swagger page here: [Swagger](http://localhost:8000/docs)<br><br>
 
 # Examples
+
 - This is the CookBook HomePage that should automatically open in a browser after executing the command: 'npm start'
-<br><br>
+  <br><br>
 
 ![HomePage](assets/HomePage.PNG)
 
 <br>
 
 - The user can use the search bar to enter the ingredients one by one, and then proceed by clicking the arrow on the right.
-<br><br>
+  <br><br>
 
 ![HomePage](assets/SearchBar.PNG)
 
 <br>
 
 - The user would then be redirected to the page showing the recipe suggestions.
-<br><br>
+  <br><br>
 
 ![HomePage](assets/SearchResults.PNG)
 
 <br>
 
 - The details of a recipe can be viewed by simple clicking on a recipe from the list of recipes being displayed.
-<br><br>
+  <br><br>
 
 ![HomePage](assets/RecipeDetails.PNG)
 
@@ -162,13 +167,14 @@ Open the swagger page here: [Swagger](http://localhost:8000/docs)<br><br>
 # Why C o o k B o o k?
 
 - Most of us might have been in a situation where you are craving for something to eat and due to some reason it won't be delivered to your place. And then you decide to cook it yourself you can't find a recipe with the ingredients you have.
-- In this fast-paced world, we are often confused about what can be cooked with the ingredients that are available right away. 
+- In this fast-paced world, we are often confused about what can be cooked with the ingredients that are available right away.
 - CookBook addresses this issue and is designed to suggest recipes to you which would use the key ingredients that are available with you.
 - It not only suggests the recipe based on the ingredients entered by you, it also gives the ratings, step-by-step cooking instructions and other granular details about the recipe.
 - Apart from giving the user a smooth and a stress-free experience, it also serves as a platform to find recipes across multiple cuisines and cultures.
 - The interface of CookBook is somewhat similar to most of the search-engines, giving a sense of familiarity to the user. The user would have to just enter the available ingredients in a search bar and click on the proceed icon to get a list of suggestions for recipes.
 
 # Roadmap
+
   <h3> Completed tasks</h3>
   <ol>
   <li> Hosted the dataset on Mongo Database System. </li>
@@ -190,9 +196,9 @@ Open the swagger page here: [Swagger](http://localhost:8000/docs)<br><br>
   </ol>
 
 # Meet the Team
+
 ![Team](assets/team_edit.png)
 
 # Support
 
 In case of any queries and for additional help, please email us at: help.cookbook@gmail.com
-

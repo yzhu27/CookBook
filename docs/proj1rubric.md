@@ -14,8 +14,8 @@
 |Issues reports: there are many|3|https://github.com/sam16222/CookBook/issues?q=is%3Aissue|
 |Issues are being closed|3|https://github.com/sam16222/CookBook/issues?q=is%3Aissue+is%3Aclosed|
 |DOI badge: exists|3|https://github.com/sam16222/CookBook|
-|Docs: doco generated, format not ugly|3|Yes https://sam16222.github.io/CookBook/api.html|
-|Docs: what: point descriptions of each class/function (in isolation)|3|Yes https://sam16222.github.io/CookBook/api.html|
+|Docs: doco generated, format not ugly|3|Yes https://sam16222.github.io/CookBook/index.html|
+|Docs: what: point descriptions of each class/function (in isolation)|3|Yes https://sam16222.github.io/CookBook/index.html|
 |Docs: how: for common use cases X,Y,Z mini-tutorials showing worked examples on how to do X,Y,Z|3|Yes https://github.com/sam16222/CookBook/|
 |Docs: why: docs tell a story, motivate the whole thing, deliver a punchline that makes you want to rush out and use the thing|3|https://github.com/sam16222/CookBook/|
 |Docs: short video, animated, hosted on your repo. That convinces people why they want to work on your code.|3|https://github.com/sam16222/CookBook/|

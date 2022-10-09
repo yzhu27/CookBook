@@ -6,6 +6,8 @@
 ![Build](https://github.com/sam16222/CSC510_43_Project1/actions/workflows/python-app.yml/badge.svg)
 [![DOI](https://zenodo.org/badge/541238337.svg)](https://zenodo.org/badge/latestdoi/541238337)
 ![Github Issues](https://img.shields.io/github/issues-closed/sam16222/CookBook)
+![Github Issues](https://img.shields.io/github/issues/sam16222/CookBook)
+![Github Pull Requests](https://img.shields.io/github/issues-pr/sam16222/CookBook)
 ![Github Pull Requests](https://img.shields.io/github/issues-pr-closed/sam16222/CookBook)
 ![Commit Status](https://img.shields.io/github/commit-status/sam16222/CookBook/main/65d1725521ee8cb701d47e4ad19fc8d586a4691f)
 [![codecov](https://codecov.io/gh/sam16222/CSC510_43_Project1/branch/main/graph/badge.svg?token=LT9NFPUR7R)](https://codecov.io/gh/sam16222/CSC510_43_Project1) <br/>

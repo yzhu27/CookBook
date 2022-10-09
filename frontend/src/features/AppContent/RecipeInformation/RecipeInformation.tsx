@@ -70,7 +70,7 @@ this file. If not, please write to: help.cookbook@gmail.com
                    Ingredients:
                    <Typography variant="subtitle1" gutterBottom>
                     {recipe?.ingredients?.map((ele: any, idx: number) => {
-                      return <>{ele}{recipe?.ingredients?.length-1 === idx ? `` : `,`}</>
+                      return <>{ele}{recipe?.ingredients?.length-1 === idx ? `` : `, `}</>
                     })}
                  </Typography>
                 </Typography>

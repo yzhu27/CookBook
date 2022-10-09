@@ -30,7 +30,7 @@ this file. If not, please write to: help.cookbook@gmail.com
 }
 
 .App-header {
-  background-color: #34495e;
+  background-color: #1c3c5b;
   min-height: 10vh;
   display: flex;
   flex-direction: column;
@@ -58,7 +58,7 @@ this file. If not, please write to: help.cookbook@gmail.com
 }
 
 .App-body {
-  background-color: #34495e;
+  background-color: #1c3c5b;
   min-height: 75vh;
   display: flex;
   flex-direction: column;

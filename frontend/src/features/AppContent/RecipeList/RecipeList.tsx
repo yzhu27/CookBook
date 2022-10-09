@@ -117,55 +117,59 @@ const RecipeList = () => {
         shape="rounded"
       />
       {!loading ? (
-        recipeList.map((data: any) => {
-          return (
-            <Card variant="outlined" sx={{ width: 4 / 5, m: 1 }}>
-              <CardActionArea onClick={() => gotoRecipe(data.id)}>
-                <CardContent>
-                  <div className="d-flex flex-row">
+        totalCount > 0 ? (
+          recipeList.map((data: any) => {
+            return (
+              <Card variant="outlined" sx={{ width: 4 / 5, m: 1 }}>
+                <CardActionArea onClick={() => gotoRecipe(data.id)}>
+                  <CardContent>
+                    <div className="d-flex flex-row">
+                      <Typography
+                        sx={{ fontWeight: 600 }}
+                        gutterBottom
+                        variant="h5"
+                        component="div"
+                      >
+                        {data.name} |{' '}
+                        <StarIcon sx={{ color: '#dede04' }} fontSize="medium" />{' '}
+                        {data.rating}/5.0
+                      </Typography>
+                      <Typography
+                        gutterBottom
+                        variant="h6"
+                        component="span"
+                        className="supplemental-info"
+                      >
+                        {data.category}
+                      </Typography>
+                    </div>
                     <Typography
-                      sx={{ fontWeight: 600 }}
-                      gutterBottom
-                      variant="h5"
-                      component="div"
+                      sx={{ textAlign: 'left' }}
+                      variant="subtitle2"
+                      color="text.secondary"
                     >
-                      {data.name} |{' '}
-                      <StarIcon sx={{ color: '#dede04' }} fontSize="medium" />{' '}
-                      {data.rating}/5.0
+                      Prep Time : {data.prepTime} | Cook Time : {data.cookTime}
                     </Typography>
-                    <Typography
-                      gutterBottom
-                      variant="h6"
-                      component="span"
-                      className="supplemental-info"
-                    >
-                      {data.category}
-                    </Typography>
-                  </div>
-                  <Typography
-                    sx={{ textAlign: 'left' }}
-                    variant="subtitle2"
-                    color="text.secondary"
-                  >
-                    Prep Time : {data.prepTime} | Cook Time : {data.cookTime}
-                  </Typography>
 
-                  <Typography
-                    sx={{
-                      textAlign: 'left',
-                      marginTop: 2,
-                      fontStyle: 'italic',
-                    }}
-                    variant="body2"
-                    color="text.secondary"
-                  >
-                    {data.description}
-                  </Typography>
-                </CardContent>
-              </CardActionArea>
-            </Card>
-          )
-        })
+                    <Typography
+                      sx={{
+                        textAlign: 'left',
+                        marginTop: 2,
+                        fontStyle: 'italic',
+                      }}
+                      variant="body2"
+                      color="text.secondary"
+                    >
+                      {data.description}
+                    </Typography>
+                  </CardContent>
+                </CardActionArea>
+              </Card>
+            )
+          })
+        ) : ( // No recipes found
+          <Typography variant="h5" component="div" sx={{m:4}} className='no-recipe-found'>Currently our database does not have any recipes with the selected ingredients. Check back in later for any updates.</Typography>
+        )
       ) : (
         <CircularProgress style={{ color: 'white', margin: '50px' }} />
       )}

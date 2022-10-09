@@ -17,7 +17,7 @@ const ContactPage = () => {
     <div className="contact"> 
         <h2>Contact us :</h2>
         <img src={logo} width="700" alt="logo"/>
-        <p>In case of any queries and for additional help, please email us at: help.cookbook@gmail.com</p>
+        <p>In case of any queries and for additional help, please email us at: <a className='email' href="mailto:help.cookbook@gmail.com">help.cookbook@gmail.com</a></p>
     </div>
   );
 };

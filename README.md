@@ -200,5 +200,6 @@ Open the swagger page here: [Swagger](http://localhost:8000/docs)<br><br>
 ![Team](assets/team_edit.png)
 
 # Support
+You can find the dataset used for this project [here](https://drive.google.com/file/d/12CZFb7Ugmiw9zQ7M_qpRsn7pmaV1zW0c/view?usp=sharing)
 
 In case of any queries and for additional help, please email us at: help.cookbook@gmail.com

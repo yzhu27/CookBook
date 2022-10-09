@@ -29,3 +29,8 @@ this file. If not, please write to: help.cookbook@gmail.com
   background-color: aliceblue !important;
   color: #34495e !important;
 }
+
+.no-recipe-found{
+    color: white;
+    font-family: RobotoThin !important;
+}

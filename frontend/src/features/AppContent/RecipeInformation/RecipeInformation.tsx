@@ -59,7 +59,7 @@ this file. If not, please write to: help.cookbook@gmail.com
      return (
         <div style={{ width: '100vw', color: '#f2f4f4', paddingTop: '20px'}} data-testid = "RecipeInfo-comp-43">
          <Typography variant="h4" gutterBottom className='recipe-header'>{recipe.name}</Typography>
-         <div style={{ float: 'left', width: '25vw'}}>
+         <div style={{ float: 'left', width: '30vw'}}>
          <Paper elevation={24} style={triviaPaperStyles}>
            <Grid container spacing={3}>
              <Grid item xs={12} style={{textAlign: 'center'}}>
@@ -70,7 +70,7 @@ this file. If not, please write to: help.cookbook@gmail.com
                    Ingredients:
                    <Typography variant="subtitle1" gutterBottom>
                     {recipe?.ingredients?.map((ele: any, idx: number) => {
-                      return <>{ele}{recipe?.ingredients?.length-1 === idx ? `` : `,`}</>
+                      return <>{ele}{recipe?.ingredients?.length-1 === idx ? `` : `, `}</>
                     })}
                  </Typography>
                 </Typography>

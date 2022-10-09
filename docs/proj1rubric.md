@@ -1,6 +1,8 @@
 
 # Group 43 Project 1 Rubric
 
+#### Total : 270
+
 |<div style="width:256px">Notes</div>|Assessment|Evidence|
 |--------|------|-------|
 |Video1|3|In assets folder|

@@ -17,8 +17,8 @@ import './RecipeList.css'
 
 /**
  * File name: RecipeList.tsx
- * Task - This component displays a list of recipes based on the ingredients inputted.
- * This component is a dynamic component and is seen only when you click on a recipe from the recipe list
+ * Task - This component displays a list of recipes based on the ingredients inputed.
+ * This component is a dynamic component and is seen only when you click on a recipe from the recipe list.
  */
 
 interface RecipeListData {
@@ -94,7 +94,7 @@ const RecipeList = () => {
       })
     )
   }
-  
+
   return (
     <>
       <Pagination

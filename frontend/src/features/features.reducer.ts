@@ -18,7 +18,7 @@ import { combineReducers } from 'redux';
 import getIngredientsAppState from "../features/GetIngredients/getIngredients.reducer";
 import getRecipeInfoAppState from './AppContent/RecipeInformation/getRecipeInformation.reducer';
 import getRecipeListAppState from './AppContent/RecipeList/getRecipeList.reducer';
-
-const combineReducer = combineReducers({ getIngredientsAppState, getRecipeListAppState, getRecipeInfoAppState })
+import getTagListAppState from "./AppContent/Tag/getTags.reducer";
+const combineReducer = combineReducers({ getIngredientsAppState, getRecipeListAppState, getRecipeInfoAppState, getTagListAppState })
  
 export default combineReducer;

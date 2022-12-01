@@ -84,7 +84,6 @@ const GetIngredients = () => {
   const getIngredientsState = useSelector(
     (state: any) => state.getIngredientsAppState
   )
-
   useEffect(() => {
     let ingredients = getIngredientsState.getIngredientsData
     if (Array.isArray(ingredients)) {
@@ -173,6 +172,7 @@ const GetIngredients = () => {
         </Grid>
       </Grid>
       <Grid container spacing={2}>
+
         <Grid item xs={12}>
           <Box paddingTop={'20px'}>
             {chipData.map((data) => {

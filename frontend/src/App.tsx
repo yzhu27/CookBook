@@ -23,7 +23,7 @@ import './App.css'
 import GetIngredients from './features/GetIngredients/GetIngredients'
 import Header from './features/Header/Header'
 import AppContent from './features/AppContent/AppContent'
-
+import GetTags from './features/AppContent/Tag/GetTags'
 const store = applicationStore()
 
 const App: React.FunctionComponent<any> = () => {
@@ -36,9 +36,13 @@ const App: React.FunctionComponent<any> = () => {
           <div className="App-header" data-testid="header-comp-43">
             <Header />
           </div>
-          <div className="App-searchComponent" data-testid="search-comp-43">
+          <div className="search-helper" data-testid="search-comp-43">
             <GetIngredients />
           </div>
+          <div className="App-searchComponent" data-testid="search-comp-43">
+            <GetTags />
+          </div>
+
           <div className="App-body" data-testid="body-comp-43">
             <AppContent />
           </div>

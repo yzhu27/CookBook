@@ -24,6 +24,7 @@ import GetIngredients from './features/GetIngredients/GetIngredients'
 import Header from './features/Header/Header'
 import AppContent from './features/AppContent/AppContent'
 import GetTags from './features/AppContent/Tag/GetTags'
+import CustomizedAccordions from "./features/AppContent/NutritionFilter/CustomizedAccordions";
 const store = applicationStore()
 
 const App: React.FunctionComponent<any> = () => {
@@ -39,10 +40,12 @@ const App: React.FunctionComponent<any> = () => {
           <div className="search-helper" data-testid="search-comp-43">
             <GetIngredients />
           </div>
-          <div className="App-searchComponent" data-testid="search-comp-43">
+          <div className="App-header" data-testid="header-comp-44">
             <GetTags />
           </div>
-
+          <div className="App-header" data-testid="header-comp-45" >
+            <CustomizedAccordions />
+          </div>
           <div className="App-body" data-testid="body-comp-43">
             <AppContent />
           </div>

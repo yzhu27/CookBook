@@ -108,6 +108,7 @@ class Recipe(BaseModel):
         }
 
 
+
 class RecipeListRequest(BaseModel):
     ingredients: List[str]
     page: int

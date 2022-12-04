@@ -16,7 +16,7 @@ from typing import List, Dict
 import pymongo
 import pprint
 
-from api.models import Recipe, RecipeListRequest, RecipeListResponse
+from api.models import Recipe, RecipeListRequest, RecipeListResponse, RecipeListRequest2
 
 router = APIRouter()
 
@@ -56,3 +56,19 @@ def list_ingredients(queryString : str, request: Request):
         return []
     ings = data[0]["ingredients"]
     return ings
+
+#---------
+@router.post("/search2/", response_description="Get Recipes that match all the ingredients in the request", status_code=200, response_model=RecipeListResponse)
+def list_recipes_by_ingredients(request: Request, inp: RecipeListRequest2 = Body(...)):
+    """Lists recipes matching all provided ingredients"""
+    recipes = list(request.app.database["recipes"].find({ "ingredients" : { "$all" : inp.ingredients } }))
+    res = []
+    for recipe in recipes:
+        if not recipe["calories"]:
+            continue
+        if inp.caloriesLow < float(recipe["calories"]) < inp.caloriesUp:
+            res.append(recipe)
+    count = len(res)
+    show = res[(inp.page-1)*10 : (inp.page)*10-1]
+    response = RecipeListResponse(recipes=show, page=inp.page, count=count)
+    return response

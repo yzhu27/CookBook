@@ -117,3 +117,9 @@ class RecipeListResponse(BaseModel):
     recipes: List[Recipe] = Field(..., description="List of recipe ids")
     page: int = Field(..., description="Page number")
     count: int = Field(..., description="Number of total recipes based on filters")
+
+class RecipeListRequest2(BaseModel):
+    ingredients: List[str]
+    page: int
+    caloriesUp: float
+    caloriesLow: float

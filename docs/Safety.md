@@ -10,10 +10,10 @@
 
 [Cook Book](https://cook-book.ml/) uses full strict end-to-end SSL encryption to keep your information private and secure.
 
-![](./SSL.png)
+![](./images/SSL.png)
 
-All requests to [Cook Book]([Cook Book (cook-book.ml)](https://cook-book.ml/)) are automatically redirected to HTTPS and uses the latest version of the TLS protocol for improved security and performance.
+All requests to [Cook Book](https://cook-book.ml/) are automatically redirected to HTTPS and uses the latest version of the TLS protocol for improved security and performance.
 
 ### DDoS Protection
 
-[Cook Book]([Cook Book (cook-book.ml)](https://cook-book.ml/)) enables DDoS protection by constantly analyze traffic and generate real-time signatures to mitigate attacks across the network and application layers.
+[Cook Book](https://cook-book.ml/) enables DDoS protection by constantly analyze traffic and generate real-time signatures to mitigate attacks across the network and application layers.

@@ -31,5 +31,19 @@ export default function ContinuousSlider() {
     />
     <Slider defaultValue={50} aria-label="Default" valueLabelDisplay="auto" />
     </Box>
+    
+    <Box sx={{ width: 300 }}>
+      <Slider
+        aria-label="Temperature"
+        defaultValue={30}
+        getAriaValueText={valuetext}
+        valueLabelDisplay="auto"
+        step={10}
+        marks
+        min={10}
+        max={110}
+      />
+      <Slider defaultValue={30} step={10} marks min={10} max={110} disabled />
+    </Box>
   );
 }

@@ -173,12 +173,27 @@ Open the swagger page here: [Swagger](http://localhost:8000/docs)<br><br>
 
 # Use cases tutorials
 
-- Above content mentions that users may manually input keyword, and click on 'search tag' to create some keyword search tags to search recepies. Besides, users may also click on some "food tags" to search receipes without specific input.
+- Above content mentions that users may manually input keyword, and click on 'search tag' to create some keyword search tags to search recepies. Besides, users may also click on some "food tags" to search receipes without specific input. For example, we may select "milk" tag:
+
+![case](assets/tagSearch1.jpg)
 
 <br>
 
-- What is more, if users are not sure that tags to be chosen, they are able to use sliders to set some values for [Calorie, Fat, Suger, Protain]. The filtered recepies will be shown after using this kind of search.
+- Then, we may have results shown as below:
+
+![case](assets/tagSearch2.jpg)
+
 <br>
+
+- What is more, if users are not sure that tags to be chosen, they are able to use sliders to set some values for [Calorie, Fat, Suger, Protain]. The filtered recepies will be shown after using this kind of search. For example, if we want receipes that fulfill some requirements as:
+
+![case](assets/filterSearch1.png)
+
+<br>
+
+- As former example cases, filtered results are displayed:
+
+![case](assets/filterSearch2.png)
 
 # Why CookBook?
 

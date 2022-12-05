@@ -85,7 +85,7 @@ export default function CustomizedAccordions() {
         console.log(sug)
         console.log(pro)
         dispatch(
-          getRecipeListInitiator('http://localhost:8000/recipe/search2/', {
+          getRecipeListInitiator('https://cook-book.ml/recipe/search2/', {
               page: 1,
               caloriesUp: cal,
               fatUp: fat,

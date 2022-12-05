@@ -95,8 +95,13 @@ npm install --legacy-peer-deps
 ```
 
 <br>
+## Style Checker and Code Fomatter
 
-## For style and syntax checks and for auto code formatting
+- IDE and Style Checker: [VSCode](https://code.visualstudio.com/)
+
+- Code Style Formatter: [Beautify](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify)
+
+- Code Syntax Checker : [Eslint](https://https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) for Vscode plugin.
 
 Following extensions have to be added to you VS Code editor:
 
@@ -121,7 +126,6 @@ Following extensions have to be added to you VS Code editor:
 
 ```
 
-- After you are done, the eslint and prettier code configs in the repo will get synced with your VS Code editor & you are all set with the code's auto code formatters and style & syntax checkers!<br>
 
 ## To run the front end React app, do:
 

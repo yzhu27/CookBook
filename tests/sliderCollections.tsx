@@ -82,5 +82,45 @@ export default function ContinuousSlider() {
       />
     </Box>
     
+    <Box sx={{ width: 300 }}>
+      <Slider
+        aria-label="Always visible"
+        defaultValue={80}
+        getAriaValueText={valuetext}
+        step={10}
+        marks={marks}
+        valueLabelDisplay="on"
+      />
+    </Box>
+    
+    <Box sx={{ width: 300 }}>
+      <Slider
+        getAriaLabel={() => 'Temperature range'}
+        value={value}
+        onChange={handleChange}
+        valueLabelDisplay="auto"
+        getAriaValueText={valuetext}
+      />
+    </Box>
+    
+    <Box sx={{ width: 300 }}>
+      <Slider
+        getAriaLabel={() => 'Minimum distance'}
+        value={value1}
+        onChange={handleChange1}
+        valueLabelDisplay="auto"
+        getAriaValueText={valuetext}
+        disableSwap
+      />
+      <Slider
+        getAriaLabel={() => 'Minimum distance shift'}
+        value={value2}
+        onChange={handleChange2}
+        valueLabelDisplay="auto"
+        getAriaValueText={valuetext}
+        disableSwap
+      />
+    </Box>
+    
   );
 }

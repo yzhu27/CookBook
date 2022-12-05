@@ -171,7 +171,7 @@ Open the swagger page here: [Swagger](http://localhost:8000/docs)<br><br>
 
 <br><br>
 
-# Use cases of functions
+# Use cases tutorials
 
 - Users may manually input keyword, and click on 'search tag' to create some keyword search tags to search recepies.
 

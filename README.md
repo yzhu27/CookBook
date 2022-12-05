@@ -171,7 +171,7 @@ Open the swagger page here: [Swagger](http://localhost:8000/docs)<br><br>
 
 <br><br>
 
-# Why C o o k B o o k?
+# Why CookBook?
 
 - Most of us might have been in a situation where you are craving for something to eat and due to some reason it won't be delivered to your place. And then you decide to cook it yourself you can't find a recipe with the ingredients you have.
 - In this fast-paced world, we are often confused about what can be cooked with the ingredients that are available right away.

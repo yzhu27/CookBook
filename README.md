@@ -38,21 +38,21 @@ With over recipes, there is something in the store for everyone !<br><br>
 
 <p align="center">
     |
-  <a href="#backend-installation">Backend Installation</a>
+    <a href="#whats-new">What's New</a>
   |
-  <a href="#backend-installation">Frontend Installation</a>
+  <a href="#installations">Installations</a>
   |
-  <a href="#golf-flags-and-command-line-arguments">Swagger</a>
+  <a href="#examples">Examples</a>
   |
-  <a href="#card_index_dividers-some-examples">Examples</a>
+  <a href="#style-checker-and-code-fomatter">Style Checker & Code Fomatter</a>
   |
-  <a href="#page_facing_up-why">Why</a>
+  <a href="#code-coverage">Code Coverage</a>
   |
-  <a href="#roadmap">Roadmap</a>
+  <a href="#why-cookbook">Why CookBook?</a>
   |
-  <a href="#sparkles-contributors">Meet the Team</a>
-    |
-  <a href="#email-support">Support</a>
+   <a href="#meet-the-team">Team</a>
+  |
+  <a href="#support">Support</a>
   |
   
 </p><br><br>
@@ -61,7 +61,28 @@ With over recipes, there is something in the store for everyone !<br><br>
 
 <p align="center"><img width="700" src="./assets/demo.gif"></p><br><br>
 
+# What's New?
+Group 7 improved the CookBook significantly.
+
+## New features:
+
+- Add filtering system based on nutrition.
+- Created ingredient tags to simplify the searching.
+- Set up .ml domain for [CookBook](https://cook-book.ml). Users don't need to install the backend and frontend anymore.
+
+## Better Software Design
+
+- Improved the scalability by [CDN](https://github.com/yzhu27/CookBook/blob/main/docs/Scalability.md#content-delivery-network), [Load Balancing](https://github.com/yzhu27/CookBook/blob/main/docs/Scalability.md#load-balancing-on-cloudflare). [Cache](https://github.com/yzhu27/CookBook/blob/main/docs/Scalability.md#cache), etc.
+- Improved the safety by [Domain](https://github.com/yzhu27/CookBook/blob/main/docs/Safety.md#domain), [SSL/TSL](https://github.com/yzhu27/CookBook/blob/main/docs/Safety.md#ssltls), [DDoS Protection](https://github.com/yzhu27/CookBook/blob/main/docs/Safety.md#ddos-protection).
 # Installations
+
+## URL Loading
+Access this link [CookBook](https://cook-book.ml).
+
+### Trouble Shooting
+If this page failed, try to change your network environment. Typically, NC State Campus WIFI may cause loading failure. Try your home WIFI or mobile hotspot.
+
+If you still fail to load the site, try the following steps.
 
 ## Backend Installation
 
@@ -96,7 +117,77 @@ npm install --legacy-peer-deps
 
 <br>
 
-## Style Checker and Code Fomatter
+## To run the front end React app, do:
+
+```bash
+cd frontend
+npm start
+```
+
+<br>
+
+# Examples
+
+## Old Functions
+- This is the CookBook HomePage that should automatically open in a browser after executing the command: 'npm start'
+  <br><br>
+
+![HomePage](assets/HomePage.PNG)
+
+<br>
+
+- The user can use the search bar to enter the ingredients one by one, and then proceed by clicking the arrow on the right.
+  <br><br>
+
+![HomePage](assets/SearchBar.PNG)
+
+<br>
+
+- The user would then be redirected to the page showing the recipe suggestions.
+  <br><br>
+
+![HomePage](assets/SearchResults.PNG)
+
+<br>
+
+- The details of a recipe can be viewed by simple clicking on a recipe from the list of recipes being displayed.
+  <br><br>
+
+![HomePage](assets/RecipeDetails.PNG)
+
+<br><br>
+
+## New Functions Tutorials
+
+- Start the App by URL.
+![case](assets/HomePage_new.png)
+
+<br>
+
+
+- Above content mentions that users may manually input keyword, and click on 'search tag' to create some keyword search tags to search recepies. Besides, users may also click on some "food tags" to search receipes without specific input. For example, we may select "milk" tag:
+
+![case](assets/tagSearch1.jpg)
+
+<br>
+
+- Then, we may have results shown as below:
+
+![case](assets/tagSearch2.jpg)
+
+<br>
+
+- What is more, if users are not sure that tags to be chosen, they are able to use sliders to set some values for [Calorie, Fat, Suger, Protain]. The filtered recepies will be shown after using this kind of search. For example, if we want receipes that fulfill some requirements as:
+
+![case](assets/filterSearch1.png)
+
+<br>
+
+- As former example cases, filtered results are displayed:
+
+![case](assets/filterSearch2.png)
+
+# Style Checker and Code Fomatter
 
 - IDE and Style Checker: [VSCode](https://code.visualstudio.com/)
 
@@ -127,73 +218,9 @@ Following extensions have to be added to you VS Code editor:
 
 ```
 
-
-## To run the front end React app, do:
-
-```bash
-cd frontend
-npm start
-```
-
-<br>
-
-# Swagger
-
-Open the swagger page here: [Swagger](http://localhost:8000/docs)<br><br>
-
-# Examples
-
-- This is the CookBook HomePage that should automatically open in a browser after executing the command: 'npm start'
-  <br><br>
-
-![HomePage](assets/HomePage.PNG)
-
-<br>
-
-- The user can use the search bar to enter the ingredients one by one, and then proceed by clicking the arrow on the right.
-  <br><br>
-
-![HomePage](assets/SearchBar.PNG)
-
-<br>
-
-- The user would then be redirected to the page showing the recipe suggestions.
-  <br><br>
-
-![HomePage](assets/SearchResults.PNG)
-
-<br>
-
-- The details of a recipe can be viewed by simple clicking on a recipe from the list of recipes being displayed.
-  <br><br>
-
-![HomePage](assets/RecipeDetails.PNG)
-
-<br><br>
-
-# Use cases tutorials
-
-- Above content mentions that users may manually input keyword, and click on 'search tag' to create some keyword search tags to search recepies. Besides, users may also click on some "food tags" to search receipes without specific input. For example, we may select "milk" tag:
-
-![case](assets/tagSearch1.jpg)
-
-<br>
-
-- Then, we may have results shown as below:
-
-![case](assets/tagSearch2.jpg)
-
-<br>
-
-- What is more, if users are not sure that tags to be chosen, they are able to use sliders to set some values for [Calorie, Fat, Suger, Protain]. The filtered recepies will be shown after using this kind of search. For example, if we want receipes that fulfill some requirements as:
-
-![case](assets/filterSearch1.png)
-
-<br>
-
-- As former example cases, filtered results are displayed:
-
-![case](assets/filterSearch2.png)
+# Code Coverage
+[Codecov](https://app.codecov.io/gh/yzhu27/CookBook)
+![civ](assets/codecov.png)
 
 # Why CookBook?
 
@@ -204,31 +231,17 @@ Open the swagger page here: [Swagger](http://localhost:8000/docs)<br><br>
 - Apart from giving the user a smooth and a stress-free experience, it also serves as a platform to find recipes across multiple cuisines and cultures.
 - The interface of CookBook is somewhat similar to most of the search-engines, giving a sense of familiarity to the user. The user would have to just enter the available ingredients in a search bar and click on the proceed icon to get a list of suggestions for recipes.
 
-# Roadmap
-
-  <h3> Completed tasks</h3>
-  <ol>
-  <li> Hosted the dataset on Mongo Database System. </li>
-  <li> Created a lightweight REST API for communicating with the MongoDB Cloud instance.</li>
-  <li> Created a dynamic UI with routes dedicated to individual components.</li>
-  <li> Create autocomplete to suggest ingredients based on partial input.</li>
-  <li> Added support for recommendations based on multiple Ingredients.</li>
-  <li> Created card based paginated layout for showing recipes.</li>
-  <li> Added macros to recipe information.</li>
-  </ol>
-  
-  <h3> Future tasks</h3>
-  <ol>
-  <li> Add filtering system based on cusine, and other macros.</li>
-  <li> Create a scraper for updating and maintaining the database.</li>
-  <li> Add support for user profiles and user specific recommendations.</li>
-  <li> Create a form for reporting corrections, improving the data set.</li>
-  <li> Create a form for reporting corrections, improving the data set.</li>
-  </ol>
-
 # Meet the Team
 
+## Version 1.0
 ![Team](assets/team_edit.png)
+
+## Version 2.x
+- Pinxiang Wang
+- Yuheng Zhu
+- Mengzhe Wang
+- Jiayuan Huang
+- Yiran Zhu
 
 # Support
 You can find the dataset used for this project [here](https://drive.google.com/file/d/12CZFb7Ugmiw9zQ7M_qpRsn7pmaV1zW0c/view?usp=sharing)

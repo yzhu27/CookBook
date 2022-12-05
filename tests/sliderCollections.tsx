@@ -45,5 +45,19 @@ export default function ContinuousSlider() {
       />
       <Slider defaultValue={30} step={10} marks min={10} max={110} disabled />
     </Box>
+    
+    <Box sx={{ width: 300 }}>
+      <Slider
+        aria-label="Small steps"
+        defaultValue={0.00000005}
+        getAriaValueText={valuetext}
+        step={0.00000001}
+        marks
+        min={-0.00000005}
+        max={0.0000001}
+        valueLabelDisplay="auto"
+      />
+    </Box>
+    
   );
 }

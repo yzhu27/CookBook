@@ -14,6 +14,7 @@ Connect time from worldwide are less than 10ms.
 
 Loading time is faster than before on Cloudflare.
 
+
 ## Load Balancing
 
 [Cook Book](https://cook-book.ml/) uses load balancing to distribute incoming traffic across multiple server instances.

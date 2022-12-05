@@ -22,7 +22,7 @@
 </div>
 <br><br>
 
-# What is C o o k B o o k ?
+# What is Cook Book ?
 
 CookBook is a platform to search for recipes that can be made using the available ingredients.
 
@@ -170,6 +170,18 @@ Open the swagger page here: [Swagger](http://localhost:8000/docs)<br><br>
 ![HomePage](assets/RecipeDetails.PNG)
 
 <br><br>
+
+# Use cases of functions
+
+- Users may manually input keyword, and click on 'search tag' to create some keyword search tags to search recepies.
+
+<br>
+
+- Besides, users may also click on some "food tags" to search receipes without specific input.
+
+<br>
+
+- What is more, if users are not sure that tags to be chosen, they are able to use sliders to set some values for [Calorie, Fat, Suger, Protain]. The filtered resume will be shown after using this kind of search.
 
 # Why CookBook?
 

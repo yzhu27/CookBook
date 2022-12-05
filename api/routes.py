@@ -72,3 +72,15 @@ def list_recipes_by_ingredients(request: Request, inp: RecipeListRequest2 = Body
     show = res[(inp.page-1)*10 : (inp.page)*10-1]
     response = RecipeListResponse(recipes=show, page=inp.page, count=count)
     return response
+
+@router.get("/search2/{ingredient},{caloriesLow},{caloriesUp}", response_description="List all recipes with the given ingredient")
+def list_recipes_by_ingregredient(ingredient: str, caloriesLow: int, caloriesUp: int, request: Request):
+    recipes = list(request.app.database["recipes"].find({ "ingredients" : { "$in" : [ingredient] } }))
+    res = []
+    for recipe in recipes:
+        if not recipe["calories"]:
+            continue
+        if caloriesLow < float(recipe["calories"]) < caloriesUp:
+            res.append(recipe)
+    res.sort(key = lambda x: x['calories'])
+    return res

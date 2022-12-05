@@ -10,7 +10,7 @@
 
 Connect time from worldwide are less than 10ms.
 
-![](./load.png)
+![](./images/load.png)
 
 Loading time is faster than before on Cloudflare.
 
@@ -22,7 +22,7 @@ Loading time is faster than before on Cloudflare.
 
 [Cook Book](https://cook-book.ml/) implements traffic load balancing on Cloudflare to distribute traffic dynamically into two server pools.
 
-![](.\load_balancing.png)
+![](./images/load_balancing.png)
 
 #### Load Balancing on Nginx
 

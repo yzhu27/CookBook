@@ -1,14 +1,14 @@
 # Safety
 
-[Cook Book]([Cook Book (cook-book.ml)](https://cook-book.ml/)) implements a variety of approaches to protect your connection.
+[Cook Book](https://cook-book.ml/) implements a variety of approaches to protect your connection.
 
 ### Domain
 
-[Cook Book]([Cook Book (cook-book.ml)](https://cook-book.ml/)) uses domain name to hide real server IP address and port number to prevent potential attacks.
+[Cook Book](https://cook-book.ml/) uses domain name to hide real server IP address and port number to prevent potential attacks.
 
 ### SSL/TLS
 
-[Cook Book]([Cook Book (cook-book.ml)](https://cook-book.ml/)) uses full strict end-to-end SSL encryption to keep your information private and secure.
+[Cook Book](https://cook-book.ml/) uses full strict end-to-end SSL encryption to keep your information private and secure.
 
 ![](./SSL.png)
 

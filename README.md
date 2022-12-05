@@ -177,7 +177,7 @@ Open the swagger page here: [Swagger](http://localhost:8000/docs)<br><br>
 
 <br>
 
-- What is more, if users are not sure that tags to be chosen, they are able to use sliders to set some values for [Calorie, Fat, Suger, Protain]. The filtered resume will be shown after using this kind of search.
+- What is more, if users are not sure that tags to be chosen, they are able to use sliders to set some values for [Calorie, Fat, Suger, Protain]. The filtered recepies will be shown after using this kind of search.
 <br>
 
 # Why CookBook?

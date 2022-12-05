@@ -70,5 +70,17 @@ export default function ContinuousSlider() {
       />
     </Box>
     
+    <Box sx={{ width: 300 }}>
+      <Slider
+        aria-label="Restricted values"
+        defaultValue={20}
+        valueLabelFormat={valueLabelFormat}
+        getAriaValueText={valuetext}
+        step={null}
+        valueLabelDisplay="auto"
+        marks={marks}
+      />
+    </Box>
+    
   );
 }

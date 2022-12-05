@@ -173,15 +173,12 @@ Open the swagger page here: [Swagger](http://localhost:8000/docs)<br><br>
 
 # Use cases tutorials
 
-- Users may manually input keyword, and click on 'search tag' to create some keyword search tags to search recepies.
-
-<br>
-
-- Besides, users may also click on some "food tags" to search receipes without specific input.
+- Above content mentions that users may manually input keyword, and click on 'search tag' to create some keyword search tags to search recepies. Besides, users may also click on some "food tags" to search receipes without specific input.
 
 <br>
 
 - What is more, if users are not sure that tags to be chosen, they are able to use sliders to set some values for [Calorie, Fat, Suger, Protain]. The filtered resume will be shown after using this kind of search.
+<br>
 
 # Why CookBook?
 

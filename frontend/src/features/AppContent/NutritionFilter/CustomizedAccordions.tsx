@@ -67,12 +67,12 @@ export default function CustomizedAccordions() {
               <Slider
                   aria-label="Calories"
                   valueLabelDisplay="on"
-                  defaultValue={20}
-                  max={1000}
+                  defaultValue={10}
+                  max={100}
               />
               <Slider
                   aria-label="Fat"
-                  valueLabelDisplay="on"
+                  valueLabelDisplay="off"
                   defaultValue={20}
                   max={1000}
               />

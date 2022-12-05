@@ -122,5 +122,37 @@ export default function ContinuousSlider() {
       />
     </Box>
     
+    <Box sx={{ width: 300 }}>
+      <Slider
+        aria-label="Temperature"
+        defaultValue={30}
+        getAriaValueText={valuetext}
+        color="secondary"
+      />
+    </Box>
+    
+    <Box sx={{ width: 250 }}>
+      <Typography id="track-false-slider" gutterBottom>
+        Removed track
+      </Typography>
+      <Slider
+        track={false}
+        aria-labelledby="track-false-slider"
+        getAriaValueText={valuetext}
+        defaultValue={30}
+        marks={marks}
+      />
+      <Separator />
+      <Typography id="track-false-range-slider" gutterBottom>
+        Removed track range slider
+      </Typography>
+      <Slider
+        track={false}
+        aria-labelledby="track-false-range-slider"
+        getAriaValueText={valuetext}
+        defaultValue={[20, 37, 50]}
+        marks={marks}
+      />
+    </Box>
   );
 }

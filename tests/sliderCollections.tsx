@@ -59,5 +59,16 @@ export default function ContinuousSlider() {
       />
     </Box>
     
+    <Box sx={{ width: 300 }}>
+      <Slider
+        aria-label="Custom marks"
+        defaultValue={20}
+        getAriaValueText={valuetext}
+        step={10}
+        valueLabelDisplay="auto"
+        marks={marks}
+      />
+    </Box>
+    
   );
 }

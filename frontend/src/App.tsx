@@ -40,10 +40,10 @@ const App: React.FunctionComponent<any> = () => {
           <div className="search-helper" data-testid="search-comp-43">
             <GetIngredients />
           </div>
-          <div className="App-header" data-testid="header-comp-44">
+          <div className="search-helper" data-testid="header-comp-44">
             <GetTags />
           </div>
-          <div className="App-header" data-testid="header-comp-45" >
+          <div className="search-helper" data-testid="header-comp-45" >
             <CustomizedAccordions />
           </div>
           <div className="App-body" data-testid="body-comp-43">

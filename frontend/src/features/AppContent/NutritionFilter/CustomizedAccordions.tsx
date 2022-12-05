@@ -11,6 +11,14 @@ import {Slider} from "@material-ui/core";
 import { Stack } from '@mui/material';
 import { VolumeDown, VolumeUp } from '@mui/icons-material';
 
+import Button from '@mui/material/Button';
+import Box from '@mui/material/Box';
+import {getRecipeListInitiator} from "../RecipeList/getRecipeList.action";
+import {useDispatch} from "react-redux";
+import {useNavigate} from "react-router-dom";
+
+// let cal =0;
+
 const Accordion = styled((props: AccordionProps) => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
 ))(({ theme }) => ({
@@ -47,13 +55,46 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
   borderTop: '1px solid rgba(0, 0, 0, .125)',
 }));
 
+
+
+
 export default function CustomizedAccordions() {
+  const dispatch = useDispatch()
+  const navigateTo = useNavigate()
   const [expanded, setExpanded] = React.useState<string | false>('panel1');
 
   const handleChange =
     (panel: string) => (event: React.SyntheticEvent, newExpanded: boolean) => {
       setExpanded(newExpanded ? panel : false);
     };
+
+  // const changeSlider = (event) =>{
+  //     this.setSlider({
+  //
+  //     })
+  // };
+    const defaultValue = 50
+    const [cal, setCal] = React.useState<number>(defaultValue);
+    const [fat, setFat] = React.useState<number>(defaultValue);
+    const [sug, setSug] = React.useState<number>(defaultValue);
+    const [pro, setPro] = React.useState<number>(defaultValue);
+
+    const onSearch = () => {
+        console.log(cal)
+        console.log(fat)
+        console.log(sug)
+        console.log(pro)
+        dispatch(
+          getRecipeListInitiator('http://localhost:8000/recipe/search2/', {
+              page: 1,
+              caloriesUp: cal,
+              fatUp: fat,
+              sugUp: sug,
+              proUp: pro
+          })
+        )
+        navigateTo('/recipe-list')
+    }
 
   // @ts-ignore
   return (
@@ -63,62 +104,60 @@ export default function CustomizedAccordions() {
           <Typography>Nutrition Filter</Typography>
         </AccordionSummary>
         <AccordionDetails>
+            {/*<Typography id="non-linear-slider" gutterBottom>*/}
+            {/*    Storage: zz*/}
+            {/*</Typography>*/}
             <Stack spacing={2} direction="row" sx={{ mb: 1 }} alignItems="center" >
-              <Slider
+              <Typography id="non-linear-slider" gutterBottom>
+                Calories:
+              </Typography>
+                <Slider
+                    // value={value}
                   aria-label="Calories"
-                  valueLabelDisplay="on"
-                  defaultValue={10}
-                  max={100}
+                  valueLabelDisplay="auto"
+                  defaultValue={defaultValue}
+                  onChange={(e,v) => setCal(v as number)}
+                  max={1000}
               />
-              <Slider
+                <Typography id="non-linear-slider" gutterBottom>
+                Fat:
+              </Typography>
+            <Slider
                   aria-label="Fat"
-                  valueLabelDisplay="off"
-                  defaultValue={20}
-                  max={1000}
-              />
-              <Slider
-                  aria-label="SaturatedFat"
-                  valueLabelDisplay="on"
-                  defaultValue={20}
-                  max={1000}
-              />
-              <Slider
-                  aria-label="Cholesterol"
-                  valueLabelDisplay="on"
-                  defaultValue={20}
-                  max={1000}
-              />
-              <Slider
-                  aria-label="Sodium"
-                  valueLabelDisplay="on"
-                  defaultValue={20}
-                  max={1000}
-              />
-              <Slider
-                  aria-label="Carbs"
-                  valueLabelDisplay="on"
-                  defaultValue={20}
-                  max={1000}
-              />
-              <Slider
-                  aria-label="Fiber"
-                  valueLabelDisplay="on"
-                  defaultValue={20}
-                  max={1000}
-              />
-              <Slider
+                  valueLabelDisplay="auto"
+                  defaultValue={defaultValue}
+                  max={100}
+                  onChange={(e,v) => setFat(v as number)}
+            />
+                <Typography id="non-linear-slider" gutterBottom>
+                Sugar:
+              </Typography>
+                <Slider
                   aria-label="Sugar"
-                  valueLabelDisplay="on"
-                  defaultValue={20}
-                  max={1000}
-              />
-              <Slider
-                  aria-label="Protein"
-                  valueLabelDisplay="on"
-                  defaultValue={20}
-                  max={1000}
-              />
+                  valueLabelDisplay="auto"
+                  defaultValue={defaultValue}
+                  max={100}
+                  onChange={(e,v) => setSug(v as number)}
+            />
+                <Typography id="non-linear-slider" gutterBottom>
+                Protain:
+              </Typography>
+                <Slider
+                  aria-label="Protain"
+                  valueLabelDisplay="auto"
+                  defaultValue={defaultValue}
+                  max={100}
+                  onChange={(e,v) => setPro(v as number)}
+            />
             </Stack>
+            <Typography id="non-linear-slider" gutterBottom>
+                Cal: {cal} - Fat: {fat} - Sugar: {sug} - Protain: {pro}
+            </Typography>
+            <Stack spacing={2} direction="row" sx={{ mb: 1 }} alignItems="center" justifyContent="center">
+              <Button variant="contained" onClick={onSearch}>Search</Button>
+                <Button variant="outlined">Cancel</Button>
+            </Stack>
+
         </AccordionDetails>
       </Accordion>
     </div>

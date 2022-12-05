@@ -61,13 +61,19 @@ def list_ingredients(queryString : str, request: Request):
 @router.post("/search2/", response_description="Get Recipes that match all the ingredients in the request", status_code=200, response_model=RecipeListResponse)
 def list_recipes_by_ingredients(request: Request, inp: RecipeListRequest2 = Body(...)):
     """Lists recipes matching all provided ingredients"""
-    recipes = list(request.app.database["recipes"].find({ "ingredients" : { "$all" : inp.ingredients } }))
+    print('Method was called1')
+    recipes = list(request.app.database["recipes"].find().limit(1000))
+
     res = []
     for recipe in recipes:
-        if not recipe["calories"]:
+        print('Method was called3')
+        if not recipe["calories"] or not recipe['fat'] or not recipe['sugar'] or not recipe['protein']:
             continue
-        if inp.caloriesLow < float(recipe["calories"]) < inp.caloriesUp:
-            res.append(recipe)
+        try:
+            if float(recipe["calories"]) < inp.caloriesUp and float(recipe["fat"]) < inp.fatUp and float(recipe["sugar"]) < inp.sugUp and float(recipe["protein"]) < inp.proUp:
+                res.append(recipe)
+        except:
+            continue
     count = len(res)
     show = res[(inp.page-1)*10 : (inp.page)*10-1]
     response = RecipeListResponse(recipes=show, page=inp.page, count=count)

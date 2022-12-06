@@ -3,19 +3,17 @@
 <div align="center">
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-![Build](https://github.com/sam16222/CSC510_43_Project1/actions/workflows/python-app.yml/badge.svg)
+![Build](https://github.com//yzhu27/CookBook/actions/workflows/python-app.yml/badge.svg)
 [![DOI](https://zenodo.org/badge/541238337.svg)](https://zenodo.org/badge/latestdoi/541238337)
-![Github Issues](https://img.shields.io/github/issues-closed/sam16222/CookBook)
-![Github Issues](https://img.shields.io/github/issues/sam16222/CookBook)
-![Github Pull Requests](https://img.shields.io/github/issues-pr/sam16222/CookBook)
-![Github Pull Requests](https://img.shields.io/github/issues-pr-closed/sam16222/CookBook)
-![Commit Status](https://img.shields.io/github/commit-status/sam16222/CookBook/main/65d1725521ee8cb701d47e4ad19fc8d586a4691f)
-[![codecov](https://codecov.io/gh/sam16222/CSC510_43_Project1/branch/main/graph/badge.svg?token=LT9NFPUR7R)](https://codecov.io/gh/sam16222/CSC510_43_Project1) <br/>
-
+![Github Issues](https://img.shields.io/github/issues-closed/yzhu27/CookBook)
+![Github Issues](https://img.shields.io/github/issues/yzhu27/CookBook)
+![Github Pull Requests](https://img.shields.io/github/issues-pr/yzhu27/CookBook)
+![Github Pull Requests](https://img.shields.io/github/issues-pr-closed/yzhu27/CookBook)
+![Commit Status](https://img.shields.io/github/commit-status/yzhu27/CookBook/main/9677b6e3e656a77a55d73e34fc6e32df4d161556)
+[![codecov](https://codecov.io/gh/yzhu27/CookBook/branch/main/graph/badge.svg?token=H3ZYW01UP9)](https://app.codecov.io/gh/yzhu27/CookBook) <br/>
 ![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white)
 ![FastAPI](https://img.shields.io/badge/FastAPI-005571?style=for-the-badge&logo=fastapi)
 ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
-![Visual Studio](https://img.shields.io/badge/Visual%20Studio-5C2D91.svg?style=for-the-badge&logo=visual-studio&logoColor=white)
 ![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
 ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
 

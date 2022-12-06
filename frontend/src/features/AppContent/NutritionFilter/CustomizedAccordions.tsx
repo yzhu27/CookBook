@@ -140,7 +140,7 @@ export default function CustomizedAccordions() {
                   onChange={(e,v) => setSug(v as number)}
             />
                 <Typography id="non-linear-slider" gutterBottom>
-                Protain:
+                Protein:
               </Typography>
                 <Slider
                   aria-label="Protain"

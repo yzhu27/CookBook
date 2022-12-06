@@ -151,7 +151,7 @@ export default function CustomizedAccordions() {
             />
             </Stack>
             <Typography id="non-linear-slider" gutterBottom>
-                Cal: {cal} - Fat: {fat} - Sugar: {sug} - Protain: {pro}
+                Calorie: {cal} - Fat: {fat} - Sugar: {sug} - Protein: {pro}
             </Typography>
             <Stack spacing={2} direction="row" sx={{ mb: 1 }} alignItems="center" justifyContent="center">
               <Button variant="contained" onClick={onSearch}>Search</Button>

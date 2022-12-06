@@ -24,7 +24,7 @@
 |Docs: short video, animated, hosted on your repo. That convinces people why they want to work on your code.|3|https://github.com/yzhu27/CookBook#demo|
 |Use of version control tools|3|Used git, branches. https://github.com/yzhu27/CookBook|
 |Test cases exist|3|https://github.com/yzhu27/CookBook/tree/main/tests|
-|Test cases are routinely executed|E.g. travis-com.com or github actions or something|[tbd]|
+|Test cases are routinely executed|E.g. travis-com.com or github actions or something|https://app.codecov.io/gh/yzhu27/CookBook|
 |The files CONTRIBUTING.md lists coding standards and lots of tips on how to extend the system without screwing things up|3|https://github.com/yzhu27/CookBook/blob/main/CONTRIBUTING.md|
 |Issues are discussed before they are closed|3|https://github.com/yzhu27/CookBook/issues|
 |Chat channel: exists|3|**Discord**: https://discord.gg/TMqzrGrc<br />![Discord Screenshot](https://github.com/yzhu27/CookBook/blob/main/docs/images/screenshot2.png)<br />**Wechat**:![Wechat Screenshot](https://github.com/yzhu27/CookBook/blob/main/docs/images/screenshot1.png)|

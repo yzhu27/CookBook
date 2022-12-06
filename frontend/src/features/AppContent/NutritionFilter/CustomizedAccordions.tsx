@@ -98,7 +98,8 @@ export default function CustomizedAccordions() {
 
   // @ts-ignore
   return (
-    <div>
+
+    <div><br></br>
       <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
         <AccordionSummary aria-controls="panel1d-content" id="panel1d-header">
           <Typography>Nutrition Filter</Typography>
@@ -140,7 +141,7 @@ export default function CustomizedAccordions() {
                   onChange={(e,v) => setSug(v as number)}
             />
                 <Typography id="non-linear-slider" gutterBottom>
-                Protain:
+                Protein:
               </Typography>
                 <Slider
                   aria-label="Protain"
@@ -151,11 +152,10 @@ export default function CustomizedAccordions() {
             />
             </Stack>
             <Typography id="non-linear-slider" gutterBottom>
-                Cal: {cal} - Fat: {fat} - Sugar: {sug} - Protain: {pro}
+                Calorie: {cal} - Fat: {fat} - Sugar: {sug} - Protein: {pro}
             </Typography>
             <Stack spacing={2} direction="row" sx={{ mb: 1 }} alignItems="center" justifyContent="center">
-              <Button variant="contained" onClick={onSearch}>Search</Button>
-                <Button variant="outlined">Cancel</Button>
+              <Button size = "medium" variant="contained" onClick={onSearch}>Search</Button>
             </Stack>
 
         </AccordionDetails>

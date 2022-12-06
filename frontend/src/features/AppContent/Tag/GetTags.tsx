@@ -27,6 +27,7 @@ import ArrowForwardIosSharpIcon from "@mui/icons-material/ArrowForwardIosSharp";
 import MuiAccordionDetails from "@mui/material/AccordionDetails";
 import Typography from "@mui/material/Typography";
 import {Slider} from "@material-ui/core";
+
 const Accordion = styled((props: AccordionProps) => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
 ))(({ theme }) => ({
@@ -58,6 +59,8 @@ const AccordionSummary = styled((props: AccordionSummaryProps) => (
   },
 }));
 
+
+
 const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
   padding: theme.spacing(2),
   borderTop: '1px solid rgba(0, 0, 0, .125)',
@@ -72,7 +75,14 @@ const GetTags = () => {
   const navigateTo = useNavigate()
     const [expanded, setExpanded] = React.useState<string | false>('panel1');
   const [chipData, setChipData] = useState<readonly ChipData[]>([])
-  const receiptList = ['milk', 'butter', 'blueberries','grapefruits','wine vinegar','potato','vanilla']
+  const receiptList = ['beef','milk','pork','blueberries','butter',
+                       'cheese','chicken','corn',
+                       'eggs','eggplant',
+                       'grapefruits',
+                       'lobster','lamb',
+                       'onion',
+                       'potato',
+                       'turkey']
   const getReciptButton = (name: string, key: number) => {
     const onSubmit = () => {
       let ingredientsArray: Array<string> = []
@@ -89,11 +99,14 @@ const GetTags = () => {
       }
     }
 
-    return <Button
+    return<Button
+        sx={{ m: 0.5 }}
+      size = "small"
       key={key}
       onClick={onSubmit}
       type="submit"
       variant="contained"> {name} </Button>
+
   }
 
   // handler to trigger the API call to get the list of recipes according to the user's ingredient's input
@@ -124,46 +137,11 @@ const GetTags = () => {
  // }
 
   return (
-        <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
-        <AccordionSummary aria-controls="panel1d-content" id="panel1d-header">
-          <Typography>Ingredient Navigator</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-           <div style={{ display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        height: '20vh',
-        // text-align:justify
-      }}>
-
-        {chipData.map((data) => {
-          return (
-              <div style={{border:'10px'}}>
-                  <Button
-                      onClick={onSubmit1}
-                      type="submit"
-                      variant="contained"
-                      // style={{margin:'16px'}}
-                    ></Button>
-              </div>
-
-          )
-        })}
+      <div>
 
         {receiptList.map((v, i) => getReciptButton(v, i))}
 
       </div>
-
-        </AccordionDetails>
-      </Accordion>
-
-
-
-
-
-
-
-
 
   )
 }

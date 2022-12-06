@@ -61,12 +61,12 @@ def list_ingredients(queryString : str, request: Request):
 @router.post("/search2/", response_description="Get Recipes that match all the ingredients in the request", status_code=200, response_model=RecipeListResponse)
 def list_recipes_by_ingredients(request: Request, inp: RecipeListRequest2 = Body(...)):
     """Lists recipes matching all provided ingredients"""
-    print('Method was called1')
+    #print('Method was called1')
     recipes = list(request.app.database["recipes"].find().limit(1000))
 
     res = []
     for recipe in recipes:
-        print('Method was called3')
+        #print('Method was called3')
         if not recipe["calories"] or not recipe['fat'] or not recipe['sugar'] or not recipe['protein']:
             continue
         try:

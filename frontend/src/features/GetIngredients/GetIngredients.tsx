@@ -137,6 +137,7 @@ const GetIngredients = () => {
 
   return (
     <>
+      <br></br>
       <Grid container spacing={3}>
         <Grid item xs={1}></Grid>
         <Grid item xs={10}>

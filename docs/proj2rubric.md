@@ -5,7 +5,7 @@
 |Notes|assessment|evidence|
 |-----|---------|----------|
 |Video1|3|[tbd]
-|Bonus: Xfold improvement|3|Used CDN, SSL, etc. largely improved the scalability and scurity. https://github.com/yzhu27/CookBook/blob/main/docs/Scalability.md, https://github.com/yzhu27/CookBook/blob/main/docs/Safety.md
+|Bonus: Xfold improvement|3|Used CDN, SSL, etc. largely improved the scalability and security. https://github.com/yzhu27/CookBook/blob/main/docs/Scalability.md, https://github.com/yzhu27/CookBook/blob/main/docs/Safety.md
 |Docs: what: point descriptions of each class/function (in isolation) |3|https://github.com/yzhu27/CookBook/tree/main/docs|
 |Use of style checkers |3|https://github.com/yzhu27/CookBook/blob/main/README.md#style-checker-and-code-fomatter|
 |Use of code formatters |3|https://github.com/yzhu27/CookBook/blob/main/README.md#style-checker-and-code-fomatter|

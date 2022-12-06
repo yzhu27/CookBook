@@ -66,9 +66,10 @@ Group 7 improved the CookBook significantly.
 
 ## New features:
 
+- Make CookBook come online as a website: [Cook Book](https://cook-book.ml) Users don't need to install the backend and frontend anymore.
 - Add filtering system based on nutrition.
 - Created ingredient tags to simplify the searching.
-- Set up .ml domain for [CookBook](https://cook-book.ml). Users don't need to install the backend and frontend anymore.
+
 
 ## Better Software Design
 
@@ -76,11 +77,11 @@ Group 7 improved the CookBook significantly.
 - Improved the safety by [Domain](https://github.com/yzhu27/CookBook/blob/main/docs/Safety.md#domain), [SSL/TSL](https://github.com/yzhu27/CookBook/blob/main/docs/Safety.md#ssltls), [DDoS Protection](https://github.com/yzhu27/CookBook/blob/main/docs/Safety.md#ddos-protection).
 # Installations
 
-## URL Loading
-Access this link [CookBook](https://cook-book.ml).
+## Access the website
+Access this link [Cook Book](https://cook-book.ml).
 
 ### Trouble Shooting
-If this page failed, try to change your network environment. Typically, NC State Campus WIFI may cause loading failure. Try your home WIFI or mobile hotspot.
+If this page failed, try to change your network environment. Typically, we noticed some DNS resolve failures under NC State network. That may caused by NCSU's DNS server problem. You may try your home network or mobile hotspot instead.
 
 If you still fail to load the site, try the following steps.
 

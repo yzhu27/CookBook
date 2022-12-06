@@ -72,8 +72,16 @@ const GetTags = () => {
   const navigateTo = useNavigate()
     const [expanded, setExpanded] = React.useState<string | false>('panel1');
   const [chipData, setChipData] = useState<readonly ChipData[]>([])
-  const receiptList = ['milk', 'butter', 'blueberries','grapefruits','wine vinegar','potato','vanilla',
-    'chicken meat','lobster meat','beef','lamb stock','pork','boneless pork','flour','eggs','eggplant']
+  const receiptList = ['beef','milk','boneless pork','blueberries','butter',
+                       'cheese','chicken meat','corn',
+                       'eggs','eggplant',
+                       'flour',
+                       'garlic','grapefruits',
+                       'lobster meat','lamb stock',
+                       'onion',
+                       'pork','potato',
+                       'turkey',
+                       'vanilla']
   const getReciptButton = (name: string, key: number) => {
     const onSubmit = () => {
       let ingredientsArray: Array<string> = []

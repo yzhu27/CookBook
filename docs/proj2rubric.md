@@ -11,7 +11,7 @@
 |Use of code formatters |3|https://github.com/yzhu27/CookBook/blob/main/README.md#style-checker-and-code-fomatter|
 |Use of syntax checkers |3|https://github.com/yzhu27/CookBook/blob/main/README.md#style-checker-and-code-fomatter|
 |Use of code coverage |3|Code coverage is [tbd]. Shown in the badging. https://github.com/yzhu27/CookBook/blob/main/README.md#code-coverage|
-|Other automated analysis tools|3|[tbd]|
+|Other automated analysis tools|3|https://github.com/yzhu27/CookBook/actions|
 |Workload is spread over the whole team |3|https://github.com/yzhu27/CookBook/graphs/contributors
 |Number of commits|3|#commit = [tbd]. https://github.com/yzhu27/CookBook/graphs/contributors|
 |Number of commits: by different people|3|https://github.com/yzhu27/CookBook/graphs/contributors|

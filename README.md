@@ -60,7 +60,7 @@ With over recipes, there is something in the store for everyone !<br><br>
 <p align="center"><img width="700" src="./assets/demo.gif"></p><br><br>
 
 # What's New?
-Group 7 improved the CookBook significantly.
+[![improvements introduction](https://res.cloudinary.com/marcomontalbano/image/upload/v1670384054/video_to_markdown/images/youtube--swfG0uig19c-c05b58ac6eb4c4700831b2b3070cd403.jpg)](https://www.youtube.com/watch?v=swfG0uig19c "improvements introduction")
 
 ## New features:
 

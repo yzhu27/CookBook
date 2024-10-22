@@ -12,6 +12,15 @@ services:
     networks:
       - fastapi-network
 
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    networks:
+      - fastapi-network
+
 networks:
   fastapi-network:
     driver: bridge

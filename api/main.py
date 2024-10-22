@@ -13,7 +13,7 @@ sys.path.insert(0, '../')
 from fastapi import FastAPI
 from dotenv import dotenv_values
 from pymongo import MongoClient
-from api.routes import router
+from routes import router
 from fastapi.middleware.cors import CORSMiddleware
 
 config = dotenv_values(".env")

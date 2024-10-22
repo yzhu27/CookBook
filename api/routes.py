@@ -16,7 +16,7 @@ from typing import List, Dict
 import pymongo
 import pprint
 
-from api.models import Recipe, RecipeListRequest, RecipeListResponse, RecipeListRequest2
+from models import Recipe, RecipeListRequest, RecipeListResponse, RecipeListRequest2
 
 router = APIRouter()
 

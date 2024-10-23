@@ -36,8 +36,8 @@ this file. If not, please write to: help.cookbook@gmail.com
  
  const store = applicationStore()
 
- const shareOnWhatsApp = (recipeUrl: string) => {
-  const whatsappUrl = `https://api.whatsapp.com/send?text=Check out this recipe: ${encodeURIComponent(recipeUrl)}`;
+const shareOnWhatsApp = (recipeUrl: string) => {
+  const whatsappUrl = `https://wa.me/?text=Check out this recipe: ${encodeURIComponent(recipeUrl)}`;
   window.open(whatsappUrl, '_blank');
 };
 
@@ -189,7 +189,7 @@ this file. If not, please write to: help.cookbook@gmail.com
           )}
         </div>
         <div>
-          <button onClick={() => shareOnWhatsApp(recipeUrl)}>Share on WhatsApp</button>
+          <button onClick={() => shareOnWhatsApp(window.location.href)}>Share on WhatsApp</button>
         </div>
        </div>
       

@@ -1,15 +1,26 @@
-/*
-
-Copyright (C) 2022 SE CookBook - All Rights Reserved
-You may use, distribute and modify this code under the
-terms of the MIT license.
-You should have received a copy of the MIT license with
-this file. If not, please write to: help.cookbook@gmail.com
-
-*/
-
 .recipe-header{
     padding-bottom: 20px;
     margin: 0 100px 0 !important;
     border-bottom: 1px solid white;
+}
+.step {
+    padding: 15px;
+    margin-bottom: 10px;
+    background-color: #ffffff;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    color: #333;
+    border-radius: 10px;
+}
+
+.step:hover {
+    background-color: #90caf9;
+    color: #000;
+    transform: scale(1.02);
+}
+
+.helper-text {
+    font-size: 1rem;
+    color: #ffffff;
+    margin-top: 5px;
 }

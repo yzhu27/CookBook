@@ -15,9 +15,9 @@ this file. If not, please write to: help.cookbook@gmail.com
  * This component is a dynamic component and is seen only when you click on a recipe from the recipe list
  * @author Priyanka Ambawane - dearpriyankasa@gmail.com
  */
- import { Grid, Paper, Stack, Typography } from '@mui/material';
+ import { IconButton, Grid, Paper, Stack, Typography } from '@mui/material';
  import StarIcon from '@mui/icons-material/Star';
- import React, { useEffect } from 'react';
+ import React, { useEffect, useState } from 'react';
  import { Provider } from 'react-redux'
  import applicationStore from '../../../store'
  import { useDispatch, useSelector } from 'react-redux';
@@ -25,7 +25,7 @@ this file. If not, please write to: help.cookbook@gmail.com
  import { getRecipeInfoInitiator } from './getRecipeInformation.action';
  import './RecipeInformation.css'
  import noImage from './no-image.png';
- 
+
  let triviaPaperStyles = {
    backgroundColor: '#f2f4f4',
    marginTop: '20px',
@@ -42,7 +42,18 @@ this file. If not, please write to: help.cookbook@gmail.com
  
    // accesses the state of the component from the app's store
    const recipeInfo = useSelector((state: any) => state.getRecipeInfoAppState);
- 
+   const [isSpeaking, setIsSpeaking] = useState(false);
+   const speakInstructions = (instruction: string) => {
+    if (!isSpeaking) {
+        const synth = window.speechSynthesis;
+        const utterance = new SpeechSynthesisUtterance(instruction);
+        utterance.onend = () => {
+            setIsSpeaking(false);
+        };
+        synth.speak(utterance);
+        setIsSpeaking(true);
+    }
+};
    /* the effect hook below does an api call to get the recipe details
       using the recipe id as soon as the compnent gets loaded up */
    useEffect(() => {
@@ -150,25 +161,26 @@ this file. If not, please write to: help.cookbook@gmail.com
            </Paper>
          </div>
          <div style={{ float: 'left', width: '40vw', marginTop: '15px'}}>
-           <Grid container spacing={3}>
-             <Grid item xs={12}>
-                <Stack direction="column" spacing={2} paddingBottom='20px' textAlign={'left'}>
-                 {recipe?.instructions.map((inst: string, idx: number) => {
-                   return (
-                     <>
-                       <Typography variant="h6">
-                         Step {idx+1}:
-                         <Typography variant="subtitle1" gutterBottom>
-                           {inst}
-                         </Typography>
-                       </Typography>
-                     </>
-                   )
-                 })}
-               </Stack>
-             </Grid>
-           </Grid>
-         </div>
+          <Grid container spacing={3}>
+            <Grid item xs={12}>
+              <Stack direction="column" spacing={2} paddingBottom='20px' textAlign={'left'}>
+              <div className="helper-text">
+              Tap on any step below to hear the instructions read aloud. Follow along with the recipe as you cook, and feel free to pause or repeat any step!
+              </div>
+                {recipe.instructions.map((inst: string, idx: number) => (
+          <div key={idx} className="step" onClick={() => speakInstructions(inst)}>
+            <Typography variant="h6">
+              Step {idx + 1}:
+              <Typography variant="subtitle1" gutterBottom>
+                {inst}
+              </Typography>
+            </Typography>
+          </div>
+        ))}
+      </Stack>
+    </Grid>
+  </Grid>
+  </div>
          <div style={{ float: 'left', width: '30vw'}}>
           {recipe?.images?.length > 0 && recipe?.images[0] !== '' ? 
             <Typography variant="subtitle1" gutterBottom>

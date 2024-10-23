@@ -36,6 +36,11 @@ this file. If not, please write to: help.cookbook@gmail.com
  
  const store = applicationStore()
 
+ const shareOnWhatsApp = (recipeUrl: string) => {
+  const whatsappUrl = `https://api.whatsapp.com/send?text=Check out this recipe: ${encodeURIComponent(recipeUrl)}`;
+  window.open(whatsappUrl, '_blank');
+};
+
  const RecipeInformationWrapped = () => {
    let { id } = useParams();
    const dispatch = useDispatch();
@@ -183,6 +188,9 @@ this file. If not, please write to: help.cookbook@gmail.com
             <img src={noImage} alt={`Cannot display pic`} />
           )}
         </div>
+        <div>
+          <button onClick={() => shareOnWhatsApp(recipeUrl)}>Share on WhatsApp</button>
+        </div>
        </div>
       
      );
@@ -197,4 +205,7 @@ this file. If not, please write to: help.cookbook@gmail.com
     </Provider>
   )
  }
+
+
+ 
  export default RecipeInformation;

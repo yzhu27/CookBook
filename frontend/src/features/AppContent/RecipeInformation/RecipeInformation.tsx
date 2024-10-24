@@ -190,7 +190,7 @@ const shareOnWhatsApp = (recipeUrl: string) => {
         </div>
         <div>
         <button onClick={() => shareOnWhatsApp(window.location.href)} style="border:none; background:none;">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="Share on WhatsApp" style="width: 24px; height: 24px;">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="Share on WhatsApp" style="width: 24px; height: 24px;"></img>
         </button>
         </div>
        </div>

@@ -36,9 +36,18 @@ this file. If not, please write to: help.cookbook@gmail.com
  
  const store = applicationStore()
 
+
+
+
  const shareOnWhatsApp = (recipeUrl: string) => {
-  const whatsappUrl = `https://api.whatsapp.com/send?text=Check out this recipe: ${encodeURIComponent(recipeUrl)}`;
+  const baseUrl = process.env.NODE_ENV === 'production' 
+  ? process.env.REACT_APP_WHATSAPP_URL_PROD || 'https://api.whatsapp.com/send?text='
+  : process.env.REACT_APP_WHATSAPP_URL_TEST || 'https://api.whatsapp.com/send?text=';
+
+  const whatsappUrl = `${baseUrl}Check out this recipe: ${encodeURIComponent(recipeUrl)}`;
   window.open(whatsappUrl, '_blank');
+  // const whatsappUrl = `https://api.whatsapp.com/send?text=Check out this recipe: ${encodeURIComponent(recipeUrl)}`;
+  
 };
 
  const RecipeInformationWrapped = () => {
@@ -189,7 +198,7 @@ this file. If not, please write to: help.cookbook@gmail.com
           )}
         </div>
         <div>
-          <button onClick={() => shareOnWhatsApp(recipeUrl)}>Share on WhatsApp</button>
+        <button onClick={() => shareOnWhatsApp(window.location.href)}>Share using WhatsApp</button> 
         </div>
        </div>
       

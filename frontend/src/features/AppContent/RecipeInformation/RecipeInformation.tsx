@@ -96,7 +96,7 @@ this file. If not, please write to: help.cookbook@gmail.com
     `;
     const handleSubmit = async () => {
       try {
-          const result = await axios.post('http://localhost:8000/recipe/recommend-recipes/', { query: input + recipeDetailsforLLM });
+          const result = await axios.post('http://localhost:8000/recipe/recommend-recipes/', { query: input, context: recipeDetailsforLLM });
           setResponse(result.data.response);
       } catch (error) {
           console.error('Error fetching recipe recommendations:', error);

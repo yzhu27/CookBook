@@ -23,6 +23,7 @@ router = APIRouter()
 client = Groq(api_key=config["GROQ_API_KEY"])
 class RecipeQuery(BaseModel):
     query: str
+    context: str
 
 @router.get("/", response_description="List all recipes", response_model=List[Recipe])
 def list_recipes(request: Request):
@@ -98,11 +99,8 @@ def list_recipes_by_ingregredient(ingredient: str, caloriesLow: int, caloriesUp:
 @router.post("/recommend-recipes/", response_model=dict)
 async def recommend_recipes(query: RecipeQuery = Body(...)):
     try:
-        query.query = query.query.strip()
-        query.query = query.query.replace('\n', ' ')
-        query.query = query.query.replace('\t', ' ')
-        query.query = query.query.replace('  ', ' ')
-        if query.query == '':
+        query.query = query.query.replace('\n', ' ').replace('\t', ' ').replace('  ', ' ').strip()
+        if not query.query:
             raise HTTPException(status_code=400, detail="Invalid Query")
         response = client.chat.completions.create(
             messages=[
@@ -112,7 +110,7 @@ async def recommend_recipes(query: RecipeQuery = Body(...)):
             },
             {
                 "role": "user",
-                "content": query.query
+                "content": query.query + query.context
             }
             ],
             model="llama3-8b-8192",

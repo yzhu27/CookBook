@@ -25,6 +25,7 @@ this file. If not, please write to: help.cookbook@gmail.com
  import { getRecipeInfoInitiator } from './getRecipeInformation.action';
  import './RecipeInformation.css'
  import noImage from './no-image.png';
+ import { FaWhatsapp } from 'react-icons/fa';
  
  let triviaPaperStyles = {
    backgroundColor: '#f2f4f4',
@@ -197,8 +198,33 @@ this file. If not, please write to: help.cookbook@gmail.com
             <img src={noImage} alt={`Cannot display pic`} />
           )}
         </div>
-        <div>
-        <button onClick={() => shareOnWhatsApp(window.location.href)}>Share using WhatsApp</button> 
+        <div style={{ float: 'left', width: '30vw'}}>
+            <button 
+        onClick={() => shareOnWhatsApp(window.location.href)} 
+        color="success" 
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          width: '200px',
+          backgroundColor: '#25D366',
+          color: 'white',
+          marginTop: '20px',
+          padding: '10px',
+          border: 'none',
+          borderRadius: '8px',
+          cursor: 'pointer',
+          boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)',
+          transition: 'transform 0.2s ease'
+        }}
+        onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.05)'}
+        onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
+      >
+        <span style={{ marginRight: '10px', fontSize: '1.2em' }}>
+          <FaWhatsapp />
+        </span>
+        WhatsApp
+            </button>
         </div>
        </div>
       

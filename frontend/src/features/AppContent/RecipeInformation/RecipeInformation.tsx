@@ -15,9 +15,9 @@ this file. If not, please write to: help.cookbook@gmail.com
  * This component is a dynamic component and is seen only when you click on a recipe from the recipe list
  * @author Priyanka Ambawane - dearpriyankasa@gmail.com
  */
- import { Grid, Paper, Stack, Typography } from '@mui/material';
+ import { Grid, Paper, Stack, Typography, Button } from '@mui/material';
  import StarIcon from '@mui/icons-material/Star';
- import React, { useEffect } from 'react';
+ import React, { useEffect, useState } from 'react';
  import { Provider } from 'react-redux'
  import applicationStore from '../../../store'
  import { useDispatch, useSelector } from 'react-redux';
@@ -25,6 +25,7 @@ this file. If not, please write to: help.cookbook@gmail.com
  import { getRecipeInfoInitiator } from './getRecipeInformation.action';
  import './RecipeInformation.css'
  import noImage from './no-image.png';
+ import axios from 'axios';
  
  let triviaPaperStyles = {
    backgroundColor: '#f2f4f4',
@@ -39,6 +40,17 @@ this file. If not, please write to: help.cookbook@gmail.com
  const RecipeInformationWrapped = () => {
    let { id } = useParams();
    const dispatch = useDispatch();
+   const [input, setInput] = useState('');
+   const [response, setResponse] = useState('');
+   const [showInput, setShowInput] = useState(false);
+
+   const handleButtonClick = () => {
+     setShowInput(true);
+   };
+
+   const handleInputChange = (e: any) => {
+    setInput(e.target.value);
+  };
  
    // accesses the state of the component from the app's store
    const recipeInfo = useSelector((state: any) => state.getRecipeInfoAppState);
@@ -56,6 +68,49 @@ this file. If not, please write to: help.cookbook@gmail.com
      return <div data-testid="RecipeInfo-comp-43"> Loading ... </div>
    } else if (recipeInfo.isGetRecipeInfoSuccess) {
      const recipe = recipeInfo.getRecipeInfoData;
+     const recipeDetailsforLLM = `
+      Name: ${recipe.name}
+      Ingredients: ${recipe.ingredients.join(', ')}
+      Rating: ${recipe.rating}
+      Prep Time: ${recipe.prepTime}
+      Sugar: ${recipe.sugar}g
+      Carbs: ${recipe.carbs}g
+      Protein: ${recipe.protein}g
+      Cuisine: ${recipe.category}
+      Servings: ${recipe.servings}
+      Cook Time: ${recipe.cookTime}
+      Cholesterol: ${recipe.cholesterol}mg/dl
+      Fat: ${recipe.fat}g
+      Instructions: ${recipe.instructions.join(' ')}
+    `;
+    const handleSubmit = async () => {
+      try {
+          const result = await axios.post('http://localhost:8000/recipe/recommend-recipes/', { query: input + recipeDetailsforLLM });
+          setResponse(result.data.response);
+      } catch (error) {
+          console.error('Error fetching recipe recommendations:', error);
+      }
+    };
+      // Function to handle formatting
+  const formatText = (text: string) => {
+    return text.split('\n').map((line, index) => {
+      // Check for "**" bold markers first
+      const boldRegex = /\*\*(.*?)\*\*/g;
+      let formattedLine = line;
+      if (boldRegex.test(line)) {
+        // Replace "**text**" with <strong>text</strong>
+        formattedLine = line.replace(boldRegex, (match, p1) => `<strong>${p1}</strong>`);
+      }
+
+      // Check if the line starts with "*", convert to list items
+      if (formattedLine.trim().startsWith('*')) {
+        return <li key={index}>{formattedLine.replace('*', '').trim()}</li>;
+      }
+
+      // Return as a paragraph for other lines
+      return <p key={index} dangerouslySetInnerHTML={{ __html: formattedLine }}></p>;
+    });
+  };
      return (
         <div style={{ width: '100vw', color: '#f2f4f4', paddingTop: '20px'}} data-testid = "RecipeInfo-comp-43">
          <Typography variant="h4" gutterBottom className='recipe-header'>{recipe.name}</Typography>
@@ -166,6 +221,18 @@ this file. If not, please write to: help.cookbook@gmail.com
                    )
                  })}
                </Stack>
+               <Stack direction="column" spacing={2} alignItems="center">
+             <Button onClick={handleButtonClick} variant="contained" color="primary" style={{ width: '200px' }}>CUSTOMIZE</Button>
+             {showInput && (
+               <div className="input-group">
+                 <input type="text" value={input} onChange={handleInputChange} className="input-textbox" />
+                 {input.length > 0 && (
+                   <button onClick={handleSubmit} className="submit-button"></button>
+                 )}
+               </div>
+             )}
+             <Typography variant="subtitle1" gutterBottom>{formatText(response)}</Typography>
+           </Stack>
              </Grid>
            </Grid>
          </div>

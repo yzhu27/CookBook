@@ -15,7 +15,7 @@ from typing import List
 import pymongo
 from groq import Groq
 from dotenv import dotenv_values
-from pydantic import BaseModel
+from pydantic import BaseModel, conint, conlist, PositiveInt
 from models import Recipe, RecipeListRequest, RecipeListResponse, RecipeListRequest2
 
 config = dotenv_values(".env")

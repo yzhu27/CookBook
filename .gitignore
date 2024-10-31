@@ -1,5 +1,6 @@
 # Ignore MongoDB credentials
 api/.env
+.cache_ggshield
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

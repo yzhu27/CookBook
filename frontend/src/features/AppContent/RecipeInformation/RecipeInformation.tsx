@@ -244,7 +244,7 @@ this file. If not, please write to: help.cookbook@gmail.com
                 onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
               >
                 <FaWhatsapp style={{ marginRight: '10px', fontSize: '1.2em' }} />
-                Share on WhatsApp
+                WhatsApp
               </button>
             </Grid>
            </Grid>

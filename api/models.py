@@ -110,18 +110,17 @@ class Recipe(BaseModel):
 
 
 class RecipeListRequest(BaseModel):
-    ingredients: List[str]
-    page: int
+    ingredients: List[str] = Field(..., description="List of ingredients to filter recipes")
+    page: int = Field(..., description="Page number for pagination")
 
 class RecipeListResponse(BaseModel):
-    recipes: List[Recipe] = Field(..., description="List of recipe ids")
-    page: int = Field(..., description="Page number")
-    count: int = Field(..., description="Number of total recipes based on filters")
+    recipes: List[Recipe] = Field(..., description="List of recipes matching the filter criteria")
+    page: int = Field(..., description="Current page number")
+    count: int = Field(..., description="Total count of recipes matching the filter criteria")
 
 class RecipeListRequest2(BaseModel):
-    page: int
-    caloriesUp: float
-    caloriesUp: float
-    fatUp: float
-    sugUp: float
-    proUp: float
+    page: int = Field(..., ge=1, description="Page number, must be at least 1")
+    caloriesUp: float = Field(..., ge=0, le=1000, description="Calories upper limit, between 0 and 100")
+    fatUp: float = Field(..., ge=0, le=100, description="Fat upper limit, between 0 and 100")
+    sugUp: float = Field(..., ge=0, le=100, description="Sugar upper limit, between 0 and 100")
+    proUp: float = Field(..., ge=0, le=100, description="Protein upper limit, between 0 and 100")

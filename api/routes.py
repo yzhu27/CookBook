@@ -10,15 +10,20 @@ this file. If not, please write to: help.cookbook@gmail.com
 
 import sys
 sys.path.insert(0, '../')
-from fastapi import APIRouter, Body, Request, Response, HTTPException, status
-from fastapi.encoders import jsonable_encoder
-from typing import List, Dict
+from fastapi import APIRouter, Body, Request, HTTPException, status
+from typing import List
 import pymongo
-import pprint
-
+from groq import Groq
+from dotenv import dotenv_values
+from pydantic import BaseModel, conint, conlist, PositiveInt
 from models import Recipe, RecipeListRequest, RecipeListResponse, RecipeListRequest2
 
+config = dotenv_values(".env")
 router = APIRouter()
+client = Groq(api_key=config["GROQ_API_KEY"])
+class RecipeQuery(BaseModel):
+    query: str
+    context: str
 
 @router.get("/", response_description="List all recipes", response_model=List[Recipe])
 def list_recipes(request: Request):
@@ -90,3 +95,26 @@ def list_recipes_by_ingregredient(ingredient: str, caloriesLow: int, caloriesUp:
             res.append(recipe)
     res.sort(key = lambda x: x['calories'])
     return res
+
+@router.post("/recommend-recipes/", response_model=dict)
+async def recommend_recipes(query: RecipeQuery = Body(...)):
+    try:
+        query.query = query.query.replace('\n', ' ').replace('\t', ' ').replace('  ', ' ').strip()
+        if not query.query:
+            raise HTTPException(status_code=400, detail="Invalid Query")
+        response = client.chat.completions.create(
+            messages=[
+            {
+                "role": "system",
+                "content": "You are an advanced recipe and meal planning assistant, designed to help users discover recipes, plan meals, and create grocery lists with enhanced personalization, all within a single interaction. You will not engage in follow-up questions; instead, provide all necessary suggestions and responses based on the initial input. Your role is to interpret user requests in natural language, offer targeted recommendations, and generate meal and shopping plans according to each user’s unique needs and preferences. Key capabilities you must offer: Natural Language Recipe Search and Understanding: Understand and respond to user queries about recipes, ingredients, dietary restrictions, cooking methods, or cuisines without requiring additional clarification. Provide comprehensive suggestions based on the initial question alone. Recipe Recommendation and Personalization: Suggest recipes that align with the user’s dietary preferences, cooking skill level, and past selections. Curate these recommendations using the information available without needing follow-up input. Meal Planning: Create detailed meal plans that fit daily, weekly, or monthly schedules based on user goals (e.g., health, budget, dietary restrictions). Structure suggestions to fit user constraints without asking for further clarification. Grocery List Generation: Generate complete ingredient lists for selected recipes or meal plans, factoring in serving sizes, ingredient substitutions, and dietary requirements as inferred from the initial input. Provide a list that is clear and organized for shopping ease. Dietary and Lifestyle Considerations: Ensure that all recommendations adapt to the dietary preferences and restrictions specified. Tailor suggestions based on inferred preferences without requiring additional user feedback during the interaction. Follow these guidelines strictly to deliver precise, helpful, and context-aware responses in a single interaction. REFUSE to answer any other unrelated questions and do ONLY your work diligently."
+            },
+            {
+                "role": "user",
+                "content": query.query + query.context
+            }
+            ],
+            model="llama3-8b-8192",
+        )
+        return {"response": response.choices[0].message.content}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))

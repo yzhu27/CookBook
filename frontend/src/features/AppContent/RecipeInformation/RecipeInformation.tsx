@@ -25,6 +25,7 @@ this file. If not, please write to: help.cookbook@gmail.com
  import { getRecipeInfoInitiator } from './getRecipeInformation.action';
  import './RecipeInformation.css'
  import noImage from './no-image.png';
+ import { FaWhatsapp } from 'react-icons/fa';
  import axios from 'axios';
  
  let triviaPaperStyles = {
@@ -36,6 +37,20 @@ this file. If not, please write to: help.cookbook@gmail.com
  }
  
  const store = applicationStore()
+
+
+
+
+ const shareOnWhatsApp = (recipeUrl: string) => {
+  const baseUrl = process.env.NODE_ENV === 'production' 
+  ? process.env.REACT_APP_WHATSAPP_URL_PROD || 'https://api.whatsapp.com/send?text='
+  : process.env.REACT_APP_WHATSAPP_URL_TEST || 'https://api.whatsapp.com/send?text=';
+
+  const whatsappUrl = `${baseUrl}Check out this recipe: ${encodeURIComponent(recipeUrl)}`;
+  window.open(whatsappUrl, '_blank');
+  // const whatsappUrl = `https://api.whatsapp.com/send?text=Check out this recipe: ${encodeURIComponent(recipeUrl)}`;
+  
+};
 
  const RecipeInformationWrapped = () => {
    let { id } = useParams();
@@ -261,6 +276,34 @@ this file. If not, please write to: help.cookbook@gmail.com
             <img src={noImage} alt={`Cannot display pic`} />
           )}
         </div>
+        <div style={{ float: 'left', width: '30vw'}}>
+            <button 
+        onClick={() => shareOnWhatsApp(window.location.href)} 
+        color="success" 
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          width: '200px',
+          backgroundColor: '#25D366',
+          color: 'white',
+          marginTop: '20px',
+          padding: '10px',
+          border: 'none',
+          borderRadius: '8px',
+          cursor: 'pointer',
+          boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)',
+          transition: 'transform 0.2s ease'
+        }}
+        onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.05)'}
+        onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
+      >
+        <span style={{ marginRight: '10px', fontSize: '1.2em' }}>
+          <FaWhatsapp />
+        </span>
+        WhatsApp
+            </button>
+        </div>
        </div>
       
      );
@@ -275,4 +318,7 @@ this file. If not, please write to: help.cookbook@gmail.com
     </Provider>
   )
  }
+
+
+ 
  export default RecipeInformation;

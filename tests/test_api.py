@@ -211,3 +211,25 @@ def test_list_recipes_by_nonexistent_page():
     assert response.status_code == 200
     response_data = response.json()
     assert response_data["recipes"] == []
+
+def test_get_recipe_by_invalid_id():
+    """Test retrieving a recipe by an invalid ID."""
+    invalid_id = 99999  # Assuming this ID doesn't exist
+    response = requests.get(f"{BASE_URL}/recipes/{invalid_id}/")
+    assert response.status_code == 404
+
+
+def test_update_recipe_invalid_id():
+    """Test updating a recipe with an invalid ID."""
+    invalid_id = 99999  # Assuming this ID doesn't exist
+    updated_data = {
+        "name": "Should Not Work"
+    }
+    response = requests.put(f"{BASE_URL}/recipes/{invalid_id}/", json=updated_data)
+    assert response.status_code == 404
+
+def test_delete_recipe_invalid_id():
+    """Test deleting a recipe with an invalid ID."""
+    invalid_id = 99999  # Assuming this ID doesn't exist
+    response = requests.delete(f"{BASE_URL}/recipes/{invalid_id}/")
+    assert response.status_code == 404

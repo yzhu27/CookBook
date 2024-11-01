@@ -9,15 +9,19 @@ this file. If not, please write to: help.cookbook@gmail.com
 """
 
 import sys
+import os
 sys.path.insert(0, '../')
 from fastapi import FastAPI
-from dotenv import dotenv_values
 from pymongo import MongoClient
 from routes import router
 from fastapi.middleware.cors import CORSMiddleware
 
-config = dotenv_values(".env")
-
+config = {
+    "ATLAS_URI": os.getenv("ATLAS_URI"),
+    "DB_NAME": os.getenv("DB_NAME"),
+    "GROQ_API_KEY": os.getenv("GROQ_API_KEY"),
+    "PORT": os.getenv("PORT")
+}
 app = FastAPI()
 
 origins = ['http://localhost:3000', "*"]

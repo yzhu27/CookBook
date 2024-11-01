@@ -9,17 +9,22 @@ this file. If not, please write to: help.cookbook@gmail.com
 """
 
 import sys
+import os
 sys.path.insert(0, '../')
 from fastapi import APIRouter, Body, Request, HTTPException, status
 from typing import List
 import pymongo
 from groq import Groq
-from dotenv import dotenv_values
 from pydantic import BaseModel, conint, conlist, PositiveInt
 import logging
 from models import Recipe, RecipeListRequest, RecipeListResponse, RecipeListRequest2,RecipeQuery
 
-config = dotenv_values(".env")
+config = {
+    "ATLAS_URI": os.getenv("ATLAS_URI"),
+    "DB_NAME": os.getenv("DB_NAME"),
+    "GROQ_API_KEY": os.getenv("GROQ_API_KEY"),
+    "PORT": os.getenv("PORT")
+}
 router = APIRouter()
 client = Groq(api_key=config["GROQ_API_KEY"])
 

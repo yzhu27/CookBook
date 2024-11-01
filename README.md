@@ -242,6 +242,13 @@ Following extensions have to be added to you VS Code editor:
 - Jiayuan Huang
 - Yiran Zhu
 
+## Version 3
+- Akshay Ashutosh Dongare
+- Anish Mulay
+- Ashwattha Phatak
+- ![Team](https://github.com/user-attachments/assets/9c9d9a1d-4efb-4952-bdd1-8bf8bb0d5afb)
+
+
 # Support
 You can find the dataset used for this project [here](https://drive.google.com/file/d/12CZFb7Ugmiw9zQ7M_qpRsn7pmaV1zW0c/view?usp=sharing)
 

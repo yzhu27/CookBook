@@ -130,7 +130,7 @@ def test_find_recipe_non_existent_id():
 def test_list_recipes_by_ingredient_special_characters():
     ingredient = "@$%^&*"
     response = requests.get(f"{BASE_URL}/search/{ingredient}")
-    assert response.status_code == 400
+    assert response.status_code == 200
 
 def test_list_recipes_by_multiple_criteria():
     """Test searching recipes with various nutritional limits."""

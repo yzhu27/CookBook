@@ -3,14 +3,14 @@
 <div align="center">
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-![Build](https://github.com//yzhu27/CookBook/actions/workflows/python-app.yml/badge.svg)
+[![Build](https://github.com/AMAPAD/CookBook/actions/workflows/build.yml/badge.svg)](https://github.com/AMAPAD/CookBook/actions/workflows/build.yml)
 [![DOI](https://zenodo.org/badge/541238337.svg)](https://zenodo.org/badge/latestdoi/541238337)
-![Github Issues](https://img.shields.io/github/issues-closed/yzhu27/CookBook)
-![Github Issues](https://img.shields.io/github/issues/yzhu27/CookBook)
-![Github Pull Requests](https://img.shields.io/github/issues-pr/yzhu27/CookBook)
-![Github Pull Requests](https://img.shields.io/github/issues-pr-closed/yzhu27/CookBook)
-![Commit Status](https://img.shields.io/github/commit-status/yzhu27/CookBook/main/9677b6e3e656a77a55d73e34fc6e32df4d161556)
-[![codecov](https://codecov.io/gh/yzhu27/CookBook/branch/main/graph/badge.svg?token=H3ZYW01UP9)](https://app.codecov.io/gh/yzhu27/CookBook) <br/>
+![Github Issues](https://img.shields.io/github/issues-closed/AMAPAD/CookBook)
+![Github Issues](https://img.shields.io/github/issues/AMAPAD/CookBook)
+![Github Pull Requests](https://img.shields.io/github/issues-pr/AMAPAD/CookBook)
+![Github Pull Requests](https://img.shields.io/github/issues-pr-closed/AMAPAD/CookBook)
+![Commit Status](https://img.shields.io/github/commit-status/AMAPAD/CookBook/main/9677b6e3e656a77a55d73e34fc6e32df4d161556)
+[![Coverage Status](https://coveralls.io/repos/github/AMAPAD/CookBook/badge.svg?branch=main)](https://coveralls.io/github/AMAPAD/CookBook?branch=main)
 ![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white)
 ![FastAPI](https://img.shields.io/badge/FastAPI-005571?style=for-the-badge&logo=fastapi)
 ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)

@@ -28,6 +28,7 @@ import CustomizedAccordions from "./features/AppContent/NutritionFilter/Customiz
 const store = applicationStore()
 
 const App: React.FunctionComponent<any> = () => {
+  // Main component that wraps the application with necessary providers and routes
   return (
     // Provider ensures that the state of the app, i.e. stored in the app-store is accessible across the application
     <Provider store={store}>

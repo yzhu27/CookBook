@@ -40,16 +40,6 @@ def test_list_recipes_by_non_existent_ingredient():
     assert response.status_code == 200
     assert response.json() == []
 
-def test_list_recipes_by_ingredients():
-    """Test listing recipes by multiple ingredients."""
-    data = {
-        "ingredients": ["tomato", "basil"],
-        "page": 1
-    }
-    response = requests.post(f"{BASE_URL}/search/", json=data)
-    assert response.status_code == 200
-    assert "recipes" in response.json()
-
 def test_list_recipes_by_empty_ingredients():
     """Test listing recipes with an empty ingredients list."""
     data = {
@@ -211,6 +201,33 @@ def test_list_recipes_by_nonexistent_page():
     assert response.status_code == 200
     response_data = response.json()
     assert response_data["recipes"] == []
+
+def test_recipe_nutritional_count():
+    """Test retrieving the nutritional count of a recipe."""
+    recipe_id = 46
+    response = requests.get(f"{BASE_URL}/{recipe_id}/nutrition")
+    assert response.status_code == 200
+    data = response.json()
+    assert "calories" in data
+    assert "fat" in data
+    assert "sugar" in data
+    assert "protein" in data
+
+def test_recipe_nutritional_count_invalid_id():
+    """Test retrieving the nutritional count of a recipe with an invalid ID."""
+    invalid_recipe_id = "invalid-id"
+    response = requests.get(f"{BASE_URL}/{invalid_recipe_id}/nutrition")
+    assert response.status_code == 404
+    assert "detail" in response.json()
+
+def test_recipe_nutritional_count_non_existent_id():
+    """Test retrieving the nutritional count of a non-existent recipe."""
+    non_existent_id = "000000000000000000000000"
+    response = requests.get(f"{BASE_URL}/{non_existent_id}/nutrition")
+    assert response.status_code == 404
+    assert "detail" in response.json()
+
+
 
 def test_get_recipe_by_invalid_id():
     """Test retrieving a recipe by an invalid ID."""

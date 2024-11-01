@@ -15,7 +15,7 @@ this file. If not, please write to: help.cookbook@gmail.com
  * This component is a dynamic component and is seen only when you click on a recipe from the recipe list
  * @author Priyanka Ambawane - dearpriyankasa@gmail.com
  */
- import { Grid, Paper, Stack, Typography, Button } from '@mui/material';
+ import { IconButton, Grid, Paper, Stack, Typography, Button } from '@mui/material';
  import StarIcon from '@mui/icons-material/Star';
  import React, { useEffect, useState } from 'react';
  import { Provider } from 'react-redux'
@@ -25,6 +25,7 @@ this file. If not, please write to: help.cookbook@gmail.com
  import { getRecipeInfoInitiator } from './getRecipeInformation.action';
  import './RecipeInformation.css'
  import noImage from './no-image.png';
+ import { FaWhatsapp } from 'react-icons/fa';
  import axios from 'axios';
  
  let triviaPaperStyles = {
@@ -36,6 +37,20 @@ this file. If not, please write to: help.cookbook@gmail.com
  }
  
  const store = applicationStore()
+
+
+
+
+ const shareOnWhatsApp = (recipeUrl: string) => {
+  const baseUrl = process.env.NODE_ENV === 'production' 
+  ? process.env.REACT_APP_WHATSAPP_URL_PROD || 'https://api.whatsapp.com/send?text='
+  : process.env.REACT_APP_WHATSAPP_URL_TEST || 'https://api.whatsapp.com/send?text=';
+
+  const whatsappUrl = `${baseUrl}Check out this recipe: ${encodeURIComponent(recipeUrl)}`;
+  window.open(whatsappUrl, '_blank');
+  // const whatsappUrl = `https://api.whatsapp.com/send?text=Check out this recipe: ${encodeURIComponent(recipeUrl)}`;
+  
+};
 
  const RecipeInformationWrapped = () => {
    let { id } = useParams();
@@ -54,7 +69,18 @@ this file. If not, please write to: help.cookbook@gmail.com
  
    // accesses the state of the component from the app's store
    const recipeInfo = useSelector((state: any) => state.getRecipeInfoAppState);
- 
+   const [isSpeaking, setIsSpeaking] = useState(false);
+   const speakInstructions = (instruction: string) => {
+    if (!isSpeaking) {
+        const synth = window.speechSynthesis;
+        const utterance = new SpeechSynthesisUtterance(instruction);
+        utterance.onend = () => {
+            setIsSpeaking(false);
+        };
+        synth.speak(utterance);
+        setIsSpeaking(true);
+    }
+};
    /* the effect hook below does an api call to get the recipe details
       using the recipe id as soon as the compnent gets loaded up */
    useEffect(() => {
@@ -67,7 +93,7 @@ this file. If not, please write to: help.cookbook@gmail.com
    if (recipeInfo.isGetRecipeInfoLoading) {
      return <div data-testid="RecipeInfo-comp-43"> Loading ... </div>
    } else if (recipeInfo.isGetRecipeInfoSuccess) {
-     const recipe = recipeInfo.getRecipeInfoData;
+     const recipe = recipeInfo.getRecipeInfoData; // The recipe object containing all necessary information
      const recipeDetailsforLLM = `
       Name: ${recipe.name}
       Ingredients: ${recipe.ingredients.join(', ')}
@@ -85,7 +111,7 @@ this file. If not, please write to: help.cookbook@gmail.com
     `;
     const handleSubmit = async () => {
       try {
-          const result = await axios.post('http://localhost:8000/recipe/recommend-recipes/', { query: input + recipeDetailsforLLM });
+          const result = await axios.post('http://localhost:8000/recipe/recommend-recipes/', { query: input, context: recipeDetailsforLLM });
           setResponse(result.data.response);
       } catch (error) {
           console.error('Error fetching recipe recommendations:', error);
@@ -200,39 +226,60 @@ this file. If not, please write to: help.cookbook@gmail.com
                  </Typography>
                </Stack>
              </Grid>
-             
+             <Grid item xs={12} style={{ textAlign: 'center', marginTop: '20px' }}>
+              <button 
+                onClick={() => shareOnWhatsApp(window.location.href)} // Generates a WhatsApp sharing link for the recipe
+                style={{
+                  marginLeft: '70px',
+                  backgroundColor: '#25D366',
+                  color: 'white',
+                  padding: '10px 20px',
+                  border: 'none',
+                  borderRadius: '8px',
+                  cursor: 'pointer',
+                  boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)',
+                  transition: 'transform 0.2s ease'
+                }}
+                onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.05)'}
+                onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
+              >
+                <FaWhatsapp style={{ marginRight: '10px', fontSize: '1.2em' }} />
+                WhatsApp
+              </button>
+            </Grid>
            </Grid>
            </Paper>
          </div>
          <div style={{ float: 'left', width: '40vw', marginTop: '15px'}}>
-           <Grid container spacing={3}>
-             <Grid item xs={12}>
-                <Stack direction="column" spacing={2} paddingBottom='20px' textAlign={'left'}>
-                 {recipe?.instructions.map((inst: string, idx: number) => {
-                   return (
-                     <>
-                       <Typography variant="h6">
-                         Step {idx+1}:
-                         <Typography variant="subtitle1" gutterBottom>
-                           {inst}
-                         </Typography>
-                       </Typography>
-                     </>
-                   )
-                 })}
-               </Stack>
-               <Stack direction="column" spacing={2} alignItems="center">
-             <Button onClick={handleButtonClick} variant="contained" color="primary" style={{ width: '200px' }}>CUSTOMIZE</Button>
-             {showInput && (
-               <div className="input-group">
-                 <input type="text" value={input} onChange={handleInputChange} className="input-textbox" />
-                 {input.length > 0 && (
-                   <button onClick={handleSubmit} className="submit-button"></button>
-                 )}
-               </div>
-             )}
-             <Typography variant="subtitle1" gutterBottom>{formatText(response)}</Typography>
-           </Stack>
+          <Grid container spacing={3}>
+            <Grid item xs={12}>
+              <Stack direction="column" spacing={2} paddingBottom='20px' textAlign={'left'}>
+              <div className="helper-text">
+              Tap on any step below to hear the instructions read aloud. Follow along with the recipe as you cook, and feel free to pause or repeat any step!
+              </div>
+              {recipe?.instructions.map((inst: string, idx: number) => (
+                <div key={idx} className="step" onClick={() => speakInstructions(inst)}>
+                  <Typography variant="h6">
+                    Step {idx + 1}:
+                    <Typography variant="subtitle1" gutterBottom>
+                      {inst}
+                    </Typography>
+                  </Typography>
+                </div>
+              ))}
+              </Stack>
+              <Stack direction="column" spacing={2} paddingBottom='20px' textAlign={'left'}>
+                <Button onClick={handleButtonClick} variant="contained" color="primary" style={{ width: '200px' }}>CUSTOMIZE</Button>
+                {showInput && (
+                  <div className="input-group">
+                    <input type="text" value={input} onChange={handleInputChange} className="input-textbox" />
+                    {input.length > 0 && (
+                      <button onClick={handleSubmit} className="submit-button"></button>
+                    )}
+                  </div>
+                )}
+                <Typography variant="subtitle1" gutterBottom>{formatText(response)}</Typography>
+              </Stack>
              </Grid>
            </Grid>
          </div>
@@ -264,4 +311,7 @@ this file. If not, please write to: help.cookbook@gmail.com
     </Provider>
   )
  }
+
+
+ 
  export default RecipeInformation;

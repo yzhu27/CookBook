@@ -1,19 +1,9 @@
 /*
-
-Copyright (C) 2022 SE CookBook - All Rights Reserved
+Copyright (C) 2022 SE CookBook
 You may use, distribute and modify this code under the
 terms of the MIT license.
 You should have received a copy of the MIT license with
 this file. If not, please write to: help.cookbook@gmail.com
-
-/*
-
-Copyright (C) 2022 SE CookBook - All Rights Reserved
-You may use, distribute and modify this code under the
-terms of the MIT license.
-You should have received a copy of the MIT license with
-this file. If not, please write to: help.cookbook@gmail.com
-
 */
 
 import React from 'react';
@@ -25,6 +15,8 @@ test('shows recipe information correctly', () => {
     expect(getByTestId("RecipeInfo-comp-43")).toBeInTheDocument();
 });
 
+// Additional tests
+
 test('renders recipe title', () => {
     const { getByText } = render(<RecipeInformation />);
     expect(getByText(/Recipe Title/i)).toBeInTheDocument();
@@ -35,95 +27,134 @@ test('renders recipe image', () => {
     expect(getByAltText(/Recipe Image/i)).toBeInTheDocument();
 });
 
-test('renders recipe ingredients', () => {
+test('renders ingredients section', () => {
     const { getByText } = render(<RecipeInformation />);
     expect(getByText(/Ingredients/i)).toBeInTheDocument();
 });
 
-test('renders recipe instructions', () => {
+test('renders instructions section', () => {
     const { getByText } = render(<RecipeInformation />);
     expect(getByText(/Instructions/i)).toBeInTheDocument();
 });
 
-test('renders share button', () => {
+test('renders share on WhatsApp button', () => {
     const { getByText } = render(<RecipeInformation />);
     expect(getByText(/Share using WhatsApp/i)).toBeInTheDocument();
 });
 
-
-test('renders recipe rating', () => {
+test('share button triggers WhatsApp sharing', () => {
+    window.open = jest.fn();
     const { getByText } = render(<RecipeInformation />);
-    expect(getByText(/Rating/i)).toBeInTheDocument();
+    const shareButton = getByText(/Share using WhatsApp/i);
+    shareButton.click();
+    expect(window.open).toHaveBeenCalledWith(expect.stringContaining('https://api.whatsapp.com/send?text='), '_blank');
 });
 
-test('renders recipe preparation time', () => {
+test('renders rating component', () => {
+    const { getByTestId } = render(<RecipeInformation />);
+    expect(getByTestId("rating-comp")).toBeInTheDocument();
+});
+
+test('renders preparation time', () => {
     const { getByText } = render(<RecipeInformation />);
     expect(getByText(/Preparation Time/i)).toBeInTheDocument();
 });
 
-test('renders recipe servings', () => {
+test('renders servings information', () => {
     const { getByText } = render(<RecipeInformation />);
     expect(getByText(/Servings/i)).toBeInTheDocument();
 });
 
-test('renders recipe author', () => {
+test('renders author information', () => {
     const { getByText } = render(<RecipeInformation />);
     expect(getByText(/Author/i)).toBeInTheDocument();
 });
 
-test('renders recipe category', () => {
+test('renders category information', () => {
     const { getByText } = render(<RecipeInformation />);
     expect(getByText(/Category/i)).toBeInTheDocument();
 });
 
-// Additional tests
-
-test('renders recipe cuisine', () => {
+test('renders cuisine type', () => {
     const { getByText } = render(<RecipeInformation />);
     expect(getByText(/Cuisine/i)).toBeInTheDocument();
 });
 
-test('renders recipe difficulty', () => {
+test('renders difficulty level', () => {
     const { getByText } = render(<RecipeInformation />);
     expect(getByText(/Difficulty/i)).toBeInTheDocument();
 });
 
-test('renders recipe nutrition facts', () => {
+test('renders nutrition facts', () => {
     const { getByText } = render(<RecipeInformation />);
     expect(getByText(/Nutrition Facts/i)).toBeInTheDocument();
 });
 
-test('renders recipe cooking method', () => {
+test('renders cooking method', () => {
     const { getByText } = render(<RecipeInformation />);
     expect(getByText(/Cooking Method/i)).toBeInTheDocument();
 });
 
-test('renders recipe tags', () => {
+test('renders tags section', () => {
     const { getByText } = render(<RecipeInformation />);
     expect(getByText(/Tags/i)).toBeInTheDocument();
 });
 
-test('renders recipe source', () => {
+test('renders source information', () => {
     const { getByText } = render(<RecipeInformation />);
     expect(getByText(/Source/i)).toBeInTheDocument();
 });
 
-test('renders recipe date added', () => {
+test('renders date added', () => {
     const { getByText } = render(<RecipeInformation />);
     expect(getByText(/Date Added/i)).toBeInTheDocument();
 });
 
-test('renders recipe last updated', () => {
+test('renders last updated date', () => {
     const { getByText } = render(<RecipeInformation />);
     expect(getByText(/Last Updated/i)).toBeInTheDocument();
 });
 
-test('renders recipe comments section', () => {
+test('renders comments section', () => {
     const { getByText } = render(<RecipeInformation />);
     expect(getByText(/Comments/i)).toBeInTheDocument();
 });
 
-test('renders recipe related recipes', () => {
+test('renders related recipes section', () => {
     const { getByText } = render(<RecipeInformation />);
     expect(getByText(/Related Recipes/i)).toBeInTheDocument();
+});
+
+test('renders favorite button', () => {
+    const { getByTestId } = render(<RecipeInformation />);
+    expect(getByTestId("favorite-button")).toBeInTheDocument();
+});
+
+test('favorite button toggles favorite state', () => {
+    const { getByTestId } = render(<RecipeInformation />);
+    const favoriteButton = getByTestId("favorite-button");
+    expect(favoriteButton).toHaveAttribute('aria-pressed', 'false');
+    favoriteButton.click();
+    expect(favoriteButton).toHaveAttribute('aria-pressed', 'true');
+});
+
+test('renders video tutorial if available', () => {
+    const { queryByTestId } = render(<RecipeInformation />);
+    expect(queryByTestId("video-tutorial")).toBeInTheDocument();
+});
+
+test('renders no video message if video not available', () => {
+    const { getByText } = render(<RecipeInformation />);
+    // Assuming the component shows this text when no video is available
+    expect(getByText(/No video tutorial available/i)).toBeInTheDocument();
+});
+
+test('renders allergens information', () => {
+    const { getByText } = render(<RecipeInformation />);
+    expect(getByText(/Allergens/i)).toBeInTheDocument();
+});
+
+test('renders estimated cost', () => {
+    const { getByText } = render(<RecipeInformation />);
+    expect(getByText(/Estimated Cost/i)).toBeInTheDocument();
 });

@@ -16,14 +16,12 @@ import pymongo
 from groq import Groq
 from dotenv import dotenv_values
 from pydantic import BaseModel, conint, conlist, PositiveInt
-from models import Recipe, RecipeListRequest, RecipeListResponse, RecipeListRequest2
+import logging
+from models import Recipe, RecipeListRequest, RecipeListResponse, RecipeListRequest2,RecipeQuery
 
 config = dotenv_values(".env")
 router = APIRouter()
 client = Groq(api_key=config["GROQ_API_KEY"])
-class RecipeQuery(BaseModel):
-    query: str
-    context: str
 
 @router.get("/", response_description="List all recipes", response_model=List[Recipe])
 def list_recipes(request: Request):
@@ -96,12 +94,20 @@ def list_recipes_by_ingregredient(ingredient: str, caloriesLow: int, caloriesUp:
     res.sort(key = lambda x: x['calories'])
     return res
 
+
+
 @router.post("/recommend-recipes/", response_model=dict)
 async def recommend_recipes(query: RecipeQuery = Body(...)):
     try:
         query.query = query.query.replace('\n', ' ').replace('\t', ' ').replace('  ', ' ').strip()
+        query.context = query.context.strip()
         if not query.query:
-            raise HTTPException(status_code=400, detail="Invalid Query")
+            raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Invalid Query")
+        if not query.context:
+            raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Invalid Context")
+        if query.query.isdigit() or not any(c.isalpha() for c in query.query):
+            raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Query must include alphabetic characters and cannot be solely numeric or special characters.")
+        
         response = client.chat.completions.create(
             messages=[
             {
@@ -117,4 +123,7 @@ async def recommend_recipes(query: RecipeQuery = Body(...)):
         )
         return {"response": response.choices[0].message.content}
     except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+        logging.basicConfig(level=logging.ERROR)
+        logger = logging.getLogger(__name__)
+        logger.error(f"Unexpected error in recommend_recipes: {str(e)}")
+        raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail="An unexpected error occurred")

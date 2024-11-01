@@ -3,8 +3,8 @@
 <div align="center">
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Build](https://github.com/AMAPAD/CookBook/actions/workflows/build.yml/badge.svg)](https://github.com/AMAPAD/CookBook/actions/workflows/build.yml)
-[![DOI](https://zenodo.org/badge/541238337.svg)](https://zenodo.org/badge/latestdoi/541238337)
+[![Build and Test](https://github.com/AMAPAD/CookBook/actions/workflows/build&test.yml/badge.svg)](https://github.com/AMAPAD/CookBook/actions/workflows/build&test.yml)
+[![DOI](https://zenodo.org/badge/541238337.svg)](https://zenodo.org/records/14026967?token=eyJhbGciOiJIUzUxMiJ9.eyJpZCI6IjZkNGNkZGI3LWNiMTYtNGU2MS05OWFlLWMwOTJkZDM3YjI0ZiIsImRhdGEiOnt9LCJyYW5kb20iOiI1YzYxYmUxOTA1N2ViZjkzNzhmOTkxNjJhODhjNTVjNyJ9.M5rhYxh5JJQPcZn_X0mq0pz52ERNj_Mb68lJJskuACOnYR9OO4u-zile95qLUiYml0Eijg-W7cHUnE_x1d_6Ag)
 ![Github Issues](https://img.shields.io/github/issues-closed/AMAPAD/CookBook)
 ![Github Issues](https://img.shields.io/github/issues/AMAPAD/CookBook)
 ![Github Pull Requests](https://img.shields.io/github/issues-pr/AMAPAD/CookBook)

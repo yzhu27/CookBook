@@ -13,6 +13,7 @@ import './Header.css'
 import Navbar from '../Navbar/Navbar'
 /**
  * File name: Header.tsx
+ * Functional component displaying the top navigation bar.
  * Task - This component is responsible for the static header seen throughout the application with the option to navigate back to home
  * and provides 'Contact' and 'About' information.
  * @author Asrita Kuchibhotla

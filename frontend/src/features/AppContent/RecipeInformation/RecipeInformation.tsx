@@ -93,7 +93,7 @@ this file. If not, please write to: help.cookbook@gmail.com
    if (recipeInfo.isGetRecipeInfoLoading) {
      return <div data-testid="RecipeInfo-comp-43"> Loading ... </div>
    } else if (recipeInfo.isGetRecipeInfoSuccess) {
-     const recipe = recipeInfo.getRecipeInfoData;
+     const recipe = recipeInfo.getRecipeInfoData; // The recipe object containing all necessary information
      const recipeDetailsforLLM = `
       Name: ${recipe.name}
       Ingredients: ${recipe.ingredients.join(', ')}
@@ -228,7 +228,7 @@ this file. If not, please write to: help.cookbook@gmail.com
              </Grid>
              <Grid item xs={12} style={{ textAlign: 'center', marginTop: '20px' }}>
               <button 
-                onClick={() => shareOnWhatsApp(window.location.href)} 
+                onClick={() => shareOnWhatsApp(window.location.href)} // Generates a WhatsApp sharing link for the recipe
                 style={{
                   marginLeft: '70px',
                   backgroundColor: '#25D366',

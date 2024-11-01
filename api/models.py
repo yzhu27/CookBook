@@ -15,18 +15,18 @@ from typing import Optional, List
 from pydantic import BaseModel, Field
 
 class Recipe(BaseModel):
-    """Base class for Recipe"""
-    id: str = Field(default_factory=uuid.uuid4, alias="_id")
-    name: str
+    """A data model representing a recipe"""
+    id: str = Field(default_factory=uuid.uuid4, alias="_id") #Unique identifier for the recip
+    name: str #Name of the recipe
     cookTime: Optional[str] = None
     prepTime: Optional[str] = None
     totalTime: Optional[str] = None
     description: Optional[str] = None
-    images: Optional[list] = None
+    images: Optional[list] = None #URLs of images related to the recipe
     category: str
     tags: List[str]
     ingredientQuantities: list
-    ingredients: List[str]
+    ingredients: List[str] #List of ingredients required
     rating: Optional[str] = None
     calories: Optional[str] = None
     fat: Optional[str] = None

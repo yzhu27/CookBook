@@ -32,13 +32,13 @@ app.add_middleware(
 
 @app.on_event("startup")
 def startup_db_client():
-    """Connects to database client on startup"""
+    """Initializes the database client when the application starts"""
     app.mongodb_client = MongoClient(config["ATLAS_URI"])
     app.database = app.mongodb_client[config["DB_NAME"]]
 
 @app.on_event("shutdown")
 def shutdown_db_client():
-    """Closes database connection on shutdown"""
+    """Closes the database client when the application shuts down"""
     app.mongodb_client.close()
 
 app.include_router(router, tags=["recipes"], prefix="/recipe")

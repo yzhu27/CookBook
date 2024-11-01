@@ -124,3 +124,6 @@ class RecipeListRequest2(BaseModel):
     fatUp: float = Field(..., ge=0, le=140, description="Fat upper limit, between 0 and 100")
     sugUp: float = Field(..., ge=0, le=150, description="Sugar upper limit, between 0 and 100")
     proUp: float = Field(..., ge=0, le=250, description="Protein upper limit, between 0 and 100")
+class RecipeQuery(BaseModel):
+    query: str
+    context: str

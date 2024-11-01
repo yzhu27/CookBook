@@ -1,5 +1,6 @@
 import requests
 import pytest
+import time
 
 BASE_URL = "http://localhost:8000/recipe"
 
@@ -250,3 +251,67 @@ def test_delete_recipe_invalid_id():
     invalid_id = 99999  # Assuming this ID doesn't exist
     response = requests.delete(f"{BASE_URL}/recipes/{invalid_id}/")
     assert response.status_code == 404
+
+def test_valid_query_and_context():
+    """Test with both valid query and context."""
+    response = requests.post(f"{BASE_URL}/recommend-recipes/", json={
+        "query": "What are some quick breakfast options?",
+        "context": "Looking for vegetarian options."
+    })
+    assert response.status_code == 200
+    assert "response" in response.json()
+
+def test_valid_query_invalid_context():
+    """Test with valid query and invalid context."""
+    response = requests.post(f"{BASE_URL}/recommend-recipes/", json={
+        "query": "What are some quick breakfast options?",
+        "context": ""  # empty context is invalid
+    })
+    assert response.status_code == 500
+    assert "detail" in response.json()
+
+def test_invalid_query_valid_context():
+    """Test with invalid query and valid context."""
+    response = requests.post(f"{BASE_URL}/recommend-recipes/", json={
+        "query": "",  # empty query is invalid
+        "context": "Looking for vegetarian options."
+    })
+    assert response.status_code == 500
+    assert "detail" in response.json()
+
+def test_invalid_query_and_context():
+    """Test with both invalid query and context."""
+    response = requests.post(f"{BASE_URL}/recommend-recipes/", json={
+        "query": "",
+        "context": ""
+    })
+    assert response.status_code == 500
+    assert "detail" in response.json()
+
+@pytest.mark.parametrize("query, expected_status", [
+    ("easy dinner recipes", 200),
+    ("vegan breakfast options", 200),
+    ("gluten-free desserts", 200),
+    ("quick snacks", 200),
+    ("low carb meals for dinner", 200),
+    ("high protein vegan meals", 200),
+    ("what can I cook with potatoes and chicken", 200),
+    ("desserts with less sugar", 200),
+    ("healthy smoothies", 200),
+    ("Italian pasta dishes", 200),
+    ("", 500),  # Empty query should ideally return a bad request or custom handled response
+    (" ", 500),  # Query with just a space
+    ("123456", 500),  # Numeric query, should return 500
+    ("!@#$%^&*()", 500),  # Special characters, should return 500
+    ("very very long query " * 10, 200),  # Long query
+    ("dinner ideas without specifying ingredients", 200),
+    ("non-existent cuisine recipes", 200),
+    ("quick meals under 30 minutes", 200),
+    ("how to make a cake", 200),
+    ("recipes with chicken", 200)
+])
+def test_recommend_recipes(query, expected_status):
+    """Test recommending recipes based on various queries."""
+    response = requests.post(f"{BASE_URL}/recommend-recipes/", json={"query": query})
+    assert response.status_code == expected_status, f"Failed for query: {query}"
+    time.sleep(1)  # Pause for 1 second between each test case to avoid rate limiting from groq

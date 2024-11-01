@@ -7,7 +7,7 @@ this file. If not, please write to: help.cookbook@gmail.com
 */
 
 import React from 'react';
-import { render } from '@testing-library/react';
+import { render, waitFor, fireEvent } from '@testing-library/react';
 import RecipeInformation from './RecipeInformation';
 
 test('shows recipe information correctly', () => {
@@ -323,4 +323,47 @@ test('formats regular text correctly', () => {
     const paragraphs = container.querySelectorAll('p');
     expect(paragraphs.length).toBe(2); // One for bold text, one for regular text
     expect(paragraphs[1]).toHaveTextContent('Regular text.');
+});
+
+// Accessibility Test: Ensure all images have alt text
+test('all images have alt text', () => {
+    const { getAllByRole } = render(<RecipeInformation />);
+    const images = getAllByRole('img');
+    images.forEach(img => expect(img).toHaveAttribute('alt'));
+});
+
+// Responsive Design Test: Component renders correctly on mobile
+test('renders correctly on mobile', () => {
+    global.innerWidth = 500; // Simulate mobile width
+    const { getByTestId } = render(<RecipeInformation />);
+    expect(getByTestId("RecipeInfo-comp-43")).toBeInTheDocument();
+    global.innerWidth = 1024; // Reset to default after test
+});
+
+// Error Handling Test: Simulate a network error
+test('displays error message on network failure', () => {
+    jest.spyOn(global, 'fetch').mockImplementation(() => 
+        Promise.reject(new Error('Network error'))
+    );
+    const { getByText } = render(<RecipeInformation />);
+    expect(getByText(/Failed to load recipe data/i)).toBeInTheDocument();
+});
+
+// Loading State Test: Verify loading spinner is shown
+test('shows loading spinner while fetching data', () => {
+    const { getByTestId } = render(<RecipeInformation />);
+    expect(getByTestId("loading-spinner")).toBeInTheDocument();
+});
+
+// Interaction Test: Hover over an element
+test('shows tooltip on hover over help icon', () => {
+    const { getByTestId } = render(<RecipeInformation />);
+    fireEvent.mouseOver(getByTestId("help-icon"));
+    expect(getByTestId("tooltip")).toBeInTheDocument();
+});
+
+// Performance Test: Component loads within time frame
+test('loads within acceptable time frame', async () => {
+    const { getByTestId } = render(<RecipeInformation />);
+    await waitFor(() => expect(getByTestId("RecipeInfo-comp-43")).toBeInTheDocument(), { timeout: 1000 });
 });

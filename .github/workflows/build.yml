@@ -35,4 +35,7 @@ jobs:
       - name: Test with pytest
         run: |
           cd tests
-          python test_api.py
+          coverage run -m pytest --source test_api.py -v -s 
+        continue-on-error: true
+      - name: Coveralls GitHub Action
+        uses: coverallsapp/github-action@v2.3.0

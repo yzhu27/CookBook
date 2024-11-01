@@ -120,7 +120,7 @@ class RecipeListResponse(BaseModel):
 
 class RecipeListRequest2(BaseModel):
     page: int = Field(..., ge=1, description="Page number, must be at least 1")
-    caloriesUp: float = Field(..., ge=0, le=1000, description="Calories upper limit, between 0 and 100")
-    fatUp: float = Field(..., ge=0, le=100, description="Fat upper limit, between 0 and 100")
-    sugUp: float = Field(..., ge=0, le=100, description="Sugar upper limit, between 0 and 100")
-    proUp: float = Field(..., ge=0, le=100, description="Protein upper limit, between 0 and 100")
+    caloriesUp: float = Field(..., ge=0, le=4000, description="Calories upper limit, between 0 and 100")
+    fatUp: float = Field(..., ge=0, le=140, description="Fat upper limit, between 0 and 100")
+    sugUp: float = Field(..., ge=0, le=150, description="Sugar upper limit, between 0 and 100")
+    proUp: float = Field(..., ge=0, le=250, description="Protein upper limit, between 0 and 100")

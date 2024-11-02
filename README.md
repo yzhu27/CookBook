@@ -10,7 +10,7 @@
 ![Github Pull Requests](https://img.shields.io/github/issues-pr/AMAPAD/CookBook)
 ![Github Pull Requests](https://img.shields.io/github/issues-pr-closed/AMAPAD/CookBook)
 ![Commit Status](https://img.shields.io/github/commit-status/AMAPAD/CookBook/main/9677b6e3e656a77a55d73e34fc6e32df4d161556)
-[![Coverage Status](https://coveralls.io/repos/github/AMAPAD/CookBook/badge.svg?branch=main)](https://coveralls.io/github/AMAPAD/CookBook?branch=main)
+[![Coverage Status](https://coveralls.io/repos/github/AMAPAD/CookBook/badge.png?branch=main)](https://coveralls.io/github/AMAPAD/CookBook?branch=main)
 ![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white)
 ![FastAPI](https://img.shields.io/badge/FastAPI-005571?style=for-the-badge&logo=fastapi)
 ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)

@@ -66,15 +66,14 @@ With over recipes, there is something in the store for everyone !<br><br>
 <p align="center"><img width="700" src="./assets/demo.gif"></p><br><br>
 
 # What's New?
-[![improvements introduction](https://res.cloudinary.com/marcomontalbano/image/upload/v1670384054/video_to_markdown/images/youtube--swfG0uig19c-c05b58ac6eb4c4700831b2b3070cd403.jpg)](https://www.youtube.com/watch?v=swfG0uig19c "improvements introduction")
+### Click the image below
+[<img src="https://github.com/user-attachments/assets/e5986632-f7a2-45d0-a8c1-8780a7d500d3" width="50%">](https://youtu.be/XFhpX_Giefg?si=5ocWso_Oasa0IIxh "CookBook Demo")
+* Or use this link: [https://youtu.be/XFhpX_Giefg?si=5ocWso_Oasa0IIxh](https://youtu.be/XFhpX_Giefg?si=5ocWso_Oasa0IIxh)
 
 ## New features:
-
-- Make CookBook come online as a website: [Cook Book](https://cook-book.ml) Users don't need to install the backend and frontend anymore.
+- Make CookBook come online as a website: [Cook Book](https://cookbook-alpha.vercel.app/) Users don't need to install the backend and frontend anymore.
 - Add filtering system based on nutrition.
 - Created ingredient tags to simplify the searching.
-
-[Watch the video]("Cookbook/WhatsApp Video 2024-11-01 at 23.33.35.mp4")
 
 
 ## Better Software Design
@@ -84,7 +83,7 @@ With over recipes, there is something in the store for everyone !<br><br>
 # Installations
 
 ## Access the website
-Access this link [Cook Book](https://cook-book.ml).
+Access this link [Cook Book](https://cookbook-alpha.vercel.app/).
 
 ### Trouble Shooting
 If this page failed, try to change your network environment. Typically, we noticed some DNS resolve failures under NC State network. That may caused by NCSU's DNS server problem. You may try your home network or mobile hotspot instead.

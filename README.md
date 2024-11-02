@@ -74,6 +74,8 @@ With over recipes, there is something in the store for everyone !<br><br>
 - Add filtering system based on nutrition.
 - Created ingredient tags to simplify the searching.
 
+[Watch the video](WhatsApp Video 2024-11-01 at 23.33.35.mp4)
+
 
 ## Better Software Design
 

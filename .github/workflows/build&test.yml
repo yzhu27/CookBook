@@ -39,7 +39,7 @@ jobs:
           DB_NAME: ${{ secrets.DB_NAME }}
         run: |
           cd api
-          python -m uvicorn main:app --host 0.0.0.0 --port 8000 --reload
+          nohup python -m uvicorn main:app --host 0.0.0.0 --port 8000 --reload &
       - name: Test with pytest
         env:
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}

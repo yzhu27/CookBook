@@ -39,8 +39,8 @@ jobs:
           DB_NAME: ${{ secrets.DB_NAME }}
         run: |
           cd api
-          python -m uvicorn main:app --host 0.0.0.0 --port 8000 --reload
-          cd ../tests
+          python -m uvicorn main:app --host 0.0.0.0 --port 8000
+          cd /home/runner/work/CookBook/CookBook/tests
           coverage run -m pytest -v -s 
         continue-on-error: true
       - name: Coveralls GitHub Action

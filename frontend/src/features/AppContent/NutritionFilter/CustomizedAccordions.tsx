@@ -85,7 +85,7 @@ export default function CustomizedAccordions() {
         console.log(sug)
         console.log(pro)
         dispatch(
-          getRecipeListInitiator('https://cook-book.ml/recipe/search2/', {
+          getRecipeListInitiator('http://localhost:8000/recipe/search2/', {
               page: 1,
               caloriesUp: cal,
               fatUp: fat,
@@ -118,7 +118,7 @@ export default function CustomizedAccordions() {
                   valueLabelDisplay="auto"
                   defaultValue={defaultValue}
                   onChange={(e,v) => setCal(v as number)}
-                  max={1000}
+                  max={4000}
               />
                 <Typography id="non-linear-slider" gutterBottom>
                 Fat:
@@ -127,7 +127,7 @@ export default function CustomizedAccordions() {
                   aria-label="Fat"
                   valueLabelDisplay="auto"
                   defaultValue={defaultValue}
-                  max={100}
+                  max={140}
                   onChange={(e,v) => setFat(v as number)}
             />
                 <Typography id="non-linear-slider" gutterBottom>
@@ -137,7 +137,7 @@ export default function CustomizedAccordions() {
                   aria-label="Sugar"
                   valueLabelDisplay="auto"
                   defaultValue={defaultValue}
-                  max={100}
+                  max={150}
                   onChange={(e,v) => setSug(v as number)}
             />
                 <Typography id="non-linear-slider" gutterBottom>
@@ -147,7 +147,7 @@ export default function CustomizedAccordions() {
                   aria-label="Protain"
                   valueLabelDisplay="auto"
                   defaultValue={defaultValue}
-                  max={100}
+                  max={250}
                   onChange={(e,v) => setPro(v as number)}
             />
             </Stack>

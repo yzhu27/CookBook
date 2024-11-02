@@ -86,7 +86,7 @@ const RecipeList = () => {
 
   const gotoRecipe = (id: string) => {
     console.log('hello' + id)
-    dispatch(getRecipeInfoInitiator('https://cook-book.ml/recipe/' + id))
+    dispatch(getRecipeInfoInitiator('http://localhost:8000/recipe/' + id))
     navigateTo('/recipe-details/' + id)
   }
 
@@ -98,7 +98,7 @@ const RecipeList = () => {
       sessionStorage.getItem('ingredients') || '[]'
     )
     dispatch(
-      getRecipeListInitiator('https://cook-book.ml/recipe/search/', {
+      getRecipeListInitiator('http://localhost:8000/recipe/search/', {
         ingredients: ingredientsArray,
         page: value,
       })

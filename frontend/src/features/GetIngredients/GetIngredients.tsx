@@ -101,7 +101,7 @@ const GetIngredients = () => {
     if (val.length >= 3) {
       dispatch(
         getIngredientsInitiator(
-          'https://cook-book.ml/recipe/ingredients/' + val
+          'http://localhost:8000/recipe/ingredients/' + val
         )
       )
     }
@@ -126,7 +126,7 @@ const GetIngredients = () => {
     if (ingredientsArray.length > 0) {
       sessionStorage.setItem('ingredients', JSON.stringify(ingredientsArray))
       dispatch(
-        getRecipeListInitiator('https://cook-book.ml/recipe/search/', {
+        getRecipeListInitiator('http://localhost:8000/recipe/search/', {
           ingredients: ingredientsArray,
           page: 1,
         })

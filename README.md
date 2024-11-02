@@ -67,8 +67,8 @@ With over recipes, there is something in the store for everyone !<br><br>
 
 # What's New?
 ### Click the image below
-[<img src="https://github.com/user-attachments/assets/e5986632-f7a2-45d0-a8c1-8780a7d500d3" width="50%">](https://youtu.be/XFhpX_Giefg?si=5ocWso_Oasa0IIxh "CookBook Demo")
-* Or use this link: [https://youtu.be/XFhpX_Giefg?si=5ocWso_Oasa0IIxh](https://youtu.be/XFhpX_Giefg?si=5ocWso_Oasa0IIxh)
+[<img src="https://github.com/user-attachments/assets/e5986632-f7a2-45d0-a8c1-8780a7d500d3" width="100%">](https://youtu.be/6_TFpgyWG84 "CookBook V3 AMAPAD Demo")
+* Or use this link: [https://youtu.be/6_TFpgyWG84](https://youtu.be/6_TFpgyWG84)
 
 ## New features:
 - Make CookBook come online as a website: [Cook Book](https://cookbook-alpha.vercel.app/) Users don't need to install the backend and frontend anymore.
